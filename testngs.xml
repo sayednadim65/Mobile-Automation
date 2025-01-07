@@ -3,7 +3,7 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="a_Nadeem.Regression_UAT_suite" ></class>
+			   <class name="a_Nadeem.Rise_Regression"/>
 			
 		</classes>
 	</test> <!-- Test -->

@@ -3,13 +3,13 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="a_Nadeem.Regression_UAT_suite">
+      <class name="a_Nadeem.Rise_Regression">
         <methods>
-          <include name="App_Regression"/>
           <include name="Verify_user_kills_app"/>
           <include name="Verify_user_launch_app"/>
+          <include name="App_Regression"/>
         </methods>
-      </class> <!-- a_Nadeem.Regression_UAT_suite -->
+      </class> <!-- a_Nadeem.Rise_Regression -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

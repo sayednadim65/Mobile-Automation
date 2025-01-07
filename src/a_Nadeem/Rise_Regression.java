@@ -82,13 +82,15 @@ public class Rise_Regression {
 
 		logger.logTableStart("Execution Report");
 		Global_search_Result();
+		Get_quote_fut_tab();
+		Get_quote_opt_tab();
+		Get_quote_cash_tab();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
 		MF_collection_viewall_returns();
 		Portfolio_view_analysis();
 		Portfolio_swipe_Stocks_Tab_verification();
 		Portfolio_swipe_MF_Tab_verification();
-		Portfolio_swipe_PMS_Tab_verification();
 		Portfolio_swipe_PMS_Tab_verification();
 		Portfolio_swipe_Basket_Tab_verification();
 		Watchlist_script();
@@ -109,25 +111,58 @@ public class Rise_Regression {
 		Thread.sleep(2000);
 		WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 		long endTime = System.currentTimeMillis(); // End timer
-
 		String resultsearch = searchresult.getAttribute("content-desc");
-		String globalsearchresult = resultsearch.substring(1, 8);
-		System.out.println(globalsearchresult);
-
+		String globalsearchresult = resultsearch.substring(3, 8);
 		boolean isVerified = globalsearchresult.equalsIgnoreCase("YESBA");
 		status = isVerified ? "Pass" : "Fail";
 		homepage.Globalsearchresult.click();
 		logger.logTableRow("Global Search Result", status, endTime - startTime); // Log search timing
-
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 
 	}
 
-	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
+	public void Get_quote_fut_tab() {
 		GetQuote getquote = new GetQuote(Driver);
-		OrderForm orderform = new OrderForm(Driver);
+		wait.until(ExpectedConditions.elementToBeClickable(getquote.FutTab));
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.FutTab.click();
+		WebElement NSEFO = wait.until(ExpectedConditions.visibilityOf(getquote.NSEFO));
+		String nsefo = NSEFO.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = nsefo.equalsIgnoreCase("NSE_FO");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote fut tab", status, endTime - startTime); // Log search timing
+	}
 
-		wait.until(ExpectedConditions.elementToBeClickable(getquote.BuyButton));
+	public void Get_quote_opt_tab() {
+		GetQuote getquote = new GetQuote(Driver);
+		wait.until(ExpectedConditions.elementToBeClickable(getquote.optionsTab));
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.optionsTab.click();
+		WebElement Call = wait.until(ExpectedConditions.visibilityOf(getquote.callbutton));
+		String call = Call.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = call.equalsIgnoreCase("Call");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote opt tab", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_cash_tab() {
+		GetQuote getquote = new GetQuote(Driver);
+		wait.until(ExpectedConditions.elementToBeClickable(getquote.cashtab));
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.cashtab.click();
+		WebElement Nse = wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
+		String nse = Nse.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = nse.equalsIgnoreCase("NSE");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote cash tab", status, endTime - startTime); // Log search timing
+	}
+
+	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
+		OrderForm orderform = new OrderForm(Driver);
+		GetQuote getquote = new GetQuote(Driver);
 		getquote.BuyButton.click();
 		long startTime = System.currentTimeMillis(); // Start timer
 		orderform.MarketButton.click();
@@ -140,18 +175,16 @@ public class Rise_Regression {
 		String investamount = amount.substring(12, 14);
 		System.out.println(investamount);
 		String NseLTP = orderform.NseSwitch.getAttribute("content-desc");
-		String LTP = NseLTP.substring(4, 7);
-		System.out.println(LTP);
-
+		String LTP = NseLTP.substring(5, 7);
 		boolean isVerified = investamount.equalsIgnoreCase(LTP);
-		status = isVerified ? "Fail" : "Pass";
+		status = isVerified ? "Pass" : "Fail";
 		logger.logTableRow("Order Form quantity toggle", status, endTime - startTime); // Log search timing
 		Thread.sleep(2000);
 	}
 
 	public void OrderForm_amount_toggle() throws InterruptedException, IOException {
 
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		orderform.amountswitch.click();
@@ -160,12 +193,8 @@ public class Rise_Regression {
 		orderform.quantityMarket.sendKeys(Commons.getGlobalPropertiesValue("orderform_amount_toggle"));
 		Driver.hideKeyboard();
 		long endTime = System.currentTimeMillis(); // End timer
-
 		String quantity = orderform.quantityautocalculate.getAttribute("content-desc");
-		System.out.println(quantity);
 		String autocalulatequantity = quantity.substring(5);
-		System.out.println(autocalulatequantity);
-
 		boolean isVerifyed = autocalulatequantity
 				.equalsIgnoreCase(Commons.getGlobalPropertiesValue("orderform_amount_quantity"));
 		status = isVerifyed ? "Pass" : "Fail";
@@ -173,7 +202,7 @@ public class Rise_Regression {
 		Driver.navigate().back();
 		Driver.navigate().back();
 		logger.logTableRow("Order Form amount toggle", status, endTime - startTime); // Log search timing
-		Thread.sleep(2000);
+		Thread.sleep(500);
 	}
 
 	public void MF_collection_viewall_returns() throws InterruptedException {
@@ -181,28 +210,22 @@ public class Rise_Regression {
 		MfHomePage mfhomepage = new MfHomePage(Driver);
 		homepage.MfTab.click();
 		long startTime = System.currentTimeMillis(); // Start timer
-
 		mfhomepage.MfHomepageCollectionViewAll.click();
 		mfhomepage.MfViewAll1mReturns.click();
 		boolean isVerified = mfhomepage.onemReturnsMFVerification.isDisplayed();
 		status = isVerified ? "Pass" : "Fail";
-
 		mfhomepage.MfViewAll3mReturns.click();
 		boolean isVerified1 = mfhomepage.threeMReturnsMFVerification.isDisplayed();
 		status = isVerified1 ? "Pass" : "Fail";
-
 		mfhomepage.MfViewAll1YReturns.click();
 		boolean isVerified2 = mfhomepage.oneyearReturnsMFVerification.isDisplayed();
 		status = isVerified2 ? "Pass" : "Fail";
-
 		mfhomepage.MfViewAll3YReturns.click();
 		boolean isVerified3 = mfhomepage.threeYearsReturnsMFVerification.isDisplayed();
 		status = isVerified3 ? "Pass" : "Fail";
-
 		mfhomepage.MfViewAll5YReturns.click();
 		boolean isVerified4 = mfhomepage.fiveYearsReturnsMFVerification.isDisplayed();
 		status = isVerified4 ? "Pass" : "Fail";
-
 		Driver.navigate().back();
 		homepage.homeTabHeader.click();
 		long endTime = System.currentTimeMillis(); // End timer
@@ -250,7 +273,6 @@ public class Rise_Regression {
 	public void Portfolio_swipe_Stocks_Tab_verification() throws InterruptedException {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-
 		// swipe left to left
 		Dimension screenSize = Driver.manage().window().getSize();
 		int screenWidth = screenSize.getWidth();
@@ -258,21 +280,16 @@ public class Rise_Regression {
 		int startX = (int) (screenWidth * 0.9);
 		int endX = (int) (screenWidth * 0.1);
 		int centerY = screenHeight / 2;
-
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
 		Sequence swipe = new Sequence(finger, 1)
 				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
 				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
 				.addAction(
 						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
 				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-
 		Driver.perform(Arrays.asList(swipe));
-
 		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.StocksTabPortfolio));
 		status = isVerified ? "Pass" : "Fail";
-
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Portfolio swipe Stocks Tab verification", status, endTime - startTime); // Log search
 	}
@@ -280,7 +297,6 @@ public class Rise_Regression {
 	public void Portfolio_swipe_MF_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-
 		// swipe left to left
 		Dimension screenSize = Driver.manage().window().getSize();
 		int screenWidth = screenSize.getWidth();
@@ -288,30 +304,23 @@ public class Rise_Regression {
 		int startX = (int) (screenWidth * 0.9);
 		int endX = (int) (screenWidth * 0.1);
 		int centerY = screenHeight / 2;
-
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
 		Sequence swipe = new Sequence(finger, 1)
 				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
 				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
 				.addAction(
 						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
 				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-
 		Driver.perform(Arrays.asList(swipe));
-
 		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.MFTabPortfolio));
 		status = isVerified ? "Pass" : "Fail";
-
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Portfolio swipe MF Tab verification", status, endTime - startTime); // Log search timing
-
 	}
 
 	public void Portfolio_swipe_PMS_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-
 		// swipe left to left
 		Dimension screenSize = Driver.manage().window().getSize();
 		int screenWidth = screenSize.getWidth();
@@ -319,34 +328,26 @@ public class Rise_Regression {
 		int startX = (int) (screenWidth * 0.9);
 		int endX = (int) (screenWidth * 0.1);
 		int centerY = screenHeight / 2;
-
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
 		Sequence swipe = new Sequence(finger, 1)
 				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
 				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
 				.addAction(
 						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
 				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-
 		Driver.perform(Arrays.asList(swipe));
 		WebElement PMS = wait.until(ExpectedConditions.elementToBeClickable(portfolio.PMSTabPortfolio));
-
 		String pms = PMS.getAttribute("content-desc");
 		String pmsTab = pms.substring(0, 3);
-		System.out.println(pmsTab);
 		boolean isVerified = pmsTab.equalsIgnoreCase("PMS");
 		status = isVerified ? "Pass" : "Fail";
-
 		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Portfolio swipe PMS Tab verification", status, endTime - startTime); // Log search
-																									// timing
+		logger.logTableRow("Portfolio swipe PMS Tab verification", status, endTime - startTime); // Log search // timing
 	}
 
 	public void Portfolio_swipe_Basket_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-
 		// swipe left to left
 		Dimension screenSize = Driver.manage().window().getSize();
 		int screenWidth = screenSize.getWidth();
@@ -354,24 +355,18 @@ public class Rise_Regression {
 		int startX = (int) (screenWidth * 0.9);
 		int endX = (int) (screenWidth * 0.1);
 		int centerY = screenHeight / 2;
-
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
 		Sequence swipe = new Sequence(finger, 1)
 				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
 				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
 				.addAction(
 						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
 				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-
 		Driver.perform(Arrays.asList(swipe));
-
 		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.BasketTabPortfolio));
 		status = isVerified ? "Pass" : "Fail";
-
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Portfolio swipe Basket Tab verification", status, endTime - startTime); // Log search
-																									// timing
 	}
 
 	public void Watchlist_script() throws InterruptedException {
@@ -379,11 +374,9 @@ public class Rise_Regression {
 		Watchlist watchlist = new Watchlist(Driver);
 		homepage.WatchlistBottombar.click();
 		long startTime = System.currentTimeMillis(); // Start timer
-
 		int swipeCount = 0;
 		int maxSwipes = 5;
 		boolean elementFound = false;
-
 		while (!elementFound && swipeCount < maxSwipes) {
 			try {
 				// Check if the element is present
@@ -410,7 +403,6 @@ public class Rise_Regression {
 						.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
 				Driver.perform(Arrays.asList(swipe));
-
 				swipeCount++;
 				System.out.println("Performed swipe #" + swipeCount);
 			}
@@ -448,60 +440,41 @@ public class Rise_Regression {
 		watchlist.addscripticon.click();
 		Driver.hideKeyboard();
 		Driver.navigate().back();
-		try {
-			WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
-
-			String addedscript = scriptinwatchlist.getAttribute("content-desc");
-			String watchlistscript = addedscript.substring(0, 7);
-
-			System.out.println(watchlistscript);
-
-			boolean isVerified = watchlistscript.equalsIgnoreCase("YESBANK");
-			status = isVerified ? "Pass" : "Fail";
-		} catch (Exception e) {
-			System.out.println("Failed to capture toast message");
-		}
+		WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
+		String addedscript = scriptinwatchlist.getAttribute("content-desc");
+		String watchlistscript = addedscript.substring(0, 7);
+		boolean isVerified = watchlistscript.equalsIgnoreCase("YESBANK");
+		status = isVerified ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Add Script in watchlist", status, endTime - startTime); // Log timing
 	}
 
 	public void Delete_script_in_watchlist() {
 		Watchlist watchlist = new Watchlist(Driver);
-
 		long startTime = System.currentTimeMillis(); // Start timer
 		// Get element location
 		int elementX = watchlist.scriptinwatchlist.getRect().getX()
 				+ (watchlist.scriptinwatchlist.getRect().getWidth() / 2);
 		int elementY = watchlist.scriptinwatchlist.getRect().getY()
 				+ (watchlist.scriptinwatchlist.getRect().getHeight() / 2);
-
 		// Create a PointerInput instance
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
 		// Create a sequence for the long press
 		Sequence longPress = new Sequence(finger, 1)
-				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), elementX, elementY)) // Move
-																														// to
-																														// element
+				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), elementX, elementY))
 				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg())) // Press down
 				.addAction(finger.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), elementX,
 						elementY)) // Hold for 2 seconds
 				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-
 		// Perform the long press
 		Driver.perform(Arrays.asList(longPress));
-
-		tapWithActions(Driver, 977, 977);
-
+		tapWithActions(Driver, 977, 972);
 		String scriptdeleted = watchlist.Addscript.getAttribute("content-desc");
 		System.out.println(scriptdeleted);
-
 		boolean isVerified = scriptdeleted.equalsIgnoreCase("Add Scrip");
 		status = isVerified ? "Pass" : "Fail";
-
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Delete script from watchlist", status, endTime - startTime); // Log timing
-
 	}
 
 	public void Delete_watchlist() {
