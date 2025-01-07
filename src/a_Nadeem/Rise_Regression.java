@@ -85,7 +85,10 @@ public class Rise_Regression {
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
 		Get_quote_cash_tab();
-		Get_quote_details();
+		Get_quote_Nse_switch_buy();
+		Get_quote_Nse_switch_Sell();
+		Get_quote_Bse_switch_buy();
+		Get_quote_Bse_switch_Sell();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
 		MF_collection_viewall_returns();
@@ -161,9 +164,62 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote cash tab", status, endTime - startTime); // Log search timing
 	}
 
-	public void Get_quote_details() {
-		
+	public void Get_quote_Nse_switch_buy() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		OrderForm orderform = new OrderForm(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.nsebutton.click();
+		getquote.BuyButton.click();
+		Thread.sleep(500);
+		boolean isVerified = orderform.NseSwitch.isSelected();
+		long endTime = System.currentTimeMillis(); // End timer
+		status = isVerified ? "Pass" : "Fail";
+		Driver.navigate().back();
+		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
 	}
+
+	public void Get_quote_Nse_switch_Sell() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		OrderForm orderform = new OrderForm(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.nsebutton.click();
+		getquote.SellButton.click();
+		Thread.sleep(500);
+		boolean isVerified = orderform.NseSwitch.isSelected();
+		long endTime = System.currentTimeMillis(); // End timer
+		status = isVerified ? "Pass" : "Fail";
+		Driver.navigate().back();
+		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_Bse_switch_buy() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		OrderForm orderform = new OrderForm(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.bsebutton.click();
+		getquote.BuyButton.click();
+		Thread.sleep(500);
+		boolean isVerified = orderform.BseSwitch.isSelected();
+		long endTime = System.currentTimeMillis(); // End timer
+		status = isVerified ? "Pass" : "Fail";
+		Driver.navigate().back();
+		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_Bse_switch_Sell() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		OrderForm orderform = new OrderForm(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.bsebutton.click();
+		getquote.SellButton.click();
+		Thread.sleep(500);
+		boolean isVerified = orderform.BseSwitch.isSelected();
+		long endTime = System.currentTimeMillis(); // End timer
+		status = isVerified ? "Pass" : "Fail";
+		Driver.navigate().back();
+		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+	}
+
 	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
 		OrderForm orderform = new OrderForm(Driver);
 		GetQuote getquote = new GetQuote(Driver);

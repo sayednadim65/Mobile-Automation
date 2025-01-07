@@ -11,68 +11,80 @@
       <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>7605</td></tr>]]>
+      <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>2537</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>6045</td></tr>]]>
+      <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>2734</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2926</td></tr>]]>
+      <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2295</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>5728</td></tr>]]>
+      <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>16876</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>5</td><td>Order Form quantity toggle</td><td>Pass</td><td>5237</td></tr>]]>
+      <![CDATA[<tr><td>5</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>8238</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>6</td><td>Order Form amount toggle</td><td>Pass</td><td>6439</td></tr>]]>
+      <![CDATA[<tr><td>6</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>4107</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>7</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>34084</td></tr>]]>
+      <![CDATA[<tr><td>7</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>4099</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>8</td><td>Portfolio View Analysis</td><td>Pass</td><td>20770</td></tr>]]>
+      <![CDATA[<tr><td>8</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>22436</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>9</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>2013</td></tr>]]>
+      <![CDATA[<tr><td>9</td><td>Order Form quantity toggle</td><td>Pass</td><td>2257</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>10</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>6210</td></tr>]]>
+      <![CDATA[<tr><td>10</td><td>Order Form amount toggle</td><td>Pass</td><td>5753</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>11</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>2194</td></tr>]]>
+      <![CDATA[<tr><td>11</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>20827</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>12</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>8193</td></tr>]]>
+      <![CDATA[<tr><td>12</td><td>Portfolio View Analysis</td><td>Pass</td><td>10475</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>13</td><td>Add Watchlist</td><td>Pass</td><td>16641</td></tr>]]>
+      <![CDATA[<tr><td>13</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>6985</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>14</td><td>Add Script in watchlist</td><td>Pass</td><td>8817</td></tr>]]>
+      <![CDATA[<tr><td>14</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>1911</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>15</td><td>Delete script from watchlist</td><td>Pass</td><td>10773</td></tr>]]>
+      <![CDATA[<tr><td>15</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>6507</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>16</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>1887</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>17</td><td>Add Watchlist</td><td>Pass</td><td>12954</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>18</td><td>Add Script in watchlist</td><td>Pass</td><td>11310</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>19</td><td>Delete script from watchlist</td><td>Pass</td><td>8812</td></tr>]]>
     </line>
     <line>
       <![CDATA[</table>]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-01-07T16:05:47 IST" name="Default suite" finished-at="2025-01-07T16:10:41 IST" duration-ms="294136">
+  <suite started-at="2025-01-07T18:19:55 IST" name="Default suite" finished-at="2025-01-07T18:24:44 IST" duration-ms="288900">
     <groups>
     </groups>
-    <test started-at="2025-01-07T16:05:47 IST" name="Default test" finished-at="2025-01-07T16:10:41 IST" duration-ms="294136">
+    <test started-at="2025-01-07T18:19:55 IST" name="Default test" finished-at="2025-01-07T18:24:44 IST" duration-ms="288900">
       <class name="a_Nadeem.Rise_Regression">
-        <test-method is-config="true" signature="Verify_user_launch_app()[pri:0, instance:a_Nadeem.Rise_Regression@74f6c5d8]" started-at="2025-01-07T16:05:47 IST" name="Verify_user_launch_app" finished-at="2025-01-07T16:06:04 IST" duration-ms="16867" status="PASS">
+        <test-method is-config="true" signature="Verify_user_launch_app()[pri:0, instance:a_Nadeem.Rise_Regression@19b89d4]" started-at="2025-01-07T18:19:55 IST" name="Verify_user_launch_app" finished-at="2025-01-07T18:20:11 IST" duration-ms="15833" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_launch_app -->
-        <test-method signature="Verify_user_login_and_clicks_on_RDD()[pri:1, instance:a_Nadeem.Rise_Regression@74f6c5d8]" started-at="2025-01-07T16:06:04 IST" name="Verify_user_login_and_clicks_on_RDD" finished-at="2025-01-07T16:06:24 IST" duration-ms="20748" status="PASS">
+        <test-method signature="Verify_user_login_and_clicks_on_RDD()[pri:1, instance:a_Nadeem.Rise_Regression@19b89d4]" started-at="2025-01-07T18:20:11 IST" name="Verify_user_login_and_clicks_on_RDD" finished-at="2025-01-07T18:20:31 IST" duration-ms="20339" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_login_and_clicks_on_RDD -->
-        <test-method signature="App_Regression()[pri:2, instance:a_Nadeem.Rise_Regression@74f6c5d8]" started-at="2025-01-07T16:06:24 IST" name="App_Regression" finished-at="2025-01-07T16:10:40 IST" duration-ms="255699" status="PASS">
+        <test-method signature="App_Regression()[pri:2, instance:a_Nadeem.Rise_Regression@19b89d4]" started-at="2025-01-07T18:20:32 IST" name="App_Regression" finished-at="2025-01-07T18:24:43 IST" duration-ms="251880" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[<h3>Execution Report</h3>]]>
@@ -84,56 +96,68 @@
               <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>7605</td></tr>]]>
+              <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>2537</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>6045</td></tr>]]>
+              <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>2734</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2926</td></tr>]]>
+              <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2295</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>5728</td></tr>]]>
+              <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>16876</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>5</td><td>Order Form quantity toggle</td><td>Pass</td><td>5237</td></tr>]]>
+              <![CDATA[<tr><td>5</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>8238</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>6</td><td>Order Form amount toggle</td><td>Pass</td><td>6439</td></tr>]]>
+              <![CDATA[<tr><td>6</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>4107</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>7</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>34084</td></tr>]]>
+              <![CDATA[<tr><td>7</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>4099</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>8</td><td>Portfolio View Analysis</td><td>Pass</td><td>20770</td></tr>]]>
+              <![CDATA[<tr><td>8</td><td>Get quote Nse switch buy order form</td><td>Fail</td><td>22436</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>9</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>2013</td></tr>]]>
+              <![CDATA[<tr><td>9</td><td>Order Form quantity toggle</td><td>Pass</td><td>2257</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>10</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>6210</td></tr>]]>
+              <![CDATA[<tr><td>10</td><td>Order Form amount toggle</td><td>Pass</td><td>5753</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>11</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>2194</td></tr>]]>
+              <![CDATA[<tr><td>11</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>20827</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>12</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>8193</td></tr>]]>
+              <![CDATA[<tr><td>12</td><td>Portfolio View Analysis</td><td>Pass</td><td>10475</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>13</td><td>Add Watchlist</td><td>Pass</td><td>16641</td></tr>]]>
+              <![CDATA[<tr><td>13</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>6985</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>14</td><td>Add Script in watchlist</td><td>Pass</td><td>8817</td></tr>]]>
+              <![CDATA[<tr><td>14</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>1911</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>15</td><td>Delete script from watchlist</td><td>Pass</td><td>10773</td></tr>]]>
+              <![CDATA[<tr><td>15</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>6507</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>16</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>1887</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>17</td><td>Add Watchlist</td><td>Pass</td><td>12954</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>18</td><td>Add Script in watchlist</td><td>Pass</td><td>11310</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>19</td><td>Delete script from watchlist</td><td>Pass</td><td>8812</td></tr>]]>
             </line>
             <line>
               <![CDATA[</table>]]>
             </line>
           </reporter-output>
         </test-method> <!-- App_Regression -->
-        <test-method is-config="true" signature="Verify_user_kills_app()[pri:0, instance:a_Nadeem.Rise_Regression@74f6c5d8]" started-at="2025-01-07T16:10:40 IST" name="Verify_user_kills_app" finished-at="2025-01-07T16:10:41 IST" duration-ms="781" status="PASS">
+        <test-method is-config="true" signature="Verify_user_kills_app()[pri:0, instance:a_Nadeem.Rise_Regression@19b89d4]" started-at="2025-01-07T18:24:43 IST" name="Verify_user_kills_app" finished-at="2025-01-07T18:24:44 IST" duration-ms="800" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_kills_app -->

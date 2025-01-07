@@ -29,6 +29,9 @@ public class OrderForm {
 	@FindBy (xpath = "(//android.widget.ImageView)[2]")
 	public WebElement NseSwitch;
 	
+	@FindBy (xpath = "(//android.widget.ImageView)[3]")
+	public WebElement BseSwitch;
+	
 	@FindBy (xpath = "(//android.view.View)[16]")
 	public WebElement amountswitch;
 	
