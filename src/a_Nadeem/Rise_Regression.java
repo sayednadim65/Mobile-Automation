@@ -85,6 +85,7 @@ public class Rise_Regression {
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
 		Get_quote_cash_tab();
+		Get_quote_details();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
 		MF_collection_viewall_returns();
@@ -160,6 +161,9 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote cash tab", status, endTime - startTime); // Log search timing
 	}
 
+	public void Get_quote_details() {
+		
+	}
 	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
 		OrderForm orderform = new OrderForm(Driver);
 		GetQuote getquote = new GetQuote(Driver);
