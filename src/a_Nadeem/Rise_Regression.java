@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
@@ -14,11 +13,11 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
@@ -173,7 +172,7 @@ public class Rise_Regression {
 		Thread.sleep(500);
 		boolean isVerified = orderform.NseSwitch.isSelected();
 		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Pass" : "Fail";
+		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
 		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
 	}
@@ -187,9 +186,9 @@ public class Rise_Regression {
 		Thread.sleep(500);
 		boolean isVerified = orderform.NseSwitch.isSelected();
 		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Pass" : "Fail";
+		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Nse switch Sell order form", status, endTime - startTime); // Log search timing
 	}
 
 	public void Get_quote_Bse_switch_buy() throws InterruptedException {
@@ -201,9 +200,9 @@ public class Rise_Regression {
 		Thread.sleep(500);
 		boolean isVerified = orderform.BseSwitch.isSelected();
 		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Pass" : "Fail";
+		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Bse switch buy order form", status, endTime - startTime); // Log search timing
 	}
 
 	public void Get_quote_Bse_switch_Sell() throws InterruptedException {
@@ -215,9 +214,9 @@ public class Rise_Regression {
 		Thread.sleep(500);
 		boolean isVerified = orderform.BseSwitch.isSelected();
 		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Pass" : "Fail";
+		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Nse switch Bse order form", status, endTime - startTime); // Log search timing
 	}
 
 	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
@@ -233,7 +232,6 @@ public class Rise_Regression {
 		Driver.hideKeyboard();
 		String amount = orderform.investamount.getAttribute("content-desc");
 		String investamount = amount.substring(12, 14);
-		System.out.println(investamount);
 		String NseLTP = orderform.NseSwitch.getAttribute("content-desc");
 		String LTP = NseLTP.substring(5, 7);
 		boolean isVerified = investamount.equalsIgnoreCase(LTP);
@@ -530,7 +528,6 @@ public class Rise_Regression {
 		Driver.perform(Arrays.asList(longPress));
 		tapWithActions(Driver, 977, 972);
 		String scriptdeleted = watchlist.Addscript.getAttribute("content-desc");
-		System.out.println(scriptdeleted);
 		boolean isVerified = scriptdeleted.equalsIgnoreCase("Add Scrip");
 		status = isVerified ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
