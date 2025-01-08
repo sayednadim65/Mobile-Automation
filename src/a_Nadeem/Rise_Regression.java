@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
@@ -13,7 +14,6 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -23,6 +23,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.functions.ExpectedCondition;
 import pageobjects.GetQuote;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
@@ -37,7 +38,7 @@ public class Rise_Regression {
 	AndroidDriver Driver;
 	String status;
 	TableLogger logger = new TableLogger();
-	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(10));
+	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(20));
 
 	@Test(priority = 1)
 	public void Verify_user_login_and_clicks_on_RDD() throws InterruptedException, IOException {
@@ -84,10 +85,16 @@ public class Rise_Regression {
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
 		Get_quote_cash_tab();
-		Get_quote_Nse_switch_buy();
-		Get_quote_Nse_switch_Sell();
-		Get_quote_Bse_switch_buy();
-		Get_quote_Bse_switch_Sell();
+		Get_quote_Nse_switch_Delivery_buy();
+		Get_quote_Nse_switch_Delivery_Sell();
+		Get_quote_Bse_switch_Delivery_buy();
+		Get_quote_Bse_switch_Delivery_Sell();
+		Get_quote_charts();
+		Get_quote_optionchain();
+		Get_quote_fundamentaltab();
+		Get_quote_technicaltab();
+		Get_quote_Newstab();
+		Get_quote_Transactionstab();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
 		MF_collection_viewall_returns();
@@ -100,7 +107,6 @@ public class Rise_Regression {
 		Add_script_in_watchlist();
 		Delete_script_in_watchlist();
 		Delete_watchlist();
-
 		logger.logTableEnd();
 	}
 
@@ -163,7 +169,7 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote cash tab", status, endTime - startTime); // Log search timing
 	}
 
-	public void Get_quote_Nse_switch_buy() throws InterruptedException {
+	public void Get_quote_Nse_switch_Delivery_buy() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -174,10 +180,11 @@ public class Rise_Regression {
 		long endTime = System.currentTimeMillis(); // End timer
 		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch buy order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Nse switch delivery buy order form", status, endTime - startTime); // Log search
+																											// timing
 	}
 
-	public void Get_quote_Nse_switch_Sell() throws InterruptedException {
+	public void Get_quote_Nse_switch_Delivery_Sell() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -188,10 +195,11 @@ public class Rise_Regression {
 		long endTime = System.currentTimeMillis(); // End timer
 		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch Sell order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Nse switch delivery Sell order form", status, endTime - startTime); // Log search
+																											// timing
 	}
 
-	public void Get_quote_Bse_switch_buy() throws InterruptedException {
+	public void Get_quote_Bse_switch_Delivery_buy() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -202,10 +210,11 @@ public class Rise_Regression {
 		long endTime = System.currentTimeMillis(); // End timer
 		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Bse switch buy order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Bse switch delivery buy order form", status, endTime - startTime); // Log search
+																											// timing
 	}
 
-	public void Get_quote_Bse_switch_Sell() throws InterruptedException {
+	public void Get_quote_Bse_switch_Delivery_Sell() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -216,7 +225,81 @@ public class Rise_Regression {
 		long endTime = System.currentTimeMillis(); // End timer
 		status = isVerified ? "Fail" : "Pass";
 		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch Bse order form", status, endTime - startTime); // Log search timing
+		logger.logTableRow("Get quote Bse switch delivery order form", status, endTime - startTime); // Log search
+																										// timing
+	}
+
+	public void Get_quote_charts() {
+		GetQuote getquote = new GetQuote(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.chartsbutton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(getquote.chartsbuybutton));
+		String buy = getquote.chartsbuybutton.getAttribute("content-desc");
+		boolean isVerified = buy.equalsIgnoreCase("BUY");
+		long endTime = System.currentTimeMillis(); // End timer
+		status = isVerified ? "Pass" : "Fail";
+		Driver.navigate().back();
+		logger.logTableRow("Get quote charts button", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_optionchain() {
+		GetQuote getquote = new GetQuote(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.optionchainbutton.click();
+		wait.until(ExpectedConditions.visibilityOf(getquote.OIoptionchain));
+		String OI = getquote.OIoptionchain.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = OI.equalsIgnoreCase("OI");
+		status = isVerified ? "Pass" : "Fail";
+		Driver.navigate().back();
+		logger.logTableRow("Get quote optionchain button", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_fundamentaltab() {
+		GetQuote getquote = new GetQuote(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.fundamentaltab.click();
+		String fundamentalratios = getquote.fundamentalratios.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = fundamentalratios.equalsIgnoreCase("Fundamental Ratios");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote Fundamental Tab", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_technicaltab() {
+		GetQuote getquote = new GetQuote(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.technicaltab.click();
+		String delivery = getquote.deliveryvolume.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = delivery.equalsIgnoreCase("Delivery & Volume");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote Technical Tab", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_Newstab() {
+		GetQuote getquote = new GetQuote(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.Newstab.click();
+		String newsverification = getquote.news.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerified = newsverification.equalsIgnoreCase("News");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote News Tab", status, endTime - startTime); // Log search timing
+	}
+
+	public void Get_quote_Transactionstab() {
+		GetQuote getquote = new GetQuote(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		getquote.transactionstab.click();
+		wait.until(ExpectedConditions.visibilityOf(getquote.realisedPL));
+		String plrealised = getquote.realisedPL.getAttribute("content-desc");
+		long endTime = System.currentTimeMillis(); // End timer
+		String realisepl = plrealised.split(" ")[0];
+		System.out.println(realisepl);
+		boolean isVerified = plrealised.equalsIgnoreCase("Realised");
+		status = isVerified ? "Pass" : "Fail";
+		logger.logTableRow("Get quote Transactions Tab", status, endTime - startTime); // Log search timing
 	}
 
 	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
@@ -237,7 +320,6 @@ public class Rise_Regression {
 		boolean isVerified = investamount.equalsIgnoreCase(LTP);
 		status = isVerified ? "Pass" : "Fail";
 		logger.logTableRow("Order Form quantity toggle", status, endTime - startTime); // Log search timing
-		Thread.sleep(2000);
 	}
 
 	public void OrderForm_amount_toggle() throws InterruptedException, IOException {
@@ -489,7 +571,7 @@ public class Rise_Regression {
 		}
 	}
 
-	public void Add_script_in_watchlist() throws IOException {
+	public void Add_script_in_watchlist() throws IOException, InterruptedException {
 		Watchlist watchlist = new Watchlist(Driver);
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -498,6 +580,7 @@ public class Rise_Regression {
 		watchlist.addscripticon.click();
 		Driver.hideKeyboard();
 		Driver.navigate().back();
+		Thread.sleep(2000);
 		WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
 		String addedscript = scriptinwatchlist.getAttribute("content-desc");
 		String watchlistscript = addedscript.substring(0, 7);
@@ -641,27 +724,19 @@ public class Rise_Regression {
 			System.out.println("Initializing Appium...");
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("platformName", "Android");
-			Thread.sleep(500);
 			capabilities.setCapability("platformVersion", "13");
-			Thread.sleep(500);
 			capabilities.setCapability("deviceName", "CPH2467");
-			Thread.sleep(500);
 			capabilities.setCapability("udid", "97957054");
-			Thread.sleep(500);
-			capabilities.setCapability("appPackage", "com.mosl.mobile.pilot");
-			Thread.sleep(500);
-			capabilities.setCapability("appActivity", "mosl.supperfina.com.MainActivity");
-			Thread.sleep(500);
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
+			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
-			Thread.sleep(500);
 			capabilities.setCapability("autoGrantPermissions", true);
-			Thread.sleep(500);
 			capabilities.setCapability("noReset", true);
 
 			Driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 			DriverFactory.addDriver(Driver);
 			System.out.println("app launch succesfully");
-			Driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			Driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		}
 
 		else if ("BrowserStack".equalsIgnoreCase(Commons.getGlobalPropertiesValue("Execution"))) {

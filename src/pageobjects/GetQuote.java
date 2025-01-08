@@ -40,5 +40,40 @@ public class GetQuote {
 	
 	@FindBy (xpath = "//android.view.View[@content-desc=\"BSE\"]")
 	public WebElement bsebutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Chart\"]")
+	public WebElement chartsbutton;
+	
+	@FindBy (xpath = "//android.widget.Button[@content-desc=\"BUY\"]")
+	public WebElement chartsbuybutton;
 
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Option Chain\"]")
+	public WebElement optionchainbutton;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"OI\"]")
+	public WebElement OIoptionchain;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Fundamental')]")
+	public WebElement fundamentaltab;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Fundamental Ratios\"]")
+	public WebElement fundamentalratios;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Technical')]")
+	public WebElement technicaltab;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Delivery & Volume\"]")
+	public WebElement deliveryvolume;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'News')]")
+	public WebElement Newstab;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"News\"]")
+	public WebElement news;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Transactions')]")
+	public WebElement transactionstab;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Realised P&L')]")
+	public WebElement realisedPL;
 }
