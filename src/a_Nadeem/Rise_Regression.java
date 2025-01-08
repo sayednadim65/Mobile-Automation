@@ -18,12 +18,12 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import io.appium.java_client.functions.ExpectedCondition;
 import pageobjects.GetQuote;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
@@ -288,7 +288,7 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote News Tab", status, endTime - startTime); // Log search timing
 	}
 
-	public void Get_quote_Transactionstab() {
+	public void Get_quote_Transactionstab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		getquote.transactionstab.click();
@@ -296,8 +296,7 @@ public class Rise_Regression {
 		String plrealised = getquote.realisedPL.getAttribute("content-desc");
 		long endTime = System.currentTimeMillis(); // End timer
 		String realisepl = plrealised.split(" ")[0];
-		System.out.println(realisepl);
-		boolean isVerified = plrealised.equalsIgnoreCase("Realised");
+		boolean isVerified = realisepl.equalsIgnoreCase("Realised");
 		status = isVerified ? "Pass" : "Fail";
 		logger.logTableRow("Get quote Transactions Tab", status, endTime - startTime); // Log search timing
 	}
