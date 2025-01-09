@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse-628966239\testng-customsuite.xml</span>
+                    <span>C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse-989182787\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Default_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="a_Nadeem.Rise_Regression" class="method navigator-link" hash-for-method="App_Regression">App_Regression</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,11 +115,6 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="a_Nadeem.Rise_Regression" class="method navigator-link" hash-for-method="App_Regression">App_Regression</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="a_Nadeem.Rise_Regression" class="method navigator-link" hash-for-method="Verify_user_login_and_clicks_on_RDD">Verify_user_login_and_clicks_on_RDD</a> <!-- method navigator-link -->
@@ -123,9 +132,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">a_Nadeem.Rise_Regression</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -134,8 +143,51 @@
                   <a name="App_Regression">
                   </a> <!-- App_Regression -->
                   <span class="method-name">App_Regression</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.getClass()&quot; because &quot;exceptionDriver&quot; is null
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at a_Nadeem.Rise_Regression.Add_script_in_watchlist(Rise_Regression.java:490)
+	at a_Nadeem.Rise_Regression.App_Regression(Rise_Regression.java:103)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-failed -->
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">a_Nadeem.Rise_Regression</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
                   <a name="Verify_user_login_and_clicks_on_RDD">
@@ -148,7 +200,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse-628966239\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse-989182787\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -201,16 +253,16 @@ data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'App_Regression')
 data.setCell(0, 2, 'a_Nadeem.Rise_Regression')
-data.setCell(0, 3, 330003);
+data.setCell(0, 3, 464368);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'Verify_user_login_and_clicks_on_RDD')
 data.setCell(1, 2, 'a_Nadeem.Rise_Regression')
-data.setCell(1, 3, 30619);
+data.setCell(1, 3, 30269);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <span class="suite-total-time">Total running time: 8 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -227,32 +279,29 @@ return data;
                 <span class="reporter-method-output"><h3>Execution Report</h3></span>
                 <span class="reporter-method-output"><table border='1' style='border-collapse: collapse; width: 75%; text-align: center;'></span>
                 <span class="reporter-method-output"><tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr></span>
-                <span class="reporter-method-output"><tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>9042</td></tr></span>
-                <span class="reporter-method-output"><tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>1937</td></tr></span>
-                <span class="reporter-method-output"><tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2017</td></tr></span>
-                <span class="reporter-method-output"><tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>13627</td></tr></span>
-                <span class="reporter-method-output"><tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>6905</td></tr></span>
-                <span class="reporter-method-output"><tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>3263</td></tr></span>
-                <span class="reporter-method-output"><tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>3914</td></tr></span>
-                <span class="reporter-method-output"><tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>6710</td></tr></span>
-                <span class="reporter-method-output"><tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>4798</td></tr></span>
-                <span class="reporter-method-output"><tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>4296</td></tr></span>
-                <span class="reporter-method-output"><tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>2637</td></tr></span>
-                <span class="reporter-method-output"><tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>4817</td></tr></span>
-                <span class="reporter-method-output"><tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>5509</td></tr></span>
-                <span class="reporter-method-output"><tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>8762</td></tr></span>
-                <span class="reporter-method-output"><tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>8212</td></tr></span>
-                <span class="reporter-method-output"><tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>12712</td></tr></span>
-                <span class="reporter-method-output"><tr><td>17</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>16941</td></tr></span>
-                <span class="reporter-method-output"><tr><td>18</td><td>Portfolio View Analysis</td><td>Pass</td><td>11804</td></tr></span>
-                <span class="reporter-method-output"><tr><td>19</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>1992</td></tr></span>
-                <span class="reporter-method-output"><tr><td>20</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>5348</td></tr></span>
-                <span class="reporter-method-output"><tr><td>21</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>2268</td></tr></span>
-                <span class="reporter-method-output"><tr><td>22</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>2567</td></tr></span>
-                <span class="reporter-method-output"><tr><td>23</td><td>Add Watchlist</td><td>Pass</td><td>16032</td></tr></span>
-                <span class="reporter-method-output"><tr><td>24</td><td>Add Script in watchlist</td><td>Pass</td><td>16043</td></tr></span>
-                <span class="reporter-method-output"><tr><td>25</td><td>Delete script from watchlist</td><td>Pass</td><td>10593</td></tr></span>
-                <span class="reporter-method-output"></table></span>
+                <span class="reporter-method-output"><tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>5443</td></tr></span>
+                <span class="reporter-method-output"><tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>6229</td></tr></span>
+                <span class="reporter-method-output"><tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>3688</td></tr></span>
+                <span class="reporter-method-output"><tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>2469</td></tr></span>
+                <span class="reporter-method-output"><tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>2873</td></tr></span>
+                <span class="reporter-method-output"><tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>3302</td></tr></span>
+                <span class="reporter-method-output"><tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>7867</td></tr></span>
+                <span class="reporter-method-output"><tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>7297</td></tr></span>
+                <span class="reporter-method-output"><tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>7904</td></tr></span>
+                <span class="reporter-method-output"><tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>8351</td></tr></span>
+                <span class="reporter-method-output"><tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>5101</td></tr></span>
+                <span class="reporter-method-output"><tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>6604</td></tr></span>
+                <span class="reporter-method-output"><tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>2533</td></tr></span>
+                <span class="reporter-method-output"><tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>8592</td></tr></span>
+                <span class="reporter-method-output"><tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>8205</td></tr></span>
+                <span class="reporter-method-output"><tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>10873</td></tr></span>
+                <span class="reporter-method-output"><tr><td>17</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>35797</td></tr></span>
+                <span class="reporter-method-output"><tr><td>18</td><td>Portfolio View Analysis</td><td>Pass</td><td>14537</td></tr></span>
+                <span class="reporter-method-output"><tr><td>19</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>43592</td></tr></span>
+                <span class="reporter-method-output"><tr><td>20</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>46438</td></tr></span>
+                <span class="reporter-method-output"><tr><td>21</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>4121</td></tr></span>
+                <span class="reporter-method-output"><tr><td>22</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>87879</td></tr></span>
+                <span class="reporter-method-output"><tr><td>23</td><td>Add Watchlist</td><td>Pass</td><td>50573</td></tr></span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -277,15 +326,17 @@ return data;
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">Verify_user_login_and_clicks_on_RDD</span>
-                <span class="method-start">12377 ms</span>
+                <span class="method-start">13129 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">App_Regression</span>
-                <span class="method-start">43008 ms</span>
+                <span class="method-start">43404 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">Verify_user_kills_app</span>
-                <span class="method-start">373014 ms</span>
+                <span class="method-start">507783 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

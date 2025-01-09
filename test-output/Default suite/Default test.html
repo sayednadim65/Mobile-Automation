@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Jan 08 21:38:30 IST 2025</td>
+<td>Started on:</td><td>Thu Jan 09 17:52:52 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>373 seconds (373876 ms)</td>
+<tr><td>Total time:</td><td>508 seconds (508622 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,119 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='a_Nadeem.Rise_Regression.App_Regression()'><b>App_Regression</b><br>Test class: a_Nadeem.Rise_Regression<br/>
+<a href="#Output-1999135146" onClick='toggleBox("Output-1999135146", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1999135146" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1999135146">
+<h3>Execution Report</h3><br/>
+<table border='1' style='border-collapse: collapse; width: 75%; text-align: center;'><br/>
+<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr><br/>
+<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>5443</td></tr><br/>
+<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>6229</td></tr><br/>
+<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>3688</td></tr><br/>
+<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>2469</td></tr><br/>
+<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>2873</td></tr><br/>
+<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>3302</td></tr><br/>
+<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>7867</td></tr><br/>
+<tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>7297</td></tr><br/>
+<tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>7904</td></tr><br/>
+<tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>8351</td></tr><br/>
+<tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>5101</td></tr><br/>
+<tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>6604</td></tr><br/>
+<tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>2533</td></tr><br/>
+<tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>8592</td></tr><br/>
+<tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>8205</td></tr><br/>
+<tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>10873</td></tr><br/>
+<tr><td>17</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>35797</td></tr><br/>
+<tr><td>18</td><td>Portfolio View Analysis</td><td>Pass</td><td>14537</td></tr><br/>
+<tr><td>19</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>43592</td></tr><br/>
+<tr><td>20</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>46438</td></tr><br/>
+<tr><td>21</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>4121</td></tr><br/>
+<tr><td>22</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>87879</td></tr><br/>
+<tr><td>23</td><td>Add Watchlist</td><td>Pass</td><td>50573</td></tr><br/>
+</div>
+</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.getClass()&quot; because &quot;exceptionDriver&quot; is null
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at a_Nadeem.Rise_Regression.Add_script_in_watchlist(Rise_Regression.java:490)
+	at a_Nadeem.Rise_Regression.App_Regression(Rise_Regression.java:103)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1999135146", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1999135146'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.getClass()&quot; because &quot;exceptionDriver&quot; is null
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at a_Nadeem.Rise_Regression.Add_script_in_watchlist(Rise_Regression.java:490)
+	at a_Nadeem.Rise_Regression.App_Regression(Rise_Regression.java:103)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>464</td>
+<td>a_Nadeem.Rise_Regression@30b6ffe0</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,50 +189,10 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='a_Nadeem.Rise_Regression.App_Regression()'><b>App_Regression</b><br>Test class: a_Nadeem.Rise_Regression<br/>
-<a href="#Output-1619773688" onClick='toggleBox("Output-1619773688", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1619773688" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1619773688">
-<h3>Execution Report</h3><br/>
-<table border='1' style='border-collapse: collapse; width: 75%; text-align: center;'><br/>
-<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr><br/>
-<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>9042</td></tr><br/>
-<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>1937</td></tr><br/>
-<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2017</td></tr><br/>
-<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>13627</td></tr><br/>
-<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>6905</td></tr><br/>
-<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>3263</td></tr><br/>
-<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>3914</td></tr><br/>
-<tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>6710</td></tr><br/>
-<tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>4798</td></tr><br/>
-<tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>4296</td></tr><br/>
-<tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>2637</td></tr><br/>
-<tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>4817</td></tr><br/>
-<tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>5509</td></tr><br/>
-<tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>8762</td></tr><br/>
-<tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>8212</td></tr><br/>
-<tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>12712</td></tr><br/>
-<tr><td>17</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>16941</td></tr><br/>
-<tr><td>18</td><td>Portfolio View Analysis</td><td>Pass</td><td>11804</td></tr><br/>
-<tr><td>19</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>1992</td></tr><br/>
-<tr><td>20</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>5348</td></tr><br/>
-<tr><td>21</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>2268</td></tr><br/>
-<tr><td>22</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>2567</td></tr><br/>
-<tr><td>23</td><td>Add Watchlist</td><td>Pass</td><td>16032</td></tr><br/>
-<tr><td>24</td><td>Add Script in watchlist</td><td>Pass</td><td>16043</td></tr><br/>
-<tr><td>25</td><td>Delete script from watchlist</td><td>Pass</td><td>10593</td></tr><br/>
-</table><br/>
-</div>
-</td>
-<td></td>
-<td>330</td>
-<td>a_Nadeem.Rise_Regression@13bc8645</td></tr>
-<tr>
 <td title='a_Nadeem.Rise_Regression.Verify_user_login_and_clicks_on_RDD()'><b>Verify_user_login_and_clicks_on_RDD</b><br>Test class: a_Nadeem.Rise_Regression</td>
 <td></td>
 <td>30</td>
-<td>a_Nadeem.Rise_Regression@13bc8645</td></tr>
+<td>a_Nadeem.Rise_Regression@30b6ffe0</td></tr>
 </table><p>
 </body>
 </html>

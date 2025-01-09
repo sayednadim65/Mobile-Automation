@@ -3,14 +3,9 @@ package a_Nadeem;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,7 +16,6 @@ import org.testng.annotations.Test;
 
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import pageobjects.GetQuote;
@@ -30,6 +24,7 @@ import pageobjects.LoginPage;
 import pageobjects.MfHomePage;
 import pageobjects.OrderForm;
 import pageobjects.Portfolio;
+import pageobjects.ResusableMethods;
 import pageobjects.Watchlist;
 import utils.Commons;
 
@@ -81,6 +76,7 @@ public class Rise_Regression {
 	public void App_Regression() throws IOException, InterruptedException {
 
 		logger.logTableStart("Execution Report");
+
 		Global_search_Result();
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
@@ -107,6 +103,7 @@ public class Rise_Regression {
 		Add_script_in_watchlist();
 		Delete_script_in_watchlist();
 		Delete_watchlist();
+
 		logger.logTableEnd();
 	}
 
@@ -114,7 +111,7 @@ public class Rise_Regression {
 
 		HomePage homepage = new HomePage(Driver);
 		homepage.Globalsearchbeforetap.click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
 		Thread.sleep(2000);
@@ -255,10 +252,11 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote optionchain button", status, endTime - startTime); // Log search timing
 	}
 
-	public void Get_quote_fundamentaltab() {
+	public void Get_quote_fundamentaltab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		getquote.fundamentaltab.click();
+		Thread.sleep(1000);
 		String fundamentalratios = getquote.fundamentalratios.getAttribute("content-desc");
 		long endTime = System.currentTimeMillis(); // End timer
 		boolean isVerified = fundamentalratios.equalsIgnoreCase("Fundamental Ratios");
@@ -266,10 +264,11 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote Fundamental Tab", status, endTime - startTime); // Log search timing
 	}
 
-	public void Get_quote_technicaltab() {
+	public void Get_quote_technicaltab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		getquote.technicaltab.click();
+		Thread.sleep(1000);
 		String delivery = getquote.deliveryvolume.getAttribute("content-desc");
 		long endTime = System.currentTimeMillis(); // End timer
 		boolean isVerified = delivery.equalsIgnoreCase("Delivery & Volume");
@@ -277,10 +276,11 @@ public class Rise_Regression {
 		logger.logTableRow("Get quote Technical Tab", status, endTime - startTime); // Log search timing
 	}
 
-	public void Get_quote_Newstab() {
+	public void Get_quote_Newstab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		getquote.Newstab.click();
+		Thread.sleep(1000);
 		String newsverification = getquote.news.getAttribute("content-desc");
 		long endTime = System.currentTimeMillis(); // End timer
 		boolean isVerified = newsverification.equalsIgnoreCase("News");
@@ -307,9 +307,8 @@ public class Rise_Regression {
 		getquote.BuyButton.click();
 		long startTime = System.currentTimeMillis(); // Start timer
 		orderform.MarketButton.click();
-		orderform.quantityMarket.click();
-		orderform.quantityMarket.clear();
-		orderform.quantityMarket.sendKeys(Commons.getGlobalPropertiesValue("Orderform_quantity_amount_toggle"));
+		ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
+				Commons.getGlobalPropertiesValue("Orderform_quantity_amount_toggle"));
 		long endTime = System.currentTimeMillis(); // End timer
 		Driver.hideKeyboard();
 		String amount = orderform.investamount.getAttribute("content-desc");
@@ -327,9 +326,8 @@ public class Rise_Regression {
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		orderform.amountswitch.click();
-		orderform.quantityMarket.click();
-		orderform.quantityMarket.clear();
-		orderform.quantityMarket.sendKeys(Commons.getGlobalPropertiesValue("orderform_amount_toggle"));
+		ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
+				(Commons.getGlobalPropertiesValue("orderform_amount_toggle")));
 		Driver.hideKeyboard();
 		long endTime = System.currentTimeMillis(); // End timer
 		String quantity = orderform.quantityautocalculate.getAttribute("content-desc");
@@ -411,46 +409,22 @@ public class Rise_Regression {
 
 	public void Portfolio_swipe_Stocks_Tab_verification() throws InterruptedException {
 		Portfolio portfolio = new Portfolio(Driver);
+		HomePage homepage = new HomePage(Driver);
+		homepage.portfolioBottombar.click();
 		long startTime = System.currentTimeMillis(); // Start timer
-		// swipe left to left
-		Dimension screenSize = Driver.manage().window().getSize();
-		int screenWidth = screenSize.getWidth();
-		int screenHeight = screenSize.getHeight();
-		int startX = (int) (screenWidth * 0.9);
-		int endX = (int) (screenWidth * 0.1);
-		int centerY = screenHeight / 2;
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence swipe = new Sequence(finger, 1)
-				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
-				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-				.addAction(
-						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
-				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-		Driver.perform(Arrays.asList(swipe));
+		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.marginpledge, 0, 5, 944, 166, 1285);
 		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.StocksTabPortfolio));
 		status = isVerified ? "Pass" : "Fail";
+
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Portfolio swipe Stocks Tab verification", status, endTime - startTime); // Log search
+
 	}
 
 	public void Portfolio_swipe_MF_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-		// swipe left to left
-		Dimension screenSize = Driver.manage().window().getSize();
-		int screenWidth = screenSize.getWidth();
-		int screenHeight = screenSize.getHeight();
-		int startX = (int) (screenWidth * 0.9);
-		int endX = (int) (screenWidth * 0.1);
-		int centerY = screenHeight / 2;
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence swipe = new Sequence(finger, 1)
-				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
-				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-				.addAction(
-						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
-				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-		Driver.perform(Arrays.asList(swipe));
+		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedmf, 0, 5, 944, 166, 1285);
 		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.MFTabPortfolio));
 		status = isVerified ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
@@ -460,21 +434,7 @@ public class Rise_Regression {
 	public void Portfolio_swipe_PMS_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-		// swipe left to left
-		Dimension screenSize = Driver.manage().window().getSize();
-		int screenWidth = screenSize.getWidth();
-		int screenHeight = screenSize.getHeight();
-		int startX = (int) (screenWidth * 0.9);
-		int endX = (int) (screenWidth * 0.1);
-		int centerY = screenHeight / 2;
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence swipe = new Sequence(finger, 1)
-				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
-				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-				.addAction(
-						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
-				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-		Driver.perform(Arrays.asList(swipe));
+		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedpms, 0, 5, 944, 166, 1285);
 		WebElement PMS = wait.until(ExpectedConditions.elementToBeClickable(portfolio.PMSTabPortfolio));
 		String pms = PMS.getAttribute("content-desc");
 		String pmsTab = pms.substring(0, 3);
@@ -487,21 +447,7 @@ public class Rise_Regression {
 	public void Portfolio_swipe_Basket_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-		// swipe left to left
-		Dimension screenSize = Driver.manage().window().getSize();
-		int screenWidth = screenSize.getWidth();
-		int screenHeight = screenSize.getHeight();
-		int startX = (int) (screenWidth * 0.9);
-		int endX = (int) (screenWidth * 0.1);
-		int centerY = screenHeight / 2;
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence swipe = new Sequence(finger, 1)
-				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
-				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-				.addAction(
-						finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, centerY))
-				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-		Driver.perform(Arrays.asList(swipe));
+		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.allbasket, 0, 5, 944, 166, 1285);
 		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.BasketTabPortfolio));
 		status = isVerified ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
@@ -513,61 +459,22 @@ public class Rise_Regression {
 		Watchlist watchlist = new Watchlist(Driver);
 		homepage.WatchlistBottombar.click();
 		long startTime = System.currentTimeMillis(); // Start timer
-		int swipeCount = 0;
-		int maxSwipes = 5;
-		boolean elementFound = false;
-		while (!elementFound && swipeCount < maxSwipes) {
-			try {
-				// Check if the element is present
-				WebElement element = new WebDriverWait(Driver, Duration.ofSeconds(1))
-						.until(ExpectedConditions.visibilityOf(watchlist.AddButton));
-				elementFound = element.isDisplayed();
-			} catch (Exception e) {
-				// Element not found yet, perform a swipe
-				Dimension screenSize = Driver.manage().window().getSize();
-				int screenWidth = screenSize.getWidth();
+		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.AddButton, 0, 5, 906, 95, 688);
 
-				int startX = (int) (screenWidth * 0.7); // Start from 90% width
-				int endX = (int) (screenWidth * 0.1); // End at 10% width
-				int centerY = 694; // Swipe in the middle of the screen height
+		WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
+		addButton.click();
+		watchlist.enterwatchlistname.click();
+		watchlist.enterwatchlistname.clear();
+		watchlist.enterwatchlistname.sendKeys("Created by Automatio");
+		watchlist.createButton.click();
+		WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
+		String verification = Createbutton.getAttribute("content-desc");
+		boolean isVerified = verification.equalsIgnoreCase("OK");
+		status = isVerified ? "Pass" : "Fail";
+		watchlist.okwatchlistcreated.click();
+		long endTime = System.currentTimeMillis(); // End timer
+		logger.logTableRow("Add Watchlist", status, endTime - startTime); // Log timing
 
-				// Create swipe action
-				PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-				Sequence swipe = new Sequence(finger, 1)
-						.addAction(finger
-								.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, centerY))
-						.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-						.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(),
-								endX, centerY))
-						.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-				Driver.perform(Arrays.asList(swipe));
-				swipeCount++;
-				System.out.println("Performed swipe #" + swipeCount);
-			}
-
-		}
-
-		if (elementFound) {
-			WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
-			addButton.click();
-			watchlist.enterwatchlistname.click();
-			watchlist.enterwatchlistname.clear();
-			watchlist.enterwatchlistname.sendKeys("Created by Automatio");
-			watchlist.createButton.click();
-
-			WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
-			String verification = Createbutton.getAttribute("content-desc");
-			boolean isVerified = verification.equalsIgnoreCase("OK");
-			status = isVerified ? "Pass" : "Fail";
-
-			watchlist.okwatchlistcreated.click();
-
-			long endTime = System.currentTimeMillis(); // End timer
-			logger.logTableRow("Add Watchlist", status, endTime - startTime); // Log timing
-		} else {
-			System.out.println("Failed to find the element after " + maxSwipes + " swipes.");
-		}
 	}
 
 	public void Add_script_in_watchlist() throws IOException, InterruptedException {
@@ -592,23 +499,8 @@ public class Rise_Regression {
 	public void Delete_script_in_watchlist() {
 		Watchlist watchlist = new Watchlist(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
-		// Get element location
-		int elementX = watchlist.scriptinwatchlist.getRect().getX()
-				+ (watchlist.scriptinwatchlist.getRect().getWidth() / 2);
-		int elementY = watchlist.scriptinwatchlist.getRect().getY()
-				+ (watchlist.scriptinwatchlist.getRect().getHeight() / 2);
-		// Create a PointerInput instance
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		// Create a sequence for the long press
-		Sequence longPress = new Sequence(finger, 1)
-				.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), elementX, elementY))
-				.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg())) // Press down
-				.addAction(finger.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), elementX,
-						elementY)) // Hold for 2 seconds
-				.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); // Release
-		// Perform the long press
-		Driver.perform(Arrays.asList(longPress));
-		tapWithActions(Driver, 977, 972);
+		ResusableMethods.longpressElement(Driver, watchlist.scriptinwatchlist);
+		ResusableMethods.tapWithActions(Driver, 977, 972);
 		String scriptdeleted = watchlist.Addscript.getAttribute("content-desc");
 		boolean isVerified = scriptdeleted.equalsIgnoreCase("Add Scrip");
 		status = isVerified ? "Pass" : "Fail";
@@ -618,77 +510,23 @@ public class Rise_Regression {
 
 	public void Delete_watchlist() {
 		Watchlist watchlist = new Watchlist(Driver);
-
 		long startTime = System.currentTimeMillis(); // Start timer
 		watchlist.kebabmenuwatchlist.click();
 		watchlist.managewatchlist.click();
+		ResusableMethods.verticalswipetillElement(Driver, watchlist.deleteicon, 0, 5, 532, 2025, 436);
+		watchlist.deleteicon.click();
 
-		int swipeCount = 0;
-		int maxSwipes = 5;
-		boolean elementFound = false;
+		WebElement verification = wait.until(ExpectedConditions.elementToBeClickable(watchlist.savebutton));
+		String watchlistdelte = verification.getAttribute("content-desc");
 
-		while (!elementFound && swipeCount < maxSwipes) {
-			try {
-				// Check if the element is present
-				WebElement element = new WebDriverWait(Driver, Duration.ofSeconds(1))
-						.until(ExpectedConditions.visibilityOf(watchlist.deleteicon));
-				elementFound = element.isDisplayed();
-			} catch (Exception e) {
-				// Element not found yet, perform a swipe
-				Dimension screenSize = Driver.manage().window().getSize();
-				int screenWidth = screenSize.getWidth();
+		boolean isVerified = watchlistdelte.equalsIgnoreCase("Save");
+		status = isVerified ? "Pass" : "Fail";
+		watchlist.savebutton.click();
+		watchlist.okwatchlistcreated.click();
 
-				int startY = (int) (screenWidth * 0.7); // Start from 90% width
-				int endY = (int) (screenWidth * 0.1); // End at 10% width
-				int centerX = 532; // Swipe in the middle of the screen height
+		long endTime = System.currentTimeMillis(); // End timer
+		logger.logTableRow("Delete watchlist", status, endTime - startTime); // Log timing
 
-				// Create swipe action
-				PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-				Sequence swipe = new Sequence(finger, 1)
-						.addAction(finger
-								.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), centerX, startY))
-						.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-						.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(),
-								centerX, endY))
-						.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-				Driver.perform(Arrays.asList(swipe));
-
-				swipeCount++;
-				System.out.println("Performed swipe #" + swipeCount);
-			}
-
-		}
-
-		if (elementFound) {
-			watchlist.deleteicon.click();
-
-			WebElement verification = wait.until(ExpectedConditions.elementToBeClickable(watchlist.savebutton));
-			String watchlistdelte = verification.getAttribute("content-desc");
-
-			boolean isVerified = watchlistdelte.equalsIgnoreCase("Save");
-			status = isVerified ? "Pass" : "Fail";
-			watchlist.savebutton.click();
-			watchlist.okwatchlistcreated.click();
-
-			long endTime = System.currentTimeMillis(); // End timer
-			logger.logTableRow("Delete watchlist", status, endTime - startTime); // Log timing
-		} else {
-			System.out.println("Failed to find the element after " + maxSwipes + " swipes.");
-		}
-
-	}
-
-	public static void tapWithActions(AppiumDriver Driver, int x, int y) {
-
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence tap = new Sequence(finger, 1);
-
-		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
-		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-		Driver.perform(Collections.singletonList(tap));
 	}
 
 	// Helper Methods for Logging Tables

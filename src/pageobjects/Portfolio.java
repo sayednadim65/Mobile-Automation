@@ -3,7 +3,6 @@ package pageobjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import io.appium.java_client.android.AndroidDriver;
 
 public class Portfolio {
@@ -13,29 +12,43 @@ public class Portfolio {
 		this.Driver = Driver;
 		PageFactory.initElements(Driver, this);
 	}
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'All')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'All')]")
 	public WebElement AllTabPortfolio;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Stocks')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Stocks')]")
 	public WebElement StocksTabPortfolio;
 
-	@FindBy (xpath = "//android.widget.ImageView[@content-desc='View Analysis']")
+	@FindBy(xpath = "//android.widget.ImageView[@content-desc='View Analysis']")
 	public WebElement viewAnalysis;
-	
-	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Returns (Abs.)\"]")
+
+	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Returns (Abs.)\"]")
 	public WebElement returnsAbs;
-	
-	@FindBy (xpath = "//android.view.View[@content-desc='Current Investment Value']")
+
+	@FindBy(xpath = "//android.view.View[@content-desc='Current Investment Value']")
 	public WebElement currentVerification;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Mutual Funds')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Mutual Funds')]")
 	public WebElement MFTabPortfolio;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'PMS')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'PMS')]")
 	public WebElement PMSTabPortfolio;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Basket')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Basket')]")
 	public WebElement BasketTabPortfolio;
+
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Hide\"]")
+	public WebElement Stockshideicon;
 	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Margin Pledge\"]")
+	public WebElement marginpledge;
+	
+	@FindBy (xpath = "(//android.view.View[contains(@content-desc,'Invested')])[2]")
+	public WebElement investedpms;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Invested Mutual Funds')]")
+	public WebElement investedmf;
+	
+	@FindBy (xpath = "//android.widget.Button[contains(@content-desc,'All')]")
+	public WebElement allbasket;
 }

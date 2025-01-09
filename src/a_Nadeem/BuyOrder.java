@@ -3,13 +3,10 @@ package a_Nadeem;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.Collections;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,10 +16,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import drivers.DriverFactory;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.AppiumBy.ByAccessibilityId;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import pageobjects.ResusableMethods;
 
 public class BuyOrder {
 	AndroidDriver Driver;
@@ -36,17 +33,6 @@ public class BuyOrder {
 	int wait_time = 1;
 	int i;
 
-	public static void tapWithActions(AppiumDriver Driver, int x, int y) {
-
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence tap = new Sequence(finger, 1);
-
-		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
-		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-		Driver.perform(Collections.singletonList(tap));
-	}
 
 // 	Login
 	@Test(priority = 1)
@@ -98,7 +84,8 @@ public class BuyOrder {
 		String tableName = "Buy Orders";
 		logTableStart(tableName);
 		for (i = 1; i <= 3; i++) {
-			tapWithActions(Driver, 327, 2163);
+			
+			ResusableMethods.tapWithActions(Driver,327, 2163);
 			Thread.sleep(500);
 			WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(5));
 			Driver.findElement(By.xpath("//android.view.View[contains(@content-desc,\"GTLINFRA\")]")).click();
