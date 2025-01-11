@@ -1,6 +1,7 @@
 package pageobjects;
 
 import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -93,4 +94,22 @@ public class HomePage {
 	
 	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Research')]")
 	public WebElement researchideasbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" IAP\"]")
+	public WebElement IAPbutton;
+	
+	@FindBy (className = "android.webkit.WebView")
+	public WebElement iappage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" Bonds\"]")
+	public WebElement bondsCTA;
+	
+	@FindBy (xpath = "(//android.widget.TextView)[3]")
+	public WebElement bondspage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Options')]")
+	public WebElement optionsstoreCTA;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Other Free Option Strategies\"]")
+	public WebElement optionsstorepage;
 }

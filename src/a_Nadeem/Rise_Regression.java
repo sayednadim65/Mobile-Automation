@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -80,15 +79,6 @@ public class Rise_Regression {
 
 		logger.logTableStart("Execution Report");
 
-		homepage_explore_hide_button();
-		homepage_explore_portfolio_expand();
-		hompage_explore_portfolio_collapse();
-		Researchideaibutton();
-		IPO_button_CTA();
-		Research_Ideas_CTA();
-		IAP_CTA();
-		
-/*		
 		Global_search_Result();
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
@@ -105,7 +95,6 @@ public class Rise_Regression {
 		Get_quote_Transactionstab();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
-		
 		homepage_explore_hide_button();
 		homepage_explore_portfolio_expand();
 		hompage_explore_portfolio_collapse();
@@ -113,7 +102,9 @@ public class Rise_Regression {
 		IPO_button_CTA();
 		Research_Ideas_CTA();
 		IAP_CTA();
-
+		Bonds_CTA();
+		options_store();
+		Stock_basket_CTA();
 		MF_collection_viewall_returns();
 		Portfolio_view_analysis();
 		Portfolio_swipe_Stocks_Tab_verification();
@@ -124,7 +115,6 @@ public class Rise_Regression {
 		Add_script_in_watchlist();
 		Delete_script_in_watchlist();
 		Delete_watchlist();
-*/
 		logger.logTableEnd();
 	}
 
@@ -372,7 +362,6 @@ public class Rise_Regression {
 		String markhide = hidemark.getAttribute("content-desc");
 		List<String> elements = Arrays.asList(markhide.split(" "));
 		String starmark = elements.get(8);
-		System.out.println("list element is " + starmark);
 		long endTime = System.currentTimeMillis(); // End timer
 		boolean isVerifyed = starmark.equalsIgnoreCase("Value\n*****\nInvested");
 		status = isVerifyed ? "Pass" : "Fail";
@@ -411,7 +400,7 @@ public class Rise_Regression {
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Homescreen Research idea I button", status, endTime - startTime); // Log search timing
 	}
-	
+
 	public void Researchidea_viewAll() {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -422,13 +411,12 @@ public class Rise_Regression {
 		Driver.navigate().back();
 		logger.logTableRow("Homescreen Research idea view All", status, endTime - startTime); // Log search timing
 	}
-	
+
 	public void IPO_button_CTA() {
 		HomePage homepage = new HomePage(Driver);
 		ResusableMethods.verticalswipetillElement(Driver, homepage.IPO, 0, 5, 470, 1788, 590);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.IPO.click();
-		
 		boolean isVerifyed = homepage.ipolist.isDisplayed();
 		status = isVerifyed ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
@@ -438,39 +426,62 @@ public class Rise_Regression {
 
 	public void Research_Ideas_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.researchideasbutton.click();
-		
 		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
 		status = isVerifyed ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
 		Driver.navigate().back();
 		logger.logTableRow("Homescreen Research Idea CTA", status, endTime - startTime); // Log search timing
 	}
-	
+
 	public void IAP_CTA() {
-		// Switch to WebView context
-		Set<String> contextHandles = Driver.getContextHandles();
-		for (String contextHandle : contextHandles) {
-		    if (contextHandle.contains("WEBVIEW")) {
-		        Driver.context(contextHandle);
-		        break;
-		    }
-		    
-		   
-		}
-
-		// Interact with a web element in the WebView
-		WebElement inputField = driver.findElement(By.id("username"));
-		inputField.sendKeys("myUsername");
-
-		// Switch back to Native context if needed
-		driver.context("NATIVE_APP");
-
-		
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.IAPbutton.click();
+		boolean isVerifyed = homepage.iappage.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen IAP CTA", status, endTime - startTime); // Log search timing
 	}
-	
+
+	public void Bonds_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.bondsCTA.click();
+		wait.until(ExpectedConditions.visibilityOf(homepage.bondspage));
+		boolean isVerifyed = homepage.bondspage.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Bonds CTA", status, endTime - startTime); // Log search timing
+	}
+
+	public void options_store() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.optionsstoreCTA.click();
+		wait.until(ExpectedConditions.visibilityOf(homepage.optionsstorepage));
+		boolean isVerifyed = homepage.optionsstorepage.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Option Store CTA", status, endTime - startTime); // Log search timing
+	}
+
+	public void Stock_basket_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.stockbasket.click();
+		wait.until(ExpectedConditions.visibilityOf(homepage.researchideaequitytab));
+		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Stock Basket CTA", status, endTime - startTime); // Log search timing
+	}
+
 	public void MF_collection_viewall_returns() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
@@ -635,24 +646,17 @@ public class Rise_Regression {
 	}
 
 	public void Delete_watchlist() {
+		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		watchlist.kebabmenuwatchlist.click();
 		watchlist.managewatchlist.click();
 		ResusableMethods.verticalswipetillElement(Driver, watchlist.deleteicon, 0, 5, 532, 2025, 436);
-		watchlist.deleteicon.click();
-
-		WebElement verification = wait.until(ExpectedConditions.elementToBeClickable(watchlist.savebutton));
-		String watchlistdelte = verification.getAttribute("content-desc");
-
-		boolean isVerified = watchlistdelte.equalsIgnoreCase("Save");
+		boolean isVerified = homepage.WatchlistBottombar.isSelected();
 		status = isVerified ? "Pass" : "Fail";
 		watchlist.savebutton.click();
-		watchlist.okwatchlistcreated.click();
-
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Delete watchlist", status, endTime - startTime); // Log timing
-
 	}
 
 	// Helper Methods for Logging Tables

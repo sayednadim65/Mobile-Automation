@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse--564349672\testng-customsuite.xml</span>
+                    <span>C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse-1094495628\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Default_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="a_Nadeem.Rise_Regression" class="method navigator-link" hash-for-method="App_Regression">App_Regression</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,11 +115,6 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="a_Nadeem.Rise_Regression" class="method navigator-link" hash-for-method="App_Regression">App_Regression</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="a_Nadeem.Rise_Regression" class="method navigator-link" hash-for-method="Verify_user_login_and_clicks_on_RDD">Verify_user_login_and_clicks_on_RDD</a> <!-- method navigator-link -->
@@ -123,9 +132,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">a_Nadeem.Rise_Regression</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -134,8 +143,81 @@
                   <a name="App_Regression">
                   </a> <!-- App_Regression -->
                   <span class="method-name">App_Regression</span>
+                  <div class="stack-trace">org.openqa.selenium.InvalidSelectorException: Unsupported CSS selector &apos;*[name=&apos;deleteicon&apos;]&apos;. Reason: &apos;Error: &apos;name&apos; is not a valid attribute. Supported attributes are &apos;checkable, checked, clickable, enabled, focusable, focused, long-clickable, scrollable, selected, index, instance, description, resource-id, text, class-name, package-name&apos;&apos;
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [72f09e30-cdd4-4a02-ba27-ae693c987737, findElement {using=css selector, value=*[name=&apos;deleteicon&apos;]}]
+Capabilities {appium:appActivity: mosl.supperfina.com.MainAct..., appium:appPackage: com.mosl.mobile, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: mosl.supperfina.com.MainAct..., appPackage: com.mosl.mobile, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: CPH2467, noReset: true, platformName: ANDROID, platformVersion: 13, udid: 97957054}, appium:deviceApiLevel: 33, appium:deviceManufacturer: OnePlus, appium:deviceModel: CPH2467, appium:deviceName: 97957054, appium:deviceScreenDensity: 408, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: 97957054, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.55, appium:platformVersion: 13, appium:statBarHeight: 107, appium:takesScreenshot: true, appium:udid: 97957054, appium:viewportRect: {height: 2074, left: 0, top: 107, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 72f09e30-cdd4-4a02-ba27-ae693c987737
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:237)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.By$PreW3CLocator.findElement(By.java:430)
+	at org.openqa.selenium.By$ByName.findElement(By.java:237)
+	at org.openqa.selenium.support.ByIdOrName.findElement(ByIdOrName.java:49)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:81)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy12.click(Unknown Source)
+	at a_Nadeem.Rise_Regression.Delete_watchlist(Rise_Regression.java:654)
+	at a_Nadeem.Rise_Regression.App_Regression(Rise_Regression.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-failed -->
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">a_Nadeem.Rise_Regression</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
                   <a name="Verify_user_login_and_clicks_on_RDD">
@@ -148,7 +230,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse--564349672\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\nadeemuddinsayed\AppData\Local\Temp\testng-eclipse-1094495628\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -201,16 +283,16 @@ data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'App_Regression')
 data.setCell(0, 2, 'a_Nadeem.Rise_Regression')
-data.setCell(0, 3, 47348);
+data.setCell(0, 3, 603283);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'Verify_user_login_and_clicks_on_RDD')
 data.setCell(1, 2, 'a_Nadeem.Rise_Regression')
-data.setCell(1, 3, 30216);
+data.setCell(1, 3, 30313);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 10 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -227,8 +309,41 @@ return data;
                 <span class="reporter-method-output"><h3>Execution Report</h3></span>
                 <span class="reporter-method-output"><table border='1' style='border-collapse: collapse; width: 75%; text-align: center;'></span>
                 <span class="reporter-method-output"><tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr></span>
-                <span class="reporter-method-output"><tr><td>1</td><td>Homescreen IPO</td><td>Pass</td><td>758</td></tr></span>
-                <span class="reporter-method-output"></table></span>
+                <span class="reporter-method-output"><tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>6393</td></tr></span>
+                <span class="reporter-method-output"><tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>1502</td></tr></span>
+                <span class="reporter-method-output"><tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>4226</td></tr></span>
+                <span class="reporter-method-output"><tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>1402</td></tr></span>
+                <span class="reporter-method-output"><tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>5927</td></tr></span>
+                <span class="reporter-method-output"><tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>11807</td></tr></span>
+                <span class="reporter-method-output"><tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>8043</td></tr></span>
+                <span class="reporter-method-output"><tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>11914</td></tr></span>
+                <span class="reporter-method-output"><tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>11788</td></tr></span>
+                <span class="reporter-method-output"><tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>5828</td></tr></span>
+                <span class="reporter-method-output"><tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>5221</td></tr></span>
+                <span class="reporter-method-output"><tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>2782</td></tr></span>
+                <span class="reporter-method-output"><tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>2267</td></tr></span>
+                <span class="reporter-method-output"><tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>11170</td></tr></span>
+                <span class="reporter-method-output"><tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>2398</td></tr></span>
+                <span class="reporter-method-output"><tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>6053</td></tr></span>
+                <span class="reporter-method-output"><tr><td>17</td><td>Homescreen portfolio hide mark</td><td>Pass</td><td>3281</td></tr></span>
+                <span class="reporter-method-output"><tr><td>18</td><td>Homescreen portfolio expand button</td><td>Pass</td><td>2497</td></tr></span>
+                <span class="reporter-method-output"><tr><td>19</td><td>Homescreen portfolio collapse button</td><td>Pass</td><td>1181</td></tr></span>
+                <span class="reporter-method-output"><tr><td>20</td><td>Homescreen Research idea I button</td><td>Pass</td><td>5911</td></tr></span>
+                <span class="reporter-method-output"><tr><td>21</td><td>Homescreen IPO CTA</td><td>Pass</td><td>3412</td></tr></span>
+                <span class="reporter-method-output"><tr><td>22</td><td>Homescreen Research Idea CTA</td><td>Pass</td><td>5244</td></tr></span>
+                <span class="reporter-method-output"><tr><td>23</td><td>Homescreen IAP CTA</td><td>Pass</td><td>2132</td></tr></span>
+                <span class="reporter-method-output"><tr><td>24</td><td>Homescreen Bonds CTA</td><td>Pass</td><td>10990</td></tr></span>
+                <span class="reporter-method-output"><tr><td>25</td><td>Homescreen Option Store CTA</td><td>Pass</td><td>3218</td></tr></span>
+                <span class="reporter-method-output"><tr><td>26</td><td>Homescreen Stock Basket CTA</td><td>Pass</td><td>3172</td></tr></span>
+                <span class="reporter-method-output"><tr><td>27</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>15372</td></tr></span>
+                <span class="reporter-method-output"><tr><td>28</td><td>Portfolio View Analysis</td><td>Pass</td><td>9542</td></tr></span>
+                <span class="reporter-method-output"><tr><td>29</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>48433</td></tr></span>
+                <span class="reporter-method-output"><tr><td>30</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>44141</td></tr></span>
+                <span class="reporter-method-output"><tr><td>31</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>2594</td></tr></span>
+                <span class="reporter-method-output"><tr><td>32</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>86632</td></tr></span>
+                <span class="reporter-method-output"><tr><td>33</td><td>Add Watchlist</td><td>Pass</td><td>16782</td></tr></span>
+                <span class="reporter-method-output"><tr><td>34</td><td>Add Script in watchlist</td><td>Pass</td><td>12318</td></tr></span>
+                <span class="reporter-method-output"><tr><td>35</td><td>Delete script from watchlist</td><td>Pass</td><td>8592</td></tr></span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -253,15 +368,17 @@ return data;
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">Verify_user_login_and_clicks_on_RDD</span>
-                <span class="method-start">11854 ms</span>
+                <span class="method-start">10841 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">App_Regression</span>
-                <span class="method-start">42080 ms</span>
+                <span class="method-start">41160 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">Verify_user_kills_app</span>
-                <span class="method-start">89430 ms</span>
+                <span class="method-start">644450 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
