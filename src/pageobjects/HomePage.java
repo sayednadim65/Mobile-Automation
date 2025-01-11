@@ -51,4 +51,46 @@ public class HomePage {
 	
 	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Explore\"]")
 	public WebElement explorebottombar;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Hide\"]")
+	public WebElement hidebutton;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'*****')]")
+	public WebElement hideportfolio;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Show\"]")
+	public WebElement showbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Expand\"]")
+	public WebElement homepageportfolioexpand;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Available Margin')]")
+	public WebElement availablemargin;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Collapse\"]")
+	public WebElement homepageportfoliocollapse;
+	
+	@FindBy (xpath = "(//android.widget.ImageView)[11]")
+	public WebElement researchideaibutton;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Research Ideas\"]")
+	public WebElement reasearchideatext;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"View All\"]")
+	public WebElement researchideaviewall;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Equity\"]")
+	public WebElement researchideaequitytab;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Stock')]")
+	public WebElement stockbasket;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" IPO\"]")
+	public WebElement IPO;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'IPO List')]")
+	public WebElement ipolist;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Research')]")
+	public WebElement researchideasbutton;
 }

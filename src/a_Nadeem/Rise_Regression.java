@@ -3,7 +3,10 @@ package a_Nadeem;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -77,6 +80,15 @@ public class Rise_Regression {
 
 		logger.logTableStart("Execution Report");
 
+		homepage_explore_hide_button();
+		homepage_explore_portfolio_expand();
+		hompage_explore_portfolio_collapse();
+		Researchideaibutton();
+		IPO_button_CTA();
+		Research_Ideas_CTA();
+		IAP_CTA();
+		
+/*		
 		Global_search_Result();
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
@@ -93,6 +105,15 @@ public class Rise_Regression {
 		Get_quote_Transactionstab();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
+		
+		homepage_explore_hide_button();
+		homepage_explore_portfolio_expand();
+		hompage_explore_portfolio_collapse();
+		Researchideaibutton();
+		IPO_button_CTA();
+		Research_Ideas_CTA();
+		IAP_CTA();
+
 		MF_collection_viewall_returns();
 		Portfolio_view_analysis();
 		Portfolio_swipe_Stocks_Tab_verification();
@@ -103,7 +124,7 @@ public class Rise_Regression {
 		Add_script_in_watchlist();
 		Delete_script_in_watchlist();
 		Delete_watchlist();
-
+*/
 		logger.logTableEnd();
 	}
 
@@ -342,6 +363,114 @@ public class Rise_Regression {
 		Thread.sleep(500);
 	}
 
+	public void homepage_explore_hide_button() {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.hidebutton.click();
+		WebElement hidemark = wait.until(ExpectedConditions.visibilityOf(homepage.hideportfolio));
+		String markhide = hidemark.getAttribute("content-desc");
+		List<String> elements = Arrays.asList(markhide.split(" "));
+		String starmark = elements.get(8);
+		System.out.println("list element is " + starmark);
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerifyed = starmark.equalsIgnoreCase("Value\n*****\nInvested");
+		status = isVerifyed ? "Pass" : "Fail";
+		homepage.showbutton.click();
+		logger.logTableRow("Homescreen portfolio hide mark", status, endTime - startTime); // Log search timing
+	}
+
+	public void homepage_explore_portfolio_expand() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.homepageportfolioexpand.click();
+		long endTime = System.currentTimeMillis(); // End timer
+		boolean isVerifyed = homepage.availablemargin.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		logger.logTableRow("Homescreen portfolio expand button", status, endTime - startTime); // Log search timing
+	}
+
+	public void hompage_explore_portfolio_collapse() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.homepageportfoliocollapse.click();
+		boolean isVerifyed = homepage.ExpandIcon.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		logger.logTableRow("Homescreen portfolio collapse button", status, endTime - startTime); // Log search timing
+	}
+
+	public void Researchideaibutton() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.researchideaibutton.click();
+		wait.until(ExpectedConditions.visibilityOf(homepage.reasearchideatext));
+		boolean isVerifyed = homepage.reasearchideatext.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		Driver.navigate().back();
+		long endTime = System.currentTimeMillis(); // End timer
+		logger.logTableRow("Homescreen Research idea I button", status, endTime - startTime); // Log search timing
+	}
+	
+	public void Researchidea_viewAll() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.researchideaviewall.click();
+		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Research idea view All", status, endTime - startTime); // Log search timing
+	}
+	
+	public void IPO_button_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.IPO, 0, 5, 470, 1788, 590);
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.IPO.click();
+		
+		boolean isVerifyed = homepage.ipolist.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen IPO CTA", status, endTime - startTime); // Log search timing
+	}
+
+	public void Research_Ideas_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		
+		long startTime = System.currentTimeMillis(); // Start timer
+		homepage.researchideasbutton.click();
+		
+		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
+		status = isVerifyed ? "Pass" : "Fail";
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Research Idea CTA", status, endTime - startTime); // Log search timing
+	}
+	
+	public void IAP_CTA() {
+		// Switch to WebView context
+		Set<String> contextHandles = Driver.getContextHandles();
+		for (String contextHandle : contextHandles) {
+		    if (contextHandle.contains("WEBVIEW")) {
+		        Driver.context(contextHandle);
+		        break;
+		    }
+		    
+		   
+		}
+
+		// Interact with a web element in the WebView
+		WebElement inputField = driver.findElement(By.id("username"));
+		inputField.sendKeys("myUsername");
+
+		// Switch back to Native context if needed
+		driver.context("NATIVE_APP");
+
+		
+	}
+	
 	public void MF_collection_viewall_returns() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
@@ -460,12 +589,9 @@ public class Rise_Regression {
 		homepage.WatchlistBottombar.click();
 		long startTime = System.currentTimeMillis(); // Start timer
 		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.AddButton, 0, 5, 906, 95, 688);
-
 		WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
 		addButton.click();
-		watchlist.enterwatchlistname.click();
-		watchlist.enterwatchlistname.clear();
-		watchlist.enterwatchlistname.sendKeys("Created by Automatio");
+		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Created by Automatio");
 		watchlist.createButton.click();
 		WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
 		String verification = Createbutton.getAttribute("content-desc");
