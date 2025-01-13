@@ -112,4 +112,37 @@ public class HomePage {
 	
 	@FindBy (xpath = "//android.view.View[@content-desc=\"Other Free Option Strategies\"]")
 	public WebElement optionsstorepage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" Smallcase\"]")
+	public WebElement smallcasebutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" TGS\"]")
+	public WebElement TGSbutton;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Positional\"]")
+	public WebElement TGSpage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" Insurance\"]")
+	public WebElement insurancebutton;
+	
+	@FindBy (className = "android.webkit.WebView")
+	public WebElement insurancepage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Fixed')]")
+	public WebElement fixeddepositbutton;
+	
+	@FindBy (xpath = "//android.widget.Button[@text='Proceed']")
+	public WebElement fixeddepositpage;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"TGS\"]")
+	public WebElement intraoptionspage;
+	
+	@FindBy (xpath = "(//android.view.View)[9]")
+	public WebElement smallcasepage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Teji')]")
+	public WebElement tejimandibutton;
+	
+	@FindBy (xpath = "//android.widget.TextView")
+	public WebElement tejimandipage;
 }

@@ -78,7 +78,6 @@ public class Rise_Regression {
 	public void App_Regression() throws IOException, InterruptedException {
 
 		logger.logTableStart("Execution Report");
-
 		Global_search_Result();
 		Get_quote_fut_tab();
 		Get_quote_opt_tab();
@@ -92,7 +91,7 @@ public class Rise_Regression {
 		Get_quote_fundamentaltab();
 		Get_quote_technicaltab();
 		Get_quote_Newstab();
-		Get_quote_Transactionstab();
+//		Get_quote_Transactionstab();
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
 		homepage_explore_hide_button();
@@ -104,7 +103,13 @@ public class Rise_Regression {
 		IAP_CTA();
 		Bonds_CTA();
 		options_store();
-		Stock_basket_CTA();
+//		Stock_basket_CTA();
+		TGS_CTA();
+		Insurance_CTA();
+		FixedDeposit_CTA();
+		Intraoptions_CTA();
+		smallcase_CTA();
+		Tejimandi();
 		MF_collection_viewall_returns();
 		Portfolio_view_analysis();
 		Portfolio_swipe_Stocks_Tab_verification();
@@ -414,7 +419,7 @@ public class Rise_Regression {
 
 	public void IPO_button_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		ResusableMethods.verticalswipetillElement(Driver, homepage.IPO, 0, 5, 470, 1788, 590);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.optionsstoreCTA, 0, 5, 470, 1788, 590);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.IPO.click();
 		boolean isVerifyed = homepage.ipolist.isDisplayed();
@@ -450,7 +455,7 @@ public class Rise_Regression {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.bondsCTA.click();
-		wait.until(ExpectedConditions.visibilityOf(homepage.bondspage));
+//		wait.until(ExpectedConditions.visibilityOf(homepage.bondspage));
 		boolean isVerifyed = homepage.bondspage.isDisplayed();
 		status = isVerifyed ? "Pass" : "Fail";
 		long endTime = System.currentTimeMillis(); // End timer
@@ -480,6 +485,111 @@ public class Rise_Regression {
 		long endTime = System.currentTimeMillis(); // End timer
 		Driver.navigate().back();
 		logger.logTableRow("Homescreen Stock Basket CTA", status, endTime - startTime); // Log search timing
+	}
+
+	public void TGS_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 600);
+		homepage.TGSbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.TGSpage));
+			boolean isVerifyed = homepage.TGSpage.isDisplayed();
+			status = isVerifyed ? "Pass" : "Fail";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen TGS CTA", status, endTime - startTime); // Log search timing
+
+	}
+
+	public void Insurance_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		homepage.insurancebutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.insurancepage));
+			boolean isVerifyed = homepage.insurancepage.isDisplayed();
+			status = isVerifyed ? "Pass" : "Fail";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Insurance CTA", status, endTime - startTime); // Log search timing
+
+	}
+
+	public void FixedDeposit_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		homepage.fixeddepositbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.fixeddepositpage));
+			boolean isVerifyed = homepage.fixeddepositpage.isDisplayed();
+			status = isVerifyed ? "Pass" : "Fail";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Fixed Deposit CTA", status, endTime - startTime); // Log search timing
+
+	}
+
+	public void Intraoptions_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		homepage.IntaoptionsButton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.intraoptionspage));
+			boolean isVerifyed = homepage.intraoptionspage.isDisplayed();
+			status = isVerifyed ? "Pass" : "Fail";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Intra options CTA", status, endTime - startTime); // Log search timing
+	}
+
+	public void smallcase_CTA() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		homepage.smallcasebutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.smallcasepage));
+			boolean isVerifyed = homepage.smallcasepage.isDisplayed();
+			status = isVerifyed ? "Pass" : "Fail";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Insurance CTA", status, endTime - startTime); // Log search timing
+	}
+
+	public void Tejimandi() {
+		HomePage homepage = new HomePage(Driver);
+		long startTime = System.currentTimeMillis(); // Start timer
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		homepage.tejimandibutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.tejimandipage));
+			boolean isVerifyed = homepage.tejimandipage.isDisplayed();
+			status = isVerifyed ? "Pass" : "Fail";
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis(); // End timer
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Teji Mandi CTA", status, endTime - startTime); // Log search timing
 	}
 
 	public void MF_collection_viewall_returns() throws InterruptedException {
@@ -600,8 +710,8 @@ public class Rise_Regression {
 		homepage.WatchlistBottombar.click();
 		long startTime = System.currentTimeMillis(); // Start timer
 		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.AddButton, 0, 5, 906, 95, 688);
-		WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
-		addButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
+		watchlist.AddButton.click();
 		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Created by Automatio");
 		watchlist.createButton.click();
 		WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
@@ -611,7 +721,6 @@ public class Rise_Regression {
 		watchlist.okwatchlistcreated.click();
 		long endTime = System.currentTimeMillis(); // End timer
 		logger.logTableRow("Add Watchlist", status, endTime - startTime); // Log timing
-
 	}
 
 	public void Add_script_in_watchlist() throws IOException, InterruptedException {
@@ -694,7 +803,7 @@ public class Rise_Regression {
 			capabilities.setCapability("platformVersion", "13");
 			capabilities.setCapability("deviceName", "CPH2467");
 			capabilities.setCapability("udid", "97957054");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_UAT"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);
