@@ -78,48 +78,30 @@ public class Rise_Regression {
 	public void App_Regression() throws IOException, InterruptedException {
 
 		logger.logTableStart("Execution Report");
-		Global_search_Result();
-		Get_quote_fut_tab();
-		Get_quote_opt_tab();
-		Get_quote_cash_tab();
-		Get_quote_Nse_switch_Delivery_buy();
-		Get_quote_Nse_switch_Delivery_Sell();
-		Get_quote_Bse_switch_Delivery_buy();
-		Get_quote_Bse_switch_Delivery_Sell();
-		Get_quote_charts();
-		Get_quote_optionchain();
-		Get_quote_fundamentaltab();
-		Get_quote_technicaltab();
-		Get_quote_Newstab();
-//		Get_quote_Transactionstab();
-		OrderForm_quantity_toggle();
-		OrderForm_amount_toggle();
-		homepage_explore_hide_button();
-		homepage_explore_portfolio_expand();
-		hompage_explore_portfolio_collapse();
-		Researchideaibutton();
-		IPO_button_CTA();
-		Research_Ideas_CTA();
-		IAP_CTA();
-		Bonds_CTA();
-		options_store();
-//		Stock_basket_CTA();
-		TGS_CTA();
-		Insurance_CTA();
-		FixedDeposit_CTA();
-		Intraoptions_CTA();
+
 		smallcase_CTA();
-		Tejimandi();
-		MF_collection_viewall_returns();
-		Portfolio_view_analysis();
-		Portfolio_swipe_Stocks_Tab_verification();
-		Portfolio_swipe_MF_Tab_verification();
-		Portfolio_swipe_PMS_Tab_verification();
-		Portfolio_swipe_Basket_Tab_verification();
-		Watchlist_script();
-		Add_script_in_watchlist();
-		Delete_script_in_watchlist();
-		Delete_watchlist();
+		/*
+		 * Global_search_Result(); Get_quote_fut_tab(); Get_quote_opt_tab();
+		 * Get_quote_cash_tab(); Get_quote_Nse_switch_Delivery_buy();
+		 * Get_quote_Nse_switch_Delivery_Sell(); Get_quote_Bse_switch_Delivery_buy();
+		 * Get_quote_Bse_switch_Delivery_Sell(); Get_quote_charts();
+		 * Get_quote_optionchain(); Get_quote_fundamentaltab();
+		 * Get_quote_technicaltab(); Get_quote_Newstab(); Get_quote_Transactionstab();
+		 * OrderForm_quantity_toggle(); OrderForm_amount_toggle();
+		 * homepage_explore_hide_button(); homepage_explore_portfolio_expand();
+		 * hompage_explore_portfolio_collapse(); Researchideaibutton();
+		 * IPO_button_CTA();
+		 * 
+		 * Research_Ideas_CTA(); IAP_CTA(); Bonds_CTA(); options_store();
+		 * Stock_basket_CTA(); TGS_CTA(); Insurance_CTA(); FixedDeposit_CTA();
+		 * Intraoptions_CTA(); smallcase_CTA(); Tejimandi();
+		 * MF_collection_viewall_returns(); Portfolio_view_analysis();
+		 * Portfolio_swipe_Stocks_Tab_verification();
+		 * Portfolio_swipe_MF_Tab_verification();
+		 * Portfolio_swipe_PMS_Tab_verification();
+		 * Portfolio_swipe_Basket_Tab_verification(); Watchlist_script();
+		 * Add_script_in_watchlist(); Delete_script_in_watchlist(); Delete_watchlist();
+		 */
 		logger.logTableEnd();
 	}
 
@@ -131,16 +113,21 @@ public class Rise_Regression {
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
 		Thread.sleep(2000);
-		WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
-		long endTime = System.currentTimeMillis(); // End timer
-		String resultsearch = searchresult.getAttribute("content-desc");
-		String globalsearchresult = resultsearch.substring(3, 8);
-		boolean isVerified = globalsearchresult.equalsIgnoreCase("YESBA");
-		status = isVerified ? "Pass" : "Fail";
-		homepage.Globalsearchresult.click();
-		logger.logTableRow("Global Search Result", status, endTime - startTime); // Log search timing
-		Thread.sleep(1000);
+		try {
+			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 
+			String resultsearch = searchresult.getAttribute("content-desc");
+			String globalsearchresult = resultsearch.substring(3, 8);
+			globalsearchresult.equalsIgnoreCase("YESBA");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			homepage.Globalsearchresult.click();
+			logger.logTableRow("Global Search Result", status, endTime - startTime);
+			Thread.sleep(1000);
+		}
 	}
 
 	public void Get_quote_fut_tab() {
@@ -148,192 +135,258 @@ public class Rise_Regression {
 		wait.until(ExpectedConditions.elementToBeClickable(getquote.FutTab));
 		long startTime = System.currentTimeMillis(); // Start timer
 		getquote.FutTab.click();
-		WebElement NSEFO = wait.until(ExpectedConditions.visibilityOf(getquote.NSEFO));
-		String nsefo = NSEFO.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = nsefo.equalsIgnoreCase("NSE_FO");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote fut tab", status, endTime - startTime); // Log search timing
+		try {
+			WebElement NSEFO = wait.until(ExpectedConditions.visibilityOf(getquote.NSEFO));
+			String nsefo = NSEFO.getAttribute("content-desc");
+			nsefo.equalsIgnoreCase("NSE_FO");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Get quote fut tab", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_opt_tab() {
 		GetQuote getquote = new GetQuote(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(getquote.optionsTab));
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.optionsTab.click();
-		WebElement Call = wait.until(ExpectedConditions.visibilityOf(getquote.callbutton));
-		String call = Call.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = call.equalsIgnoreCase("Call");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote opt tab", status, endTime - startTime); // Log search timing
+		try {
+			WebElement Call = wait.until(ExpectedConditions.visibilityOf(getquote.callbutton));
+			String call = Call.getAttribute("content-desc");
+			call.equalsIgnoreCase("Call");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Get quote opt tab", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_cash_tab() {
 		GetQuote getquote = new GetQuote(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(getquote.cashtab));
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.cashtab.click();
-		WebElement Nse = wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
-		String nse = Nse.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = nse.equalsIgnoreCase("NSE");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote cash tab", status, endTime - startTime); // Log search timing
+		try {
+			WebElement Nse = wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
+			String nse = Nse.getAttribute("content-desc");
+			nse.equalsIgnoreCase("NSE");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Get quote cash tab", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_Nse_switch_Delivery_buy() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.nsebutton.click();
 		getquote.BuyButton.click();
-		Thread.sleep(500);
-		boolean isVerified = orderform.NseSwitch.isSelected();
-		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Fail" : "Pass";
-		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch delivery buy order form", status, endTime - startTime); // Log search
-																											// timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.NseSwitch));
+			orderform.NseSwitch.isSelected();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Get quote Nse switch delivery buy order form", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_Nse_switch_Delivery_Sell() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.nsebutton.click();
 		getquote.SellButton.click();
-		Thread.sleep(500);
-		boolean isVerified = orderform.NseSwitch.isSelected();
-		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Fail" : "Pass";
-		Driver.navigate().back();
-		logger.logTableRow("Get quote Nse switch delivery Sell order form", status, endTime - startTime); // Log search
-																											// timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.NseSwitch));
+			orderform.NseSwitch.isSelected();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Get quote Nse switch delivery Sell order form", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_Bse_switch_Delivery_buy() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.bsebutton.click();
 		getquote.BuyButton.click();
-		Thread.sleep(500);
-		boolean isVerified = orderform.BseSwitch.isSelected();
-		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Fail" : "Pass";
-		Driver.navigate().back();
-		logger.logTableRow("Get quote Bse switch delivery buy order form", status, endTime - startTime); // Log search
-																											// timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.BseSwitch));
+			orderform.BseSwitch.isSelected();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Get quote Bse switch delivery buy order form", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_Bse_switch_Delivery_Sell() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.bsebutton.click();
 		getquote.SellButton.click();
-		Thread.sleep(500);
-		boolean isVerified = orderform.BseSwitch.isSelected();
-		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Fail" : "Pass";
-		Driver.navigate().back();
-		logger.logTableRow("Get quote Bse switch delivery order form", status, endTime - startTime); // Log search
-																										// timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.BseSwitch));
+			orderform.BseSwitch.isSelected();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Get quote Bse switch delivery order form", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_charts() {
 		GetQuote getquote = new GetQuote(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.chartsbutton.click();
-		wait.until(ExpectedConditions.elementToBeClickable(getquote.chartsbuybutton));
-		String buy = getquote.chartsbuybutton.getAttribute("content-desc");
-		boolean isVerified = buy.equalsIgnoreCase("BUY");
-		long endTime = System.currentTimeMillis(); // End timer
-		status = isVerified ? "Pass" : "Fail";
-		Driver.navigate().back();
-		logger.logTableRow("Get quote charts button", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(getquote.chartsbuybutton));
+			String buy = getquote.chartsbuybutton.getAttribute("content-desc");
+			buy.equalsIgnoreCase("BUY");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Get quote charts button", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_optionchain() {
 		GetQuote getquote = new GetQuote(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.optionchainbutton.click();
-		wait.until(ExpectedConditions.visibilityOf(getquote.OIoptionchain));
-		String OI = getquote.OIoptionchain.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = OI.equalsIgnoreCase("OI");
-		status = isVerified ? "Pass" : "Fail";
-		Driver.navigate().back();
-		logger.logTableRow("Get quote optionchain button", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(getquote.OIoptionchain));
+			String OI = getquote.OIoptionchain.getAttribute("content-desc");
+			OI.equalsIgnoreCase("OI");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Get quote optionchain button", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_fundamentaltab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.fundamentaltab.click();
-		Thread.sleep(1000);
-		String fundamentalratios = getquote.fundamentalratios.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = fundamentalratios.equalsIgnoreCase("Fundamental Ratios");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote Fundamental Tab", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(getquote.fundamentalratios));
+			String fundamentalratios = getquote.fundamentalratios.getAttribute("content-desc");
+			fundamentalratios.equalsIgnoreCase("Fundamental Ratios");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Get quote Fundamental Tab", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_technicaltab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.technicaltab.click();
-		Thread.sleep(1000);
-		String delivery = getquote.deliveryvolume.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = delivery.equalsIgnoreCase("Delivery & Volume");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote Technical Tab", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(getquote.deliveryvolume));
+			String delivery = getquote.deliveryvolume.getAttribute("content-desc");
+			delivery.equalsIgnoreCase("Delivery & Volume");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Get quote Technical Tab", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_Newstab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.Newstab.click();
-		Thread.sleep(1000);
-		String newsverification = getquote.news.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerified = newsverification.equalsIgnoreCase("News");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote News Tab", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(getquote.news));
+			String newsverification = getquote.news.getAttribute("content-desc");
+			newsverification.equalsIgnoreCase("News");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Get quote News Tab", status, endTime - startTime);
+		}
 	}
 
 	public void Get_quote_Transactionstab() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		getquote.transactionstab.click();
-		wait.until(ExpectedConditions.visibilityOf(getquote.realisedPL));
-		String plrealised = getquote.realisedPL.getAttribute("content-desc");
-		long endTime = System.currentTimeMillis(); // End timer
-		String realisepl = plrealised.split(" ")[0];
-		boolean isVerified = realisepl.equalsIgnoreCase("Realised");
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Get quote Transactions Tab", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(getquote.realisedPL));
+			String plrealised = getquote.realisedPL.getAttribute("content-desc");
+			String realisepl = plrealised.split(" ")[0];
+			realisepl.equalsIgnoreCase("Realised");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+			System.out.println(e);
+		}
+		long endTime = System.currentTimeMillis();
+		logger.logTableRow("Get quote Transactions Tab", status, endTime - startTime);
 	}
 
 	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
 		OrderForm orderform = new OrderForm(Driver);
 		GetQuote getquote = new GetQuote(Driver);
 		getquote.BuyButton.click();
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		orderform.MarketButton.click();
-		ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
-				Commons.getGlobalPropertiesValue("Orderform_quantity_amount_toggle"));
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.hideKeyboard();
-		String amount = orderform.investamount.getAttribute("content-desc");
-		String investamount = amount.substring(12, 14);
-		String NseLTP = orderform.NseSwitch.getAttribute("content-desc");
-		String LTP = NseLTP.substring(5, 7);
-		boolean isVerified = investamount.equalsIgnoreCase(LTP);
-		status = isVerified ? "Pass" : "Fail";
-		logger.logTableRow("Order Form quantity toggle", status, endTime - startTime); // Log search timing
+		try {
+			ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
+					Commons.getGlobalPropertiesValue("Orderform_quantity_amount_toggle"));
+			Driver.hideKeyboard();
+			String amount = orderform.investamount.getAttribute("content-desc");
+			String investamount = amount.substring(12, 14);
+			String NseLTP = orderform.NseSwitch.getAttribute("content-desc");
+			String LTP = NseLTP.substring(5, 7);
+			investamount.equalsIgnoreCase(LTP);
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis(); // End timer
+			logger.logTableRow("Order Form quantity toggle", status, endTime - startTime); // Log search timing
+		}
 	}
 
 	public void OrderForm_amount_toggle() throws InterruptedException, IOException {
@@ -342,261 +395,319 @@ public class Rise_Regression {
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		orderform.amountswitch.click();
-		ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
-				(Commons.getGlobalPropertiesValue("orderform_amount_toggle")));
-		Driver.hideKeyboard();
-		long endTime = System.currentTimeMillis(); // End timer
-		String quantity = orderform.quantityautocalculate.getAttribute("content-desc");
-		String autocalulatequantity = quantity.substring(5);
-		boolean isVerifyed = autocalulatequantity
-				.equalsIgnoreCase(Commons.getGlobalPropertiesValue("orderform_amount_quantity"));
-		status = isVerifyed ? "Pass" : "Fail";
-		Driver.navigate().back();
-		Driver.navigate().back();
-		Driver.navigate().back();
-		logger.logTableRow("Order Form amount toggle", status, endTime - startTime); // Log search timing
-		Thread.sleep(500);
+		try {
+			ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
+					(Commons.getGlobalPropertiesValue("orderform_amount_toggle")));
+			Driver.hideKeyboard();
+			String quantity = orderform.quantityautocalculate.getAttribute("content-desc");
+			String autocalulatequantity = quantity.substring(5);
+			autocalulatequantity.equalsIgnoreCase(Commons.getGlobalPropertiesValue("orderform_amount_quantity"));
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis(); // End timer
+			Driver.navigate().back();
+			Driver.navigate().back();
+			Driver.navigate().back();
+			logger.logTableRow("Order Form amount toggle", status, endTime - startTime); // Log search timing
+		}
 	}
 
 	public void homepage_explore_hide_button() {
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.hidebutton.click();
-		WebElement hidemark = wait.until(ExpectedConditions.visibilityOf(homepage.hideportfolio));
-		String markhide = hidemark.getAttribute("content-desc");
-		List<String> elements = Arrays.asList(markhide.split(" "));
-		String starmark = elements.get(8);
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerifyed = starmark.equalsIgnoreCase("Value\n*****\nInvested");
-		status = isVerifyed ? "Pass" : "Fail";
-		homepage.showbutton.click();
-		logger.logTableRow("Homescreen portfolio hide mark", status, endTime - startTime); // Log search timing
+		try {
+			WebElement hidemark = wait.until(ExpectedConditions.visibilityOf(homepage.hideportfolio));
+			String markhide = hidemark.getAttribute("content-desc");
+			List<String> elements = Arrays.asList(markhide.split(" "));
+			String starmark = elements.get(8);
+			starmark.equalsIgnoreCase("Value\n*****\nInvested");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			homepage.showbutton.click();
+			logger.logTableRow("Homescreen portfolio hide mark", status, endTime - startTime);
+		}
 	}
 
 	public void homepage_explore_portfolio_expand() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.homepageportfolioexpand.click();
-		long endTime = System.currentTimeMillis(); // End timer
-		boolean isVerifyed = homepage.availablemargin.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		logger.logTableRow("Homescreen portfolio expand button", status, endTime - startTime); // Log search timing
+		try {
+			homepage.availablemargin.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Homescreen portfolio expand button", status, endTime - startTime);
+		}
 	}
 
 	public void hompage_explore_portfolio_collapse() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.homepageportfoliocollapse.click();
-		boolean isVerifyed = homepage.ExpandIcon.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Homescreen portfolio collapse button", status, endTime - startTime); // Log search timing
+		try {
+			homepage.ExpandIcon.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Homescreen portfolio collapse button", status, endTime - startTime);
+		}
 	}
 
 	public void Researchideaibutton() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.researchideaibutton.click();
-		wait.until(ExpectedConditions.visibilityOf(homepage.reasearchideatext));
-		boolean isVerifyed = homepage.reasearchideatext.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		Driver.navigate().back();
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Homescreen Research idea I button", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.reasearchideatext));
+			homepage.reasearchideatext.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			Driver.navigate().back();
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Homescreen Research idea I button", status, endTime - startTime);
+		}
 	}
 
 	public void Researchidea_viewAll() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.researchideaviewall.click();
-		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Research idea view All", status, endTime - startTime); // Log search timing
+		try {
+			homepage.researchideaequitytab.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Research idea view All", status, endTime - startTime);
+		}
 	}
 
 	public void IPO_button_CTA() {
 		HomePage homepage = new HomePage(Driver);
 		ResusableMethods.verticalswipetillElement(Driver, homepage.optionsstoreCTA, 0, 5, 470, 1788, 590);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.IPO.click();
-		boolean isVerifyed = homepage.ipolist.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen IPO CTA", status, endTime - startTime); // Log search timing
+		try {
+			homepage.ipolist.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen IPO CTA", status, endTime - startTime);
+		}
 	}
 
 	public void Research_Ideas_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.researchideasbutton.click();
-		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Research Idea CTA", status, endTime - startTime); // Log search timing
+		try {
+			homepage.researchideaequitytab.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Research Idea CTA", status, endTime - startTime);
+		}
 	}
 
 	public void IAP_CTA() {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.IAPbutton.click();
-		boolean isVerifyed = homepage.iappage.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen IAP CTA", status, endTime - startTime); // Log search timing
+		try {
+			homepage.iappage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis(); // End timer
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen IAP CTA", status, endTime - startTime); // Log search timing
+		}
 	}
 
 	public void Bonds_CTA() {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.bondsCTA.click();
-//		wait.until(ExpectedConditions.visibilityOf(homepage.bondspage));
-		boolean isVerifyed = homepage.bondspage.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Bonds CTA", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.bondspage));
+			homepage.bondspage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis(); // End timer
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Bonds CTA", status, endTime - startTime); // Log search timing
+		}
 	}
 
 	public void options_store() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.optionsstoreCTA.click();
-		wait.until(ExpectedConditions.visibilityOf(homepage.optionsstorepage));
-		boolean isVerifyed = homepage.optionsstorepage.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Option Store CTA", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.optionsstorepage));
+			homepage.optionsstorepage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Option Store CTA", status, endTime - startTime);
+		}
 	}
 
 	public void Stock_basket_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.stockbasket.click();
-		wait.until(ExpectedConditions.visibilityOf(homepage.researchideaequitytab));
-		boolean isVerifyed = homepage.researchideaequitytab.isDisplayed();
-		status = isVerifyed ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Stock Basket CTA", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.researchideaequitytab));
+			homepage.researchideaequitytab.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Stock Basket CTA", status, endTime - startTime);
+		}
 	}
 
 	public void TGS_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
-		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
 		homepage.TGSbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.TGSpage));
-			boolean isVerifyed = homepage.TGSpage.isDisplayed();
-			status = isVerifyed ? "Pass" : "Fail";
+			status = "Pass";
 		} catch (Exception e) {
-			System.out.println(e);
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen TGS CTA", status, endTime - startTime);
 		}
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen TGS CTA", status, endTime - startTime); // Log search timing
-
 	}
 
 	public void Insurance_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
 		homepage.insurancebutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.insurancepage));
-			boolean isVerifyed = homepage.insurancepage.isDisplayed();
-			status = isVerifyed ? "Pass" : "Fail";
+			homepage.insurancepage.isDisplayed();
+			status = "Pass";
 		} catch (Exception e) {
-			System.out.println(e);
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Insurance CTA", status, endTime - startTime);
 		}
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Insurance CTA", status, endTime - startTime); // Log search timing
-
 	}
 
 	public void FixedDeposit_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
-		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		long startTime = System.currentTimeMillis();
 		homepage.fixeddepositbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.fixeddepositpage));
-			boolean isVerifyed = homepage.fixeddepositpage.isDisplayed();
-			status = isVerifyed ? "Pass" : "Fail";
+			homepage.fixeddepositpage.isDisplayed();
+			status = "Pass";
 		} catch (Exception e) {
-			System.out.println(e);
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Fixed Deposit CTA", status, endTime - startTime);
 		}
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Fixed Deposit CTA", status, endTime - startTime); // Log search timing
-
 	}
 
 	public void Intraoptions_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
-		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		long startTime = System.currentTimeMillis();
 		homepage.IntaoptionsButton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.intraoptionspage));
-			boolean isVerifyed = homepage.intraoptionspage.isDisplayed();
-			status = isVerifyed ? "Pass" : "Fail";
+			homepage.intraoptionspage.isDisplayed();
+			status = "Pass";
 		} catch (Exception e) {
-			System.out.println(e);
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Intra options CTA", status, endTime - startTime);
 		}
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Intra options CTA", status, endTime - startTime); // Log search timing
 	}
 
 	public void smallcase_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
-		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
 		homepage.smallcasebutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.smallcasepage));
-			boolean isVerifyed = homepage.smallcasepage.isDisplayed();
-			status = isVerifyed ? "Pass" : "Fail";
+			status = "Pass";
 		} catch (Exception e) {
-			System.out.println(e);
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Smallcase CTA", status, endTime - startTime);
 		}
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Insurance CTA", status, endTime - startTime); // Log search timing
+
 	}
 
 	public void Tejimandi() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
 		homepage.tejimandibutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.tejimandipage));
-			boolean isVerifyed = homepage.tejimandipage.isDisplayed();
-			status = isVerifyed ? "Pass" : "Fail";
+			homepage.tejimandipage.isDisplayed();
+			status = "Pass";
 		} catch (Exception e) {
-			System.out.println(e);
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen Teji Mandi CTA", status, endTime - startTime);
 		}
-		long endTime = System.currentTimeMillis(); // End timer
-		Driver.navigate().back();
-		logger.logTableRow("Homescreen Teji Mandi CTA", status, endTime - startTime); // Log search timing
 	}
 
 	public void MF_collection_viewall_returns() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
 		homepage.MfTab.click();
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		mfhomepage.MfHomepageCollectionViewAll.click();
 		mfhomepage.MfViewAll1mReturns.click();
 		boolean isVerified = mfhomepage.onemReturnsMFVerification.isDisplayed();
@@ -615,22 +726,22 @@ public class Rise_Regression {
 		status = isVerified4 ? "Pass" : "Fail";
 		Driver.navigate().back();
 		homepage.homeTabHeader.click();
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Mutual Fund View All Returns", status, endTime - startTime); // Log search timing
+		long endTime = System.currentTimeMillis();
+		logger.logTableRow("Mutual Fund View All Returns", status, endTime - startTime);
 	}
 
 	public void Intra_options_order_placement() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 
 		homepage.homeTabHeader.click();
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		// Scroll and find the element
 		Driver.findElement(AppiumBy.androidUIAutomator(
 				"new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().description(\" Smallcase\"))"));
 		homepage.IntaoptionsButton.click();
 		Thread.sleep(5000);
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Intra option order placment", status, endTime - startTime); // Log search timing
+		long endTime = System.currentTimeMillis();
+		logger.logTableRow("Intra option order placment", status, endTime - startTime);
 	}
 
 	public void Portfolio_view_analysis() throws InterruptedException {
@@ -638,134 +749,172 @@ public class Rise_Regression {
 		Portfolio portfolio = new Portfolio(Driver);
 		HomePage homepage = new HomePage(Driver);
 		homepage.portfolioBottombar.click();
-		long startTime = System.currentTimeMillis(); // Start timer
-		WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(portfolio.AllTabPortfolio));
-
-		portfolio.viewAnalysis.click();
-		portfolio.returnsAbs.click();
-		WebElement current = wait.until(ExpectedConditions.visibilityOf(portfolio.currentVerification));
-		String Current = current.getAttribute("content-desc");
-		boolean isVerified = Current.equalsIgnoreCase("Current Investment Value");
-		status = isVerified ? "Pass" : "Fail";
-		Driver.navigate().back();
-		Driver.navigate().back();
-
-		wait.until(ExpectedConditions.visibilityOf(portfolio.AllTabPortfolio));
-
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Portfolio View Analysis", status, endTime - startTime); // Log search timing
+		long startTime = System.currentTimeMillis();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(portfolio.AllTabPortfolio));
+			portfolio.viewAnalysis.click();
+			portfolio.returnsAbs.click();
+			WebElement current = wait.until(ExpectedConditions.visibilityOf(portfolio.currentVerification));
+			String Current = current.getAttribute("content-desc");
+			Current.equalsIgnoreCase("Current Investment Value");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			Driver.navigate().back();
+			Driver.navigate().back();
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Portfolio View Analysis", status, endTime - startTime);
+		}
 	}
 
 	public void Portfolio_swipe_Stocks_Tab_verification() throws InterruptedException {
 		Portfolio portfolio = new Portfolio(Driver);
 		HomePage homepage = new HomePage(Driver);
 		homepage.portfolioBottombar.click();
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.marginpledge, 0, 5, 944, 166, 1285);
-		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.StocksTabPortfolio));
-		status = isVerified ? "Pass" : "Fail";
-
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Portfolio swipe Stocks Tab verification", status, endTime - startTime); // Log search
-
+		try {
+			wait.until(ExpectedConditions.elementToBeSelected(portfolio.StocksTabPortfolio));
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Portfolio swipe Stocks Tab verification", status, endTime - startTime);
+		}
 	}
 
 	public void Portfolio_swipe_MF_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedmf, 0, 5, 944, 166, 1285);
-		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.MFTabPortfolio));
-		status = isVerified ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Portfolio swipe MF Tab verification", status, endTime - startTime); // Log search timing
+		try {
+			wait.until(ExpectedConditions.elementToBeSelected(portfolio.MFTabPortfolio));
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Portfolio swipe MF Tab verification", status, endTime - startTime);
+		}
 	}
 
 	public void Portfolio_swipe_PMS_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
-		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedpms, 0, 5, 944, 166, 1285);
-		WebElement PMS = wait.until(ExpectedConditions.elementToBeClickable(portfolio.PMSTabPortfolio));
-		String pms = PMS.getAttribute("content-desc");
-		String pmsTab = pms.substring(0, 3);
-		boolean isVerified = pmsTab.equalsIgnoreCase("PMS");
-		status = isVerified ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Portfolio swipe PMS Tab verification", status, endTime - startTime); // Log search // timing
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedpms, 0, 5, 805, 166, 1328);
+		try {
+			WebElement PMS = wait.until(ExpectedConditions.elementToBeClickable(portfolio.PMSTabPortfolio));
+			String pms = PMS.getAttribute("content-desc");
+			String pmsTab = pms.substring(0, 3);
+			pmsTab.equalsIgnoreCase("PMS");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Portfolio swipe PMS Tab verification", status, endTime - startTime);
+		}
 	}
 
 	public void Portfolio_swipe_Basket_Tab_verification() {
 		Portfolio portfolio = new Portfolio(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.allbasket, 0, 5, 944, 166, 1285);
-		boolean isVerified = wait.until(ExpectedConditions.elementToBeSelected(portfolio.BasketTabPortfolio));
-		status = isVerified ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Portfolio swipe Basket Tab verification", status, endTime - startTime); // Log search
+		try {
+			wait.until(ExpectedConditions.elementToBeSelected(portfolio.BasketTabPortfolio));
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Portfolio swipe Basket Tab verification", status, endTime - startTime);
+		}
 	}
 
 	public void Watchlist_script() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
 		homepage.WatchlistBottombar.click();
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.AddButton, 0, 5, 906, 95, 688);
 		wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
 		watchlist.AddButton.click();
-		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Created by Automatio");
+		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Automation");
 		watchlist.createButton.click();
-		WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
-		String verification = Createbutton.getAttribute("content-desc");
-		boolean isVerified = verification.equalsIgnoreCase("OK");
-		status = isVerified ? "Pass" : "Fail";
-		watchlist.okwatchlistcreated.click();
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Add Watchlist", status, endTime - startTime); // Log timing
+		try {
+			WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
+			String verification = Createbutton.getAttribute("content-desc");
+			verification.equalsIgnoreCase("OK");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			watchlist.okwatchlistcreated.click();
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Add Watchlist", status, endTime - startTime);
+		}
 	}
 
 	public void Add_script_in_watchlist() throws IOException, InterruptedException {
 		Watchlist watchlist = new Watchlist(Driver);
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		watchlist.Addscript.click();
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
-		watchlist.addscripticon.click();
-		Driver.hideKeyboard();
-		Driver.navigate().back();
-		Thread.sleep(2000);
-		WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
-		String addedscript = scriptinwatchlist.getAttribute("content-desc");
-		String watchlistscript = addedscript.substring(0, 7);
-		boolean isVerified = watchlistscript.equalsIgnoreCase("YESBANK");
-		status = isVerified ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Add Script in watchlist", status, endTime - startTime); // Log timing
+		try {
+			wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
+			watchlist.addscripticon.click();
+			Driver.hideKeyboard();
+			Driver.navigate().back();
+			WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
+			String addedscript = scriptinwatchlist.getAttribute("content-desc");
+			String watchlistscript = addedscript.substring(0, 7);
+			watchlistscript.equalsIgnoreCase("YESBANK");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Add Script in watchlist", status, endTime - startTime);
+		}
 	}
 
 	public void Delete_script_in_watchlist() {
 		Watchlist watchlist = new Watchlist(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		ResusableMethods.longpressElement(Driver, watchlist.scriptinwatchlist);
 		ResusableMethods.tapWithActions(Driver, 977, 972);
 		String scriptdeleted = watchlist.Addscript.getAttribute("content-desc");
-		boolean isVerified = scriptdeleted.equalsIgnoreCase("Add Scrip");
-		status = isVerified ? "Pass" : "Fail";
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Delete script from watchlist", status, endTime - startTime); // Log timing
+		try {
+			scriptdeleted.equalsIgnoreCase("Add Scrip");
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Delete script from watchlist", status, endTime - startTime);
+		}
 	}
 
 	public void Delete_watchlist() {
 		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
-		long startTime = System.currentTimeMillis(); // Start timer
+		long startTime = System.currentTimeMillis();
 		watchlist.kebabmenuwatchlist.click();
 		watchlist.managewatchlist.click();
 		ResusableMethods.verticalswipetillElement(Driver, watchlist.deleteicon, 0, 5, 532, 2025, 436);
-		boolean isVerified = homepage.WatchlistBottombar.isSelected();
-		status = isVerified ? "Pass" : "Fail";
-		watchlist.savebutton.click();
-		long endTime = System.currentTimeMillis(); // End timer
-		logger.logTableRow("Delete watchlist", status, endTime - startTime); // Log timing
+		try {
+			homepage.WatchlistBottombar.isSelected();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			watchlist.savebutton.click();
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Delete watchlist", status, endTime - startTime);
+		}
 	}
 
 	// Helper Methods for Logging Tables

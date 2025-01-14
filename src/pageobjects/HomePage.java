@@ -113,7 +113,7 @@ public class HomePage {
 	@FindBy (xpath = "//android.view.View[@content-desc=\"Other Free Option Strategies\"]")
 	public WebElement optionsstorepage;
 	
-	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" Smallcase\"]")
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Smallcase')]")
 	public WebElement smallcasebutton;
 	
 	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" TGS\"]")
@@ -145,4 +145,7 @@ public class HomePage {
 	
 	@FindBy (xpath = "//android.widget.TextView")
 	public WebElement tejimandipage;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Mutual Funds')]")
+	public WebElement mfCTAs;
 }
