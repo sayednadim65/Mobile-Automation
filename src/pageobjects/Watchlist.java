@@ -50,7 +50,7 @@ public class Watchlist {
 	@FindBy(xpath = "//android.view.View[@content-desc=\"Save\"]")
 	public WebElement savebutton;
 
-	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Created by Automatio')]/android.view.View[2]")
+	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Autom')]/android.view.View[2]")
 	public WebElement deleteicon;
 	
 	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" Smallcase\"]")

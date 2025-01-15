@@ -148,4 +148,37 @@ public class HomePage {
 	
 	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Mutual Funds')]")
 	public WebElement mfCTAs;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"View All\"]")
+	public WebElement ipoviewallbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'High')]")
+	public WebElement mfhighreturnsbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'SIP')]")
+	public WebElement sipwith500;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Tax')]")
+	public WebElement taxsaverbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'MO')]")
+	public WebElement Morecommendedbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Highest')]")
+	public WebElement highestratedfund;
+	
+	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'International')]")
+	public WebElement internationfund;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"One Click SIP\"]")
+	public WebElement oneclicksip;
+	
+	@FindBy (xpath = "(//android.widget.ImageView)[5]")
+	public WebElement ipoibutton;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"IPO & NFO\"]")
+	public WebElement ipochildscreen;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'IPO List')]")
+	public WebElement ipopage;
 }

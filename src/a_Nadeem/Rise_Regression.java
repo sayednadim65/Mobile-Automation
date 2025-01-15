@@ -69,9 +69,8 @@ public class Rise_Regression {
 			}
 		} catch (Exception biometricLoginException) {
 			System.out.println("Biometric login");
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		}
-
 	}
 
 	@Test(priority = 2)
@@ -79,29 +78,66 @@ public class Rise_Regression {
 
 		logger.logTableStart("Execution Report");
 
+		Global_search_Result();
+		Get_quote_fut_tab();
+		Get_quote_opt_tab();
+		Get_quote_cash_tab();
+		Get_quote_Nse_switch_Delivery_buy();
+		Get_quote_Nse_switch_Delivery_Sell();
+		Get_quote_Bse_switch_Delivery_buy();
+		Get_quote_Bse_switch_Delivery_Sell();
+		Get_quote_charts();
+		Get_quote_optionchain();
+		Get_quote_fundamentaltab();
+		Get_quote_technicaltab();
+		Get_quote_Newstab();
+		Get_quote_Transactionstab();
+		OrderForm_quantity_toggle();
+		OrderForm_amount_toggle();
+		homepage_explore_hide_button();
+		homepage_explore_portfolio_expand();
+		hompage_explore_portfolio_collapse();
+		Researchideaibutton();
+		IPO_button_CTA();
+		Research_Ideas_CTA();
+		IAP_CTA();
+		Bonds_CTA();
+		options_store();
+		Stock_basket_CTA();
+		Insurance_CTA();
+		FixedDeposit_CTA();
 		smallcase_CTA();
-		/*
-		 * Global_search_Result(); Get_quote_fut_tab(); Get_quote_opt_tab();
-		 * Get_quote_cash_tab(); Get_quote_Nse_switch_Delivery_buy();
-		 * Get_quote_Nse_switch_Delivery_Sell(); Get_quote_Bse_switch_Delivery_buy();
-		 * Get_quote_Bse_switch_Delivery_Sell(); Get_quote_charts();
-		 * Get_quote_optionchain(); Get_quote_fundamentaltab();
-		 * Get_quote_technicaltab(); Get_quote_Newstab(); Get_quote_Transactionstab();
-		 * OrderForm_quantity_toggle(); OrderForm_amount_toggle();
-		 * homepage_explore_hide_button(); homepage_explore_portfolio_expand();
-		 * hompage_explore_portfolio_collapse(); Researchideaibutton();
-		 * IPO_button_CTA();
-		 * 
-		 * Research_Ideas_CTA(); IAP_CTA(); Bonds_CTA(); options_store();
-		 * Stock_basket_CTA(); TGS_CTA(); Insurance_CTA(); FixedDeposit_CTA();
-		 * Intraoptions_CTA(); smallcase_CTA(); Tejimandi();
-		 * MF_collection_viewall_returns(); Portfolio_view_analysis();
-		 * Portfolio_swipe_Stocks_Tab_verification();
-		 * Portfolio_swipe_MF_Tab_verification();
-		 * Portfolio_swipe_PMS_Tab_verification();
-		 * Portfolio_swipe_Basket_Tab_verification(); Watchlist_script();
-		 * Add_script_in_watchlist(); Delete_script_in_watchlist(); Delete_watchlist();
-		 */
+		Tejimandi();
+		try {
+			TGS_CTA();
+		} catch (Exception e) {
+			System.out.println("TGS Failed");
+		}
+		try {
+			Intraoptions_CTA();
+		} catch (Exception e) {
+			System.out.println("Intra options Failed");
+		}
+		MFHighReturns_CTA();
+		SIPwith500_CTA();
+		Taxsaver_CTA();
+		MoRecomended_CTA();
+		Highestrated_CTA();
+		internationalfund_CTA();
+		iponfoIbutton();
+		ipoviewall();
+
+		MF_collection_viewall_returns();
+		Portfolio_view_analysis();
+		Portfolio_swipe_Stocks_Tab_verification();
+		Portfolio_swipe_MF_Tab_verification();
+		Portfolio_swipe_PMS_Tab_verification();
+		Portfolio_swipe_Basket_Tab_verification();
+		Watchlist_script();
+		Add_script_in_watchlist();
+		Delete_script_in_watchlist();
+		Delete_watchlist();
+
 		logger.logTableEnd();
 	}
 
@@ -600,8 +636,8 @@ public class Rise_Regression {
 
 	public void TGS_CTA() {
 		HomePage homepage = new HomePage(Driver);
-		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
 		homepage.TGSbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.TGSpage));
@@ -617,8 +653,8 @@ public class Rise_Regression {
 
 	public void Insurance_CTA() {
 		HomePage homepage = new HomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 8, 470, 1600, 600);
 		long startTime = System.currentTimeMillis();
-		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
 		homepage.insurancebutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.insurancepage));
@@ -635,6 +671,7 @@ public class Rise_Regression {
 
 	public void FixedDeposit_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+//		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.fixeddepositbutton.click();
 		try {
@@ -650,8 +687,9 @@ public class Rise_Regression {
 		}
 	}
 
-	public void Intraoptions_CTA() {
+	public void Intraoptions_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.IntaoptionsButton.click();
 		try {
@@ -663,14 +701,15 @@ public class Rise_Regression {
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
+			Thread.sleep(2000);
 			logger.logTableRow("Homescreen Intra options CTA", status, endTime - startTime);
 		}
 	}
 
-	public void smallcase_CTA() {
+	public void smallcase_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
-		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1200, 600);
 		homepage.smallcasebutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.smallcasepage));
@@ -679,13 +718,13 @@ public class Rise_Regression {
 			status = "Fail";
 		} finally {
 			long endTime = System.currentTimeMillis();
+			Thread.sleep(1000);
 			Driver.navigate().back();
 			logger.logTableRow("Homescreen Smallcase CTA", status, endTime - startTime);
 		}
-
 	}
 
-	public void Tejimandi() {
+	public void Tejimandi() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
@@ -699,7 +738,166 @@ public class Rise_Regression {
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
+			Thread.sleep(500);
 			logger.logTableRow("Homescreen Teji Mandi CTA", status, endTime - startTime);
+		}
+	}
+
+	public void MFHighReturns_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 9, 470, 1600, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.mfhighreturnsbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF High Returns", status, endTime - startTime);
+		}
+	}
+
+	public void SIPwith500_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.sipwith500.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF SIP with 500 CTA", status, endTime - startTime);
+		}
+	}
+
+	public void Taxsaver_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.taxsaverbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF Tax Saver CTA", status, endTime - startTime);
+		}
+	}
+
+	public void MoRecomended_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.Morecommendedbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF MO Recommended CTA", status, endTime - startTime);
+		}
+	}
+
+	public void Highestrated_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.highestratedfund.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF Highest rated Fund CTA", status, endTime - startTime);
+		}
+	}
+
+	public void internationalfund_CTA() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.internationfund.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF International Fund CTA", status, endTime - startTime);
+		}
+	}
+
+	public void iponfoIbutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.ipoibutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.ipochildscreen));
+			homepage.ipochildscreen.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen IPO I button CTA", status, endTime - startTime);
+		}
+	}
+
+	public void ipoviewall() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.ipoviewallbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.ipopage));
+			homepage.ipopage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen IPO view All CTA", status, endTime - startTime);
 		}
 	}
 
@@ -841,7 +1039,7 @@ public class Rise_Regression {
 		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.AddButton, 0, 5, 906, 95, 688);
 		wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
 		watchlist.AddButton.click();
-		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Automation");
+		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Autom");
 		watchlist.createButton.click();
 		try {
 			WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
@@ -862,12 +1060,13 @@ public class Rise_Regression {
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		watchlist.Addscript.click();
-		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
+		homepage.Globalsearchaftertap.get(1).sendKeys("YESBANK EQ");
+
+		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
+		watchlist.addscripticon.click();
+		Driver.hideKeyboard();
+		Driver.navigate().back();
 		try {
-			wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
-			watchlist.addscripticon.click();
-			Driver.hideKeyboard();
-			Driver.navigate().back();
 			WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
 			String addedscript = scriptinwatchlist.getAttribute("content-desc");
 			String watchlistscript = addedscript.substring(0, 7);
@@ -899,19 +1098,18 @@ public class Rise_Regression {
 	}
 
 	public void Delete_watchlist() {
-		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
 		long startTime = System.currentTimeMillis();
 		watchlist.kebabmenuwatchlist.click();
 		watchlist.managewatchlist.click();
-		ResusableMethods.verticalswipetillElement(Driver, watchlist.deleteicon, 0, 5, 532, 2025, 436);
+		ResusableMethods.verticalswipetillElement(Driver, watchlist.deleteicon, 0, 5, 532, 1840, 436);
 		try {
-			homepage.WatchlistBottombar.isSelected();
+			watchlist.deleteicon.click();
+			watchlist.savebutton.click();
 			status = "Pass";
 		} catch (Exception e) {
 			status = "Fail";
 		} finally {
-			watchlist.savebutton.click();
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Delete watchlist", status, endTime - startTime);
 		}
@@ -952,7 +1150,7 @@ public class Rise_Regression {
 			capabilities.setCapability("platformVersion", "13");
 			capabilities.setCapability("deviceName", "CPH2467");
 			capabilities.setCapability("udid", "97957054");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_UAT"));
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_pilot"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);

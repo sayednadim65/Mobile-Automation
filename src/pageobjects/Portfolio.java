@@ -43,7 +43,7 @@ public class Portfolio {
 	@FindBy (xpath = "//android.view.View[@content-desc=\"Margin Pledge\"]")
 	public WebElement marginpledge;
 	
-	@FindBy (xpath = "(//android.view.View[contains(@content-desc,'Invested')])[2]")
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Hockey Stick Large Cap Strategy')]")
 	public WebElement investedpms;
 	
 	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Invested Mutual Funds')]")

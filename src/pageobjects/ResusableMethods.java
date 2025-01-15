@@ -20,7 +20,7 @@ public class ResusableMethods {
 		this.Driver = Driver;
 		PageFactory.initElements(Driver, this);
 	}
-
+	
 	public static void tapWithActions(AndroidDriver Driver, int x, int y) {
 
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
@@ -90,12 +90,26 @@ public class ResusableMethods {
 
 				swipeCount++;
 				System.out.println("Performed swipe #" + swipeCount);
-
 			}
 		}
 	}
 
-	
+	public static void swipeCorinates(AndroidDriver Driver, int startX, int startY, int endX, int endY,
+			int swipeCount) {
+		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		for (int i = 1; i <= swipeCount; i++) {
+			Sequence swipe = new Sequence(finger, 1)
+					.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+					.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg())).addAction(finger
+							.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, endY))
+					.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+			Driver.perform(Arrays.asList(swipe));
+
+			System.out.println("Performed swipe #" + i);
+		}
+	}
+
 	public static void longpressElement(AndroidDriver Driver, WebElement elementtolongpress) {
 		// Get element location
 		int elementX = elementtolongpress.getRect().getX() + (elementtolongpress.getRect().getWidth() / 2);
