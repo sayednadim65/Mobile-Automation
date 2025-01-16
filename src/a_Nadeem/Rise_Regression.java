@@ -126,7 +126,15 @@ public class Rise_Regression {
 		internationalfund_CTA();
 		iponfoIbutton();
 		ipoviewall();
-
+		ipobutton();
+		Nfobutton();
+		Stocksipbutton();
+		MFsipbutton();
+		reportsbutton();
+		PNLsummarybutton();
+		alertsbutton();
+		margincalbutton();
+		moapi();
 		MF_collection_viewall_returns();
 		Portfolio_view_analysis();
 		Portfolio_swipe_Stocks_Tab_verification();
@@ -636,6 +644,7 @@ public class Rise_Regression {
 
 	public void TGS_CTA() {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.TGSbutton.click();
@@ -653,6 +662,7 @@ public class Rise_Regression {
 
 	public void Insurance_CTA() {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 8, 470, 1600, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.insurancebutton.click();
@@ -671,6 +681,7 @@ public class Rise_Regression {
 
 	public void FixedDeposit_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+//		homepage.homeTabHeader.click();
 //		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.fixeddepositbutton.click();
@@ -689,6 +700,7 @@ public class Rise_Regression {
 
 	public void Intraoptions_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.IntaoptionsButton.click();
@@ -708,6 +720,7 @@ public class Rise_Regression {
 
 	public void smallcase_CTA() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1200, 600);
 		homepage.smallcasebutton.click();
@@ -726,6 +739,7 @@ public class Rise_Regression {
 
 	public void Tejimandi() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
 		homepage.tejimandibutton.click();
@@ -884,6 +898,7 @@ public class Rise_Regression {
 
 	public void ipoviewall() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.ipoviewallbutton.click();
@@ -898,6 +913,185 @@ public class Rise_Regression {
 			Driver.navigate().back();
 			Thread.sleep(500);
 			logger.logTableRow("Homescreen IPO view All CTA", status, endTime - startTime);
+		}
+	}
+
+	public void ipobutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.ipobutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.ipolistq));
+			homepage.ipolistq.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen IPO CTA", status, endTime - startTime);
+		}
+	}
+
+	public void Nfobutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.nfobutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.nfolist));
+			homepage.nfolist.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen NFO CTA", status, endTime - startTime);
+		}
+	}
+
+	public void Stocksipbutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.stocksipbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.stocksippage));
+			homepage.stocksippage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen Stock sip CTA", status, endTime - startTime);
+		}
+	}
+
+	public void MFsipbutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		MfHomePage mfhomepage = new MfHomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.MFsipbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
+			mfhomepage.MfViewAll3YReturns.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MF sip CTA", status, endTime - startTime);
+		}
+	}
+
+	public void reportsbutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.reportsbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.reportspage));
+			homepage.reportspage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen Reports CTA", status, endTime - startTime);
+		}
+	}
+
+	public void PNLsummarybutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.PNLbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.pnlpage));
+			homepage.pnlpage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen PNL Summary CTA", status, endTime - startTime);
+		}
+	}
+
+	public void alertsbutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.alertsbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.alertspage));
+			homepage.alertspage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen Alerts CTA", status, endTime - startTime);
+		}
+	}
+
+	public void margincalbutton() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.margincalbutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.margincalpage));
+			homepage.margincalpage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen margin cal CTA", status, endTime - startTime);
+		}
+	}
+
+	public void moapi() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
+		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
+		long startTime = System.currentTimeMillis();
+		homepage.MOapibutton.click();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(homepage.moapipage));
+			homepage.moapipage.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Thread.sleep(500);
+			logger.logTableRow("Homescreen MO API CTA", status, endTime - startTime);
 		}
 	}
 
@@ -1061,8 +1255,8 @@ public class Rise_Regression {
 		long startTime = System.currentTimeMillis();
 		watchlist.Addscript.click();
 		homepage.Globalsearchaftertap.get(1).sendKeys("YESBANK EQ");
-
-		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
+		Thread.sleep(3000);
+//		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
 		watchlist.addscripticon.click();
 		Driver.hideKeyboard();
 		Driver.navigate().back();
@@ -1150,7 +1344,7 @@ public class Rise_Regression {
 			capabilities.setCapability("platformVersion", "13");
 			capabilities.setCapability("deviceName", "CPH2467");
 			capabilities.setCapability("udid", "97957054");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_pilot"));
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);

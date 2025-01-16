@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[<h3>Execution Report</h3>]]>
@@ -11,237 +11,200 @@
       <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>3920</td></tr>]]>
+      <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>5270</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>5607</td></tr>]]>
+      <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>4411</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2162</td></tr>]]>
+      <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>6603</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>9448</td></tr>]]>
+      <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>3963</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>4768</td></tr>]]>
+      <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>8064</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>5501</td></tr>]]>
+      <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>11969</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>8115</td></tr>]]>
+      <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>9593</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>7815</td></tr>]]>
+      <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>9224</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>9253</td></tr>]]>
+      <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>5458</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>1922</td></tr>]]>
+      <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>1913</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>2877</td></tr>]]>
+      <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>4041</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>1441</td></tr>]]>
+      <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>3632</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>1832</td></tr>]]>
+      <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>2084</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>7030</td></tr>]]>
+      <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>10081</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>7747</td></tr>]]>
+      <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>8803</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>11471</td></tr>]]>
+      <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>16707</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td>Pass</td><td>8395</td></tr>]]>
+      <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td>Pass</td><td>2259</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>18</td><td>Homescreen portfolio expand button</td><td>Pass</td><td>2353</td></tr>]]>
+      <![CDATA[<tr><td>18</td><td>Homescreen portfolio expand button</td><td>Pass</td><td>3896</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>19</td><td>Homescreen portfolio collapse button</td><td>Pass</td><td>2350</td></tr>]]>
+      <![CDATA[<tr><td>19</td><td>Homescreen portfolio collapse button</td><td>Pass</td><td>3994</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>20</td><td>Homescreen Research idea I button</td><td>Pass</td><td>1333</td></tr>]]>
+      <![CDATA[<tr><td>20</td><td>Homescreen Research idea I button</td><td>Pass</td><td>6087</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>21</td><td>Homescreen IPO CTA</td><td>Pass</td><td>6469</td></tr>]]>
+      <![CDATA[<tr><td>21</td><td>Homescreen IPO CTA</td><td>Pass</td><td>1348</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>22</td><td>Homescreen Research Idea CTA</td><td>Pass</td><td>4685</td></tr>]]>
+      <![CDATA[<tr><td>22</td><td>Homescreen Research Idea CTA</td><td>Pass</td><td>2092</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>23</td><td>Homescreen IAP CTA</td><td>Pass</td><td>3692</td></tr>]]>
+      <![CDATA[<tr><td>23</td><td>Homescreen IAP CTA</td><td>Pass</td><td>8602</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>24</td><td>Homescreen Bonds CTA</td><td>Pass</td><td>16640</td></tr>]]>
+      <![CDATA[<tr><td>24</td><td>Homescreen Bonds CTA</td><td>Pass</td><td>12417</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>25</td><td>Homescreen Option Store CTA</td><td>Pass</td><td>6154</td></tr>]]>
+      <![CDATA[<tr><td>25</td><td>Homescreen Option Store CTA</td><td>Pass</td><td>3601</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>26</td><td>Homescreen Stock Basket CTA</td><td>Pass</td><td>8076</td></tr>]]>
+      <![CDATA[<tr><td>26</td><td>Homescreen Stock Basket CTA</td><td>Pass</td><td>2901</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>27</td><td>Homescreen Insurance CTA</td><td>Pass</td><td>945</td></tr>]]>
+      <![CDATA[<tr><td>27</td><td>Homescreen Insurance CTA</td><td>Pass</td><td>2084</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>28</td><td>Homescreen Fixed Deposit CTA</td><td>Pass</td><td>4849</td></tr>]]>
+      <![CDATA[<tr><td>28</td><td>Homescreen Fixed Deposit CTA</td><td>Pass</td><td>5989</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>29</td><td>Homescreen Smallcase CTA</td><td>Pass</td><td>1580</td></tr>]]>
+      <![CDATA[<tr><td>29</td><td>Homescreen Smallcase CTA</td><td>Pass</td><td>2499</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>30</td><td>Homescreen Teji Mandi CTA</td><td>Pass</td><td>8065</td></tr>]]>
+      <![CDATA[<tr><td>30</td><td>Homescreen Teji Mandi CTA</td><td>Pass</td><td>3440</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>31</td><td>Homescreen TGS CTA</td><td>Pass</td><td>7145</td></tr>]]>
+      <![CDATA[<tr><td>31</td><td>Homescreen TGS CTA</td><td>Pass</td><td>2343</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>32</td><td>Homescreen Intra options CTA</td><td>Pass</td><td>2034</td></tr>]]>
+      <![CDATA[<tr><td>32</td><td>Homescreen Intra options CTA</td><td>Pass</td><td>6762</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>33</td><td>Homescreen MF High Returns</td><td>Pass</td><td>4934</td></tr>]]>
+      <![CDATA[<tr><td>33</td><td>Homescreen MF High Returns</td><td>Pass</td><td>2084</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>34</td><td>Homescreen MF SIP with 500 CTA</td><td>Pass</td><td>6087</td></tr>]]>
+      <![CDATA[<tr><td>34</td><td>Homescreen MF SIP with 500 CTA</td><td>Pass</td><td>7248</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>35</td><td>Homescreen MF Tax Saver CTA</td><td>Pass</td><td>3184</td></tr>]]>
+      <![CDATA[<tr><td>35</td><td>Homescreen MF Tax Saver CTA</td><td>Pass</td><td>1938</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>36</td><td>Homescreen MF MO Recommended CTA</td><td>Pass</td><td>2121</td></tr>]]>
+      <![CDATA[<tr><td>36</td><td>Homescreen MF MO Recommended CTA</td><td>Pass</td><td>1850</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>37</td><td>Homescreen MF Highest rated Fund CTA</td><td>Pass</td><td>2287</td></tr>]]>
+      <![CDATA[<tr><td>37</td><td>Homescreen MF Highest rated Fund CTA</td><td>Pass</td><td>3278</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>38</td><td>Homescreen MF International Fund CTA</td><td>Pass</td><td>2191</td></tr>]]>
+      <![CDATA[<tr><td>38</td><td>Homescreen MF International Fund CTA</td><td>Pass</td><td>4659</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>39</td><td>Homescreen IPO I button CTA</td><td>Pass</td><td>2001</td></tr>]]>
+      <![CDATA[<tr><td>39</td><td>Homescreen IPO I button CTA</td><td>Pass</td><td>1084</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>40</td><td>Homescreen IPO view All CTA</td><td>Pass</td><td>1949</td></tr>]]>
+      <![CDATA[<tr><td>40</td><td>Homescreen IPO view All CTA</td><td>Pass</td><td>1131</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>41</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>11179</td></tr>]]>
+      <![CDATA[<tr><td>41</td><td>Homescreen IPO CTA</td><td>Pass</td><td>448</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>42</td><td>Portfolio View Analysis</td><td>Fail</td><td>28011</td></tr>]]>
+      <![CDATA[<tr><td>42</td><td>Homescreen NFO CTA</td><td>Pass</td><td>2568</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>43</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>46342</td></tr>]]>
+      <![CDATA[<tr><td>43</td><td>Homescreen Stock sip CTA</td><td>Pass</td><td>4130</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>44</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>43882</td></tr>]]>
+      <![CDATA[<tr><td>44</td><td>Homescreen MF sip CTA</td><td>Pass</td><td>5622</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>45</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>44396</td></tr>]]>
+      <![CDATA[<tr><td>45</td><td>Homescreen Reports CTA</td><td>Pass</td><td>7393</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>46</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>52326</td></tr>]]>
+      <![CDATA[<tr><td>46</td><td>Homescreen PNL Summary CTA</td><td>Pass</td><td>2785</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>47</td><td>Add Watchlist</td><td>Pass</td><td>64585</td></tr>]]>
+      <![CDATA[<tr><td>47</td><td>Homescreen Alerts CTA</td><td>Pass</td><td>1910</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>48</td><td>Add Script in watchlist</td><td>Pass</td><td>15606</td></tr>]]>
+      <![CDATA[<tr><td>48</td><td>Homescreen margin cal CTA</td><td>Pass</td><td>1704</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>49</td><td>Delete script from watchlist</td><td>Pass</td><td>4655</td></tr>]]>
+      <![CDATA[<tr><td>49</td><td>Homescreen MO API CTA</td><td>Pass</td><td>2741</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>50</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>15022</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>51</td><td>Portfolio View Analysis</td><td>Pass</td><td>24256</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>52</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>44549</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>53</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>44505</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>54</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>47819</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>55</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>45874</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>56</td><td>Add Watchlist</td><td>Pass</td><td>95922</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>57</td><td>Add Script in watchlist</td><td>Fail</td><td>20020</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>58</td><td>Delete script from watchlist</td><td>Pass</td><td>7108</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td>59</td><td>Delete watchlist</td><td>Pass</td><td>48422</td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[</table>]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-01-16T01:24:21 IST" name="Default suite" finished-at="2025-01-16T01:43:43 IST" duration-ms="1161949">
+  <suite started-at="2025-01-16T23:40:12 IST" name="Default suite" finished-at="2025-01-17T00:00:17 IST" duration-ms="1205141">
     <groups>
     </groups>
-    <test started-at="2025-01-16T01:24:21 IST" name="Default test" finished-at="2025-01-16T01:43:43 IST" duration-ms="1161949">
+    <test started-at="2025-01-16T23:40:12 IST" name="Default test" finished-at="2025-01-17T00:00:17 IST" duration-ms="1205141">
       <class name="a_Nadeem.Rise_Regression">
-        <test-method is-config="true" signature="Verify_user_launch_app()[pri:0, instance:a_Nadeem.Rise_Regression@42e25b0b]" started-at="2025-01-16T01:24:21 IST" name="Verify_user_launch_app" finished-at="2025-01-16T01:24:32 IST" duration-ms="11131" status="PASS">
+        <test-method is-config="true" signature="Verify_user_launch_app()[pri:0, instance:a_Nadeem.Rise_Regression@72ade7e3]" started-at="2025-01-16T23:40:12 IST" name="Verify_user_launch_app" finished-at="2025-01-16T23:40:25 IST" duration-ms="12600" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_launch_app -->
-        <test-method signature="Verify_user_login_and_clicks_on_RDD()[pri:1, instance:a_Nadeem.Rise_Regression@42e25b0b]" started-at="2025-01-16T01:24:32 IST" name="Verify_user_login_and_clicks_on_RDD" finished-at="2025-01-16T01:24:58 IST" duration-ms="25785" status="PASS">
+        <test-method signature="Verify_user_login_and_clicks_on_RDD()[pri:1, instance:a_Nadeem.Rise_Regression@72ade7e3]" started-at="2025-01-16T23:40:25 IST" name="Verify_user_login_and_clicks_on_RDD" finished-at="2025-01-16T23:40:50 IST" duration-ms="25320" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_login_and_clicks_on_RDD -->
-        <test-method signature="App_Regression()[pri:2, instance:a_Nadeem.Rise_Regression@42e25b0b]" started-at="2025-01-16T01:24:58 IST" name="App_Regression" finished-at="2025-01-16T01:43:42 IST" duration-ms="1123919" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.21.0', revision: '79ed462ef4'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.10'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [55fb774b-8dd2-447c-a338-6160508098d9, findElement {value=//android.view.View[@content-desc="Save"], using=xpath}]
-Capabilities {appium:appActivity: mosl.supperfina.com.MainAct..., appium:appPackage: com.mosl.mobile.pilot, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: mosl.supperfina.com.MainAct..., appPackage: com.mosl.mobile.pilot, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: CPH2467, noReset: true, platformName: ANDROID, platformVersion: 13, udid: 97957054}, appium:deviceApiLevel: 33, appium:deviceManufacturer: OnePlus, appium:deviceModel: CPH2467, appium:deviceName: 97957054, appium:deviceScreenDensity: 408, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: 97957054, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.55, appium:platformVersion: 13, appium:statBarHeight: 107, appium:takesScreenshot: true, appium:udid: 97957054, appium:viewportRect: {height: 2074, left: 0, top: 107, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 55fb774b-8dd2-447c-a338-6160508098d9]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.21.0', revision: '79ed462ef4'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.10'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [55fb774b-8dd2-447c-a338-6160508098d9, findElement {value=//android.view.View[@content-desc="Save"], using=xpath}]
-Capabilities {appium:appActivity: mosl.supperfina.com.MainAct..., appium:appPackage: com.mosl.mobile.pilot, appium:autoGrantPermissions: true, appium:automationName: UiAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: mosl.supperfina.com.MainAct..., appPackage: com.mosl.mobile.pilot, autoGrantPermissions: true, automationName: UiAutomator2, deviceName: CPH2467, noReset: true, platformName: ANDROID, platformVersion: 13, udid: 97957054}, appium:deviceApiLevel: 33, appium:deviceManufacturer: OnePlus, appium:deviceModel: CPH2467, appium:deviceName: 97957054, appium:deviceScreenDensity: 408, appium:deviceScreenSize: 1080x2400, appium:deviceUDID: 97957054, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.55, appium:platformVersion: 13, appium:statBarHeight: 107, appium:takesScreenshot: true, appium:udid: 97957054, appium:viewportRect: {height: 2074, left: 0, top: 107, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 55fb774b-8dd2-447c-a338-6160508098d9
-at jdk.internal.reflect.GeneratedConstructorAccessor15.newInstance(Unknown Source)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:237)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy12.click(Unknown Source)
-at a_Nadeem.Rise_Regression.Delete_watchlist(Rise_Regression.java:1114)
-at a_Nadeem.Rise_Regression.App_Regression(Rise_Regression.java:140)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        <test-method signature="App_Regression()[pri:2, instance:a_Nadeem.Rise_Regression@72ade7e3]" started-at="2025-01-16T23:40:50 IST" name="App_Regression" finished-at="2025-01-17T00:00:16 IST" duration-ms="1166198" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[<h3>Execution Report</h3>]]>
@@ -253,155 +216,188 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
               <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>3920</td></tr>]]>
+              <![CDATA[<tr><td>1</td><td>Global Search Result</td><td>Pass</td><td>5270</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>5607</td></tr>]]>
+              <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td>Pass</td><td>4411</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>2162</td></tr>]]>
+              <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td>Pass</td><td>6603</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>9448</td></tr>]]>
+              <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td>Pass</td><td>3963</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>4768</td></tr>]]>
+              <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td>Pass</td><td>8064</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>5501</td></tr>]]>
+              <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td>Pass</td><td>11969</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>8115</td></tr>]]>
+              <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td>Pass</td><td>9593</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>7815</td></tr>]]>
+              <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery order form</td><td>Pass</td><td>9224</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>9253</td></tr>]]>
+              <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td>Pass</td><td>5458</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>1922</td></tr>]]>
+              <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td>Pass</td><td>1913</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>2877</td></tr>]]>
+              <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td>Pass</td><td>4041</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>1441</td></tr>]]>
+              <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td>Pass</td><td>3632</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>1832</td></tr>]]>
+              <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td>Pass</td><td>2084</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>7030</td></tr>]]>
+              <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td>Pass</td><td>10081</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>7747</td></tr>]]>
+              <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td>Pass</td><td>8803</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>11471</td></tr>]]>
+              <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td>Pass</td><td>16707</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td>Pass</td><td>8395</td></tr>]]>
+              <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td>Pass</td><td>2259</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>18</td><td>Homescreen portfolio expand button</td><td>Pass</td><td>2353</td></tr>]]>
+              <![CDATA[<tr><td>18</td><td>Homescreen portfolio expand button</td><td>Pass</td><td>3896</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>19</td><td>Homescreen portfolio collapse button</td><td>Pass</td><td>2350</td></tr>]]>
+              <![CDATA[<tr><td>19</td><td>Homescreen portfolio collapse button</td><td>Pass</td><td>3994</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>20</td><td>Homescreen Research idea I button</td><td>Pass</td><td>1333</td></tr>]]>
+              <![CDATA[<tr><td>20</td><td>Homescreen Research idea I button</td><td>Pass</td><td>6087</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>21</td><td>Homescreen IPO CTA</td><td>Pass</td><td>6469</td></tr>]]>
+              <![CDATA[<tr><td>21</td><td>Homescreen IPO CTA</td><td>Pass</td><td>1348</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>22</td><td>Homescreen Research Idea CTA</td><td>Pass</td><td>4685</td></tr>]]>
+              <![CDATA[<tr><td>22</td><td>Homescreen Research Idea CTA</td><td>Pass</td><td>2092</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>23</td><td>Homescreen IAP CTA</td><td>Pass</td><td>3692</td></tr>]]>
+              <![CDATA[<tr><td>23</td><td>Homescreen IAP CTA</td><td>Pass</td><td>8602</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>24</td><td>Homescreen Bonds CTA</td><td>Pass</td><td>16640</td></tr>]]>
+              <![CDATA[<tr><td>24</td><td>Homescreen Bonds CTA</td><td>Pass</td><td>12417</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>25</td><td>Homescreen Option Store CTA</td><td>Pass</td><td>6154</td></tr>]]>
+              <![CDATA[<tr><td>25</td><td>Homescreen Option Store CTA</td><td>Pass</td><td>3601</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>26</td><td>Homescreen Stock Basket CTA</td><td>Pass</td><td>8076</td></tr>]]>
+              <![CDATA[<tr><td>26</td><td>Homescreen Stock Basket CTA</td><td>Pass</td><td>2901</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>27</td><td>Homescreen Insurance CTA</td><td>Pass</td><td>945</td></tr>]]>
+              <![CDATA[<tr><td>27</td><td>Homescreen Insurance CTA</td><td>Pass</td><td>2084</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>28</td><td>Homescreen Fixed Deposit CTA</td><td>Pass</td><td>4849</td></tr>]]>
+              <![CDATA[<tr><td>28</td><td>Homescreen Fixed Deposit CTA</td><td>Pass</td><td>5989</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>29</td><td>Homescreen Smallcase CTA</td><td>Pass</td><td>1580</td></tr>]]>
+              <![CDATA[<tr><td>29</td><td>Homescreen Smallcase CTA</td><td>Pass</td><td>2499</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>30</td><td>Homescreen Teji Mandi CTA</td><td>Pass</td><td>8065</td></tr>]]>
+              <![CDATA[<tr><td>30</td><td>Homescreen Teji Mandi CTA</td><td>Pass</td><td>3440</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>31</td><td>Homescreen TGS CTA</td><td>Pass</td><td>7145</td></tr>]]>
+              <![CDATA[<tr><td>31</td><td>Homescreen TGS CTA</td><td>Pass</td><td>2343</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>32</td><td>Homescreen Intra options CTA</td><td>Pass</td><td>2034</td></tr>]]>
+              <![CDATA[<tr><td>32</td><td>Homescreen Intra options CTA</td><td>Pass</td><td>6762</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>33</td><td>Homescreen MF High Returns</td><td>Pass</td><td>4934</td></tr>]]>
+              <![CDATA[<tr><td>33</td><td>Homescreen MF High Returns</td><td>Pass</td><td>2084</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>34</td><td>Homescreen MF SIP with 500 CTA</td><td>Pass</td><td>6087</td></tr>]]>
+              <![CDATA[<tr><td>34</td><td>Homescreen MF SIP with 500 CTA</td><td>Pass</td><td>7248</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>35</td><td>Homescreen MF Tax Saver CTA</td><td>Pass</td><td>3184</td></tr>]]>
+              <![CDATA[<tr><td>35</td><td>Homescreen MF Tax Saver CTA</td><td>Pass</td><td>1938</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>36</td><td>Homescreen MF MO Recommended CTA</td><td>Pass</td><td>2121</td></tr>]]>
+              <![CDATA[<tr><td>36</td><td>Homescreen MF MO Recommended CTA</td><td>Pass</td><td>1850</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>37</td><td>Homescreen MF Highest rated Fund CTA</td><td>Pass</td><td>2287</td></tr>]]>
+              <![CDATA[<tr><td>37</td><td>Homescreen MF Highest rated Fund CTA</td><td>Pass</td><td>3278</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>38</td><td>Homescreen MF International Fund CTA</td><td>Pass</td><td>2191</td></tr>]]>
+              <![CDATA[<tr><td>38</td><td>Homescreen MF International Fund CTA</td><td>Pass</td><td>4659</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>39</td><td>Homescreen IPO I button CTA</td><td>Pass</td><td>2001</td></tr>]]>
+              <![CDATA[<tr><td>39</td><td>Homescreen IPO I button CTA</td><td>Pass</td><td>1084</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>40</td><td>Homescreen IPO view All CTA</td><td>Pass</td><td>1949</td></tr>]]>
+              <![CDATA[<tr><td>40</td><td>Homescreen IPO view All CTA</td><td>Pass</td><td>1131</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>41</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>11179</td></tr>]]>
+              <![CDATA[<tr><td>41</td><td>Homescreen IPO CTA</td><td>Pass</td><td>448</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>42</td><td>Portfolio View Analysis</td><td>Fail</td><td>28011</td></tr>]]>
+              <![CDATA[<tr><td>42</td><td>Homescreen NFO CTA</td><td>Pass</td><td>2568</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>43</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>46342</td></tr>]]>
+              <![CDATA[<tr><td>43</td><td>Homescreen Stock sip CTA</td><td>Pass</td><td>4130</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>44</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>43882</td></tr>]]>
+              <![CDATA[<tr><td>44</td><td>Homescreen MF sip CTA</td><td>Pass</td><td>5622</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>45</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>44396</td></tr>]]>
+              <![CDATA[<tr><td>45</td><td>Homescreen Reports CTA</td><td>Pass</td><td>7393</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>46</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>52326</td></tr>]]>
+              <![CDATA[<tr><td>46</td><td>Homescreen PNL Summary CTA</td><td>Pass</td><td>2785</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>47</td><td>Add Watchlist</td><td>Pass</td><td>64585</td></tr>]]>
+              <![CDATA[<tr><td>47</td><td>Homescreen Alerts CTA</td><td>Pass</td><td>1910</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>48</td><td>Add Script in watchlist</td><td>Pass</td><td>15606</td></tr>]]>
+              <![CDATA[<tr><td>48</td><td>Homescreen margin cal CTA</td><td>Pass</td><td>1704</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>49</td><td>Delete script from watchlist</td><td>Pass</td><td>4655</td></tr>]]>
+              <![CDATA[<tr><td>49</td><td>Homescreen MO API CTA</td><td>Pass</td><td>2741</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>50</td><td>Mutual Fund View All Returns</td><td>Pass</td><td>15022</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>51</td><td>Portfolio View Analysis</td><td>Pass</td><td>24256</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>52</td><td>Portfolio swipe Stocks Tab verification</td><td>Pass</td><td>44549</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>53</td><td>Portfolio swipe MF Tab verification</td><td>Pass</td><td>44505</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>54</td><td>Portfolio swipe PMS Tab verification</td><td>Pass</td><td>47819</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>55</td><td>Portfolio swipe Basket Tab verification</td><td>Pass</td><td>45874</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>56</td><td>Add Watchlist</td><td>Pass</td><td>95922</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>57</td><td>Add Script in watchlist</td><td>Fail</td><td>20020</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>58</td><td>Delete script from watchlist</td><td>Pass</td><td>7108</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td>59</td><td>Delete watchlist</td><td>Pass</td><td>48422</td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[</table>]]>
             </line>
           </reporter-output>
         </test-method> <!-- App_Regression -->
-        <test-method is-config="true" signature="Verify_user_kills_app()[pri:0, instance:a_Nadeem.Rise_Regression@42e25b0b]" started-at="2025-01-16T01:43:42 IST" name="Verify_user_kills_app" finished-at="2025-01-16T01:43:43 IST" duration-ms="1043" status="PASS">
+        <test-method is-config="true" signature="Verify_user_kills_app()[pri:0, instance:a_Nadeem.Rise_Regression@72ade7e3]" started-at="2025-01-17T00:00:16 IST" name="Verify_user_kills_app" finished-at="2025-01-17T00:00:17 IST" duration-ms="978" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_kills_app -->
