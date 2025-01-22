@@ -29,7 +29,7 @@ public class Watchlist {
 	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Add Scrip\"]")
 	public WebElement Addscript;
 
-	@FindBy(xpath = "(//android.widget.ImageView)[3]")
+	@FindBy(xpath = "(//android.widget.ImageView)[4]")
 	public WebElement addscripticon;
 
 	@FindBy(xpath = "//android.view.View[contains(@content-desc,'YESBANK')]")
@@ -44,15 +44,27 @@ public class Watchlist {
 	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Manage Watchlist\"]")
 	public WebElement managewatchlist;
 
-	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Created by Automatio')]")
+	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Automation')]")
 	public WebElement createdwatchlist;
 
 	@FindBy(xpath = "//android.view.View[@content-desc=\"Save\"]")
 	public WebElement savebutton;
 
-	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Autom')]/android.view.View[2]")
+	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Aumation')]/android.view.View[2]")
 	public WebElement deleteicon;
-	
-	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\" Smallcase\"]")
+
+	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\" Smallcase\"]")
 	public WebElement smallcasebutton;
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Tap “save” to confirm changes')]")
+	public WebElement watchlistdeletetoastmessage;
+
+	@FindBy(xpath = "(//android.view.View)[13]")
+	public WebElement watchlistbutton;
+
+	@FindBy(xpath = "//android.view.View[@content-desc=\"do not delete\"]")
+	public WebElement donotdelte;
+
+	@FindBy(xpath = "//android.view.View[@content-desc=\"Option List\"]")
+	public WebElement optionlist;
 }

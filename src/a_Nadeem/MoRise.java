@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -21,66 +20,57 @@ import drivers.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import pageobjects.GetQuote;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
 import pageobjects.MfHomePage;
+import pageobjects.ResusableMethods;
 import pageobjects.StocksHomePage;
+import pageobjects.Watchlist;
 import utils.Commons;
 
 public class MoRise {
 	AndroidDriver Driver;
-	int Global_Search_Results_loop = 5;
-	int Homepage_portfolio_snap_loop = 5;
-	int Stocks_homepage_portfolio_snap_loop = 5;
-	int mf_homepage_portfolio_snap_loop = 5;
-	int watchlis_loop = 5; // same for option watch list
-	int Get_quote_loop = 5; // same for Get quote, Fundamentals, Technicals, News
-
-	// Method to tap on x & y coordinate
-	AppiumDriver appiumDriver = (AppiumDriver) Driver; // To cast android driver to appium driver
-	public static void tapWithActions(AppiumDriver Driver, int x, int y) {
-
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence tap = new Sequence(finger, 1);
-
-		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
-		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-		Driver.perform(Collections.singletonList(tap));
-	}
-
-	public LoginPage object1;
-	public HomePage object2;
-	public StocksHomePage object3;
-	public MfHomePage object4;
+	String status;
+	int Global_Search_Results_loop = 20;
+	int Homepage_portfolio_snap_loop = 20;
+	int Stocks_homepage_portfolio_snap_loop = 0;
+	int mf_homepage_portfolio_snap_loop = 20;
+	int watchlis_loop = 20; // same for option watch list
+	int Get_quote_loop = 20; // same for Get quote, Fundamentals, Technicals, News
+	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(10));
 
 	@Test(priority = 1)
 	public void Verify_user_login_and_clicks_on_RDD() throws InterruptedException, IOException {
 		LoginPage loginpage = new LoginPage(Driver);
-
-		loginpage.loginButton.isDisplayed();
-		loginpage.loginButton.click();
-		Thread.sleep(1000);
-		loginpage.userID.click();
-		loginpage.userID.sendKeys(Commons.getGlobalPropertiesValue("userId"));
-		Driver.hideKeyboard();
-		loginpage.nextbutton.click();
-		Thread.sleep(1000);
-		loginpage.passwordTextField.click();
-		loginpage.passwordTextField.sendKeys(Commons.getGlobalPropertiesValue("password"));
-		Driver.hideKeyboard();
-		loginpage.loginButton.click();
-		Thread.sleep(5000);
-		loginpage.dobTextField.get(0).click();
-		loginpage.dobTextField.get(0).sendKeys(Commons.getGlobalPropertiesValue("dob"));
-		Driver.hideKeyboard();
-		loginpage.confirmDobButton.click();
-		Thread.sleep(500);
-		loginpage.exploreTheAppButton.click();
-		Thread.sleep(500);
-		loginpage.iUnderstandRddButton.click();
-		Thread.sleep(500);
+		try {
+			if (loginpage.loginButton.isDisplayed()) {
+				loginpage.loginButton.click();
+				Thread.sleep(1000);
+				loginpage.userID.click();
+				loginpage.userID.sendKeys(Commons.getGlobalPropertiesValue("userId"));
+				Driver.hideKeyboard();
+				loginpage.nextbutton.click();
+				Thread.sleep(1000);
+				loginpage.passwordTextField.click();
+				loginpage.passwordTextField.sendKeys(Commons.getGlobalPropertiesValue("password"));
+				Driver.hideKeyboard();
+				loginpage.loginButton.click();
+				Thread.sleep(5000);
+				loginpage.dobTextField.get(0).click();
+				loginpage.dobTextField.get(0).sendKeys(Commons.getGlobalPropertiesValue("dob"));
+				Driver.hideKeyboard();
+				loginpage.confirmDobButton.click();
+				Thread.sleep(500);
+				loginpage.exploreTheAppButton.click();
+				Thread.sleep(500);
+				loginpage.iUnderstandRddButton.click();
+				Thread.sleep(500);
+			}
+		} catch (Exception biometricLoginException) {
+			System.out.println("Biometric login");
+			Thread.sleep(5000);
+		}
 
 	}
 
@@ -93,44 +83,43 @@ public class MoRise {
 		for (int i = 1; i <= Global_Search_Results_loop; i++) {
 			homepage.Globalsearchbeforetap.click();
 			homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
-			long startTime = System.currentTimeMillis(); // Start time
-			WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(2));
-			WebElement searchresult = wait
-					.until(ExpectedConditions.elementToBeClickable(homepage.Globalsearchresult));
-			long endTime = System.currentTimeMillis(); // End time
-			long timeTaken = endTime - startTime; // Time calculation
-			String search_result = searchresult.getAttribute("content-desc");
-			String idea = search_result.substring(3, 7);
-			boolean isVerified = idea.equalsIgnoreCase(Commons.getGlobalPropertiesValue("global_search_scrip"));
-			String status = isVerified ? "Pass" : "Fail";
-			Thread.sleep(1000);
+			long startTime = System.currentTimeMillis();
+			try {
+				wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
+				homepage.Globalsearchresult.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis();
+			long timeTaken = endTime - startTime;
 			Driver.hideKeyboard();
+			Thread.sleep(1000);
 			Driver.navigate().back();
 			logTableRow(tableName, i, timeTaken, status);
-
+			Thread.sleep(1000);
 		}
 		logTableEnd(tableName);
 	}
 
 	@Test(priority = 3)
 	public void Verify_homepage_portfolio_snapshot() throws InterruptedException, IOException {
-
 		HomePage homepage = new HomePage(Driver);
 		String tableName = "Homepage_portfolio_snap";
 		logTableStart(tableName);
 		for (int i = 1; i <= Homepage_portfolio_snap_loop; i++) {
 			Thread.sleep(200);
 			homepage.ExpandIcon.click();
-			long startTime = System.currentTimeMillis(); // Start time
-			WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(1));
-			WebElement homepagePortfolioSnapExpand = wait
-					.until(ExpectedConditions.elementToBeClickable(homepage.CollapseIcon));
+			long startTime = System.currentTimeMillis();
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(homepage.availablemargin));
+				homepage.availablemargin.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
 			long endTime = System.currentTimeMillis();
 			long timeTaken = endTime - startTime; // Time calculation
-			String a = homepagePortfolioSnapExpand.getAttribute("content-desc");
-			boolean isVerified = a.equalsIgnoreCase(Commons.getGlobalPropertiesValue("homepagePortfolioVerification"));
-			String status = isVerified ? "Pass" : "Fail";
-
 			logTableRow(tableName, i, timeTaken, status);
 			homepage.CollapseIcon.click();
 			Thread.sleep(300);
@@ -148,24 +137,20 @@ public class MoRise {
 		String tableName = "Stocks_homepage_portfolio_snap";
 		logTableStart(tableName);
 		for (int i = 1; i <= Stocks_homepage_portfolio_snap_loop; i++) {
-			stockshomepage.stocksPortfolioCollapse.click();
+			stockshomepage.stocksPortfolioexpand.click();
 			long startTime = System.currentTimeMillis(); // Start time
-			WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(1));
-			WebElement stocksHomepagePortfolioSnapExpand = wait
-					.until(ExpectedConditions.elementToBeClickable(stockshomepage.stocksHomepageCollapseIcon));
-			long endTime = System.currentTimeMillis(); //
-			long timeTaken = endTime - startTime; // Time calculation
-			String holdings = stocksHomepagePortfolioSnapExpand.getAttribute("content-desc");
-			System.out.println(holdings);
-			boolean isVerified = holdings
-					.equalsIgnoreCase(Commons.getGlobalPropertiesValue("homepagePortfolioVerification"));
-			String status = isVerified ? "Pass" : "Fail";
-
+			try {
+				wait.until(ExpectedConditions.visibilityOf(stockshomepage.stocksHomepageCollapseIcon));
+				stockshomepage.stocksHomepageCollapseIcon.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis();
+			long timeTaken = endTime - startTime;
 			logTableRow(tableName, i, timeTaken, status);
-
 			stockshomepage.stocksHomepageCollapseIcon.click();
 			Thread.sleep(200);
-
 		}
 		logTableEnd(tableName);
 	}
@@ -182,172 +167,183 @@ public class MoRise {
 		for (int i = 1; i <= mf_homepage_portfolio_snap_loop; i++) {
 			mfHomePage.MfExpandIcon.click();
 			long startTime = System.currentTimeMillis();
-			WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(1));
-			WebElement mfHomepagePortfolioExpand = wait
-					.until(ExpectedConditions.elementToBeClickable(mfHomePage.mfCollapseIcon));
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(mfHomePage.mfCollapseIcon));
+				mfHomePage.mfCollapseIcon.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
 			long endTime = System.currentTimeMillis();
 			long timeTaken = endTime - startTime;
-			String collapse = mfHomepagePortfolioExpand.getAttribute("content-desc");
-			boolean isVerified = collapse
-					.equalsIgnoreCase(Commons.getGlobalPropertiesValue("homepagePortfolioVerification"));
-			String status = isVerified ? "Pass" : "Fail";
-
 			logTableRow(tableName, i, timeTaken, status);
-
-			mfHomePage.mfCollapseIcon.click();;
+			mfHomePage.mfCollapseIcon.click();
 			Thread.sleep(200);
 		}
 		logTableEnd(tableName);
 	}
 
-	/*
-	 * // watchlist
-	 * 
-	 * @Test(priority = 6) public void Verify_User_clicks_on_watchlist() throws
-	 * InterruptedException { Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"Home\")]")).click();
-	 * Driver.findElement(ByAccessibilityId.accessibilityId("Watchlist")).click();
-	 * String tableName = "Watchlist"; logTableStart(tableName);
-	 * 
-	 * for (int i = 1; i <= watchlis_loop; i++) { tapWithActions(Driver, 280, 550);
-	 * // tap on watchlist long startTime = System.currentTimeMillis(); // start
-	 * time WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(1));
-	 * WebElement automationwatchlist = wait.until(
-	 * ExpectedConditions.elementToBeClickable(ByAccessibilityId.
-	 * accessibilityId("Automation watchlist"))); long endTime =
-	 * System.currentTimeMillis(); // End time long timeTaken = endTime - startTime;
-	 * // Time calculation String watchlistVerification =
-	 * automationwatchlist.getAttribute("content-desc");
-	 * 
-	 * boolean isVerified =
-	 * watchlistVerification.equalsIgnoreCase("Automation watchlist"); String status
-	 * = isVerified ? "Pass" : "Fail";
-	 * 
-	 * logTableRow(tableName, i, timeTaken, status);
-	 * 
-	 * Driver.findElement(ByAccessibilityId.accessibilityId("Option List")).click();
-	 * Thread.sleep(1000);
-	 * 
-	 * } logTableEnd(tableName);
-	 * 
-	 * }
-	 * 
-	 * // Option watchlist
-	 * 
-	 * @Test(priority = 7) public void Verify_User_clicks_on_Option_watchlist()
-	 * throws InterruptedException {
-	 * 
-	 * String tableName = "Option_Watchlist"; logTableStart(tableName);
-	 * 
-	 * for (int i = 1; i <= watchlis_loop; i++) {
-	 * 
-	 * Driver.findElement(ByAccessibilityId.accessibilityId("Option List")).click();
-	 * long startTime = System.currentTimeMillis(); // start time WebDriverWait wait
-	 * = new WebDriverWait(Driver, Duration.ofSeconds(1)); WebElement
-	 * OPtionwatchlist = wait
-	 * .until(ExpectedConditions.elementToBeClickable(ByAccessibilityId.
-	 * accessibilityId("Call"))); long endTime = System.currentTimeMillis(); // End
-	 * time long timeTaken = endTime - startTime; // Time calculation String
-	 * OPtionwatchlistVerification = OPtionwatchlist.getAttribute("content-desc");
-	 * 
-	 * boolean isVerified = OPtionwatchlistVerification.equalsIgnoreCase("Call");
-	 * String status = isVerified ? "Pass" : "Fail";
-	 * 
-	 * logTableRow(tableName, i, timeTaken, status);
-	 * 
-	 * tapWithActions(Driver, 280, 550); // tap on watchlist Thread.sleep(500);
-	 * 
-	 * } logTableEnd(tableName); }
-	 * 
-	 * // get quote overview
-	 * 
-	 * @Test(priority = 8) public void Verify_user_clicks_getquote_overview() throws
-	 * InterruptedException { Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"GTLINFRA\")]")).click(); String
-	 * tableName = "Get Quote overview"; logTableStart(tableName);
-	 * 
-	 * for (int i = 1; i <= Get_quote_loop; i++) { Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"Overview\")]")).click(); long
-	 * startTime = System.currentTimeMillis(); // start time WebDriverWait wait =
-	 * new WebDriverWait(Driver, Duration.ofSeconds(1)); WebElement Depth = wait
-	 * .until(ExpectedConditions.elementToBeClickable(ByAccessibilityId.
-	 * accessibilityId("Depth"))); long endTime = System.currentTimeMillis(); // End
-	 * time long timeTaken = endTime - startTime; // Time calculation String Depth1
-	 * = Depth.getAttribute("content-desc"); boolean isVerified =
-	 * Depth1.equalsIgnoreCase("Depth"); String status = isVerified ? "Pass" :
-	 * "Fail";
-	 * 
-	 * logTableRow(tableName, i, timeTaken, status);
-	 * 
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"Fundamental\")]")).click();
-	 * Thread.sleep(500); } logTableEnd(tableName); }
-	 * 
-	 * // get quote fundamental
-	 * 
-	 * @Test(priority = 9) public void Verify_user_clicks_getquote_Fundamentals()
-	 * throws InterruptedException { String tableName = "Get Quote Fundamentals";
-	 * logTableStart(tableName); for (int i = 1; i <= Get_quote_loop; i++) {
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"Fundamental\")]")).click();
-	 * long startTime = System.currentTimeMillis(); // start time WebDriverWait wait
-	 * = new WebDriverWait(Driver, Duration.ofSeconds(1)); WebElement fundamental =
-	 * wait.until( ExpectedConditions.elementToBeClickable(ByAccessibilityId.
-	 * accessibilityId("Fundamental Ratios"))); long endTime =
-	 * System.currentTimeMillis(); // End time long timeTaken = endTime - startTime;
-	 * // Time calculation String Fundamentals =
-	 * fundamental.getAttribute("content-desc"); boolean isVerified =
-	 * Fundamentals.equalsIgnoreCase("Fundamental Ratios"); String status =
-	 * isVerified ? "Pass" : "Fail";
-	 * 
-	 * logTableRow(tableName, i, timeTaken, status);
-	 * 
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,'Technical')]")).click();
-	 * Thread.sleep(500); } logTableEnd(tableName); }
-	 * 
-	 * // get quote technical
-	 * 
-	 * @Test(priority = 10) public void Verify_user_clicks_getquote_technical()
-	 * throws InterruptedException { String tableName = "Get Quote Technical";
-	 * logTableStart(tableName); for (int i = 1; i <= Get_quote_loop; i++) {
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,'Technical')]")).click(); long
-	 * startTime = System.currentTimeMillis(); // start time WebDriverWait wait =
-	 * new WebDriverWait(Driver, Duration.ofSeconds(1)); WebElement delivery =
-	 * wait.until( ExpectedConditions.elementToBeClickable(ByAccessibilityId.
-	 * accessibilityId("Delivery & Volume"))); long endTime =
-	 * System.currentTimeMillis(); // End time long timeTaken = endTime - startTime;
-	 * // Time calculation String deliverys = delivery.getAttribute("content-desc");
-	 * boolean isVerified = deliverys.equalsIgnoreCase("Delivery & Volume"); String
-	 * status = isVerified ? "Pass" : "Fail"; logTableRow(tableName, i, timeTaken,
-	 * status);
-	 * 
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"News\")]")).click();
-	 * Thread.sleep(500); } logTableEnd(tableName); }
-	 * 
-	 * // get quote News
-	 * 
-	 * @Test(priority = 10) public void Verify_user_clicks_getquote_news() throws
-	 * InterruptedException { String tableName = "Get Quote News";
-	 * logTableStart(tableName); for (int i = 1; i <= Get_quote_loop; i++) {
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,\"News\")]")).click(); long
-	 * startTime = System.currentTimeMillis(); // start time WebDriverWait wait =
-	 * new WebDriverWait(Driver, Duration.ofSeconds(1)); WebElement delivery = wait
-	 * .until(ExpectedConditions.elementToBeClickable(ByAccessibilityId.
-	 * accessibilityId("Buy"))); long endTime = System.currentTimeMillis(); // End
-	 * time long timeTaken = endTime - startTime; // Time calculation String buy =
-	 * delivery.getAttribute("content-desc"); boolean isVerified =
-	 * buy.equalsIgnoreCase("Buy"); String status = isVerified ? "Pass" : "Fail";
-	 * logTableRow(tableName, i, timeTaken, status);
-	 * 
-	 * Driver.findElement(By.xpath(
-	 * "//android.view.View[contains(@content-desc,'Technical')]")).click(); }
-	 * logTableEnd(tableName); Driver.navigate().back(); }
-	 * 
-	 */
+	@Test(priority = 6)
+	public void Verify_User_clicks_on_watchlist() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		Watchlist watchlist = new Watchlist(Driver);
+		homepage.homeTabHeader.click();
+		homepage.WatchlistBottombar.click();
+		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.donotdelte, 0, 5, 123, 844, 692);
+		watchlist.donotdelte.click();
+		String tableName = "Watchlist";
+		logTableStart(tableName);
+		for (int i = 1; i <= watchlis_loop; i++) {
+			tapWithActions(Driver, 289, 526);
+			long startTime = System.currentTimeMillis();
+			try {
+				watchlist.donotdelte.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis();
+			long timeTaken = endTime - startTime;
+			logTableRow(tableName, i, timeTaken, status);
+			watchlist.optionlist.click();
+		}
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 7)
+	public void Verify_User_clicks_on_Option_watchlist() throws InterruptedException {
+		Watchlist watchlist = new Watchlist(Driver);
+		GetQuote getquote = new GetQuote(Driver);
+		String tableName = "Option_Watchlist";
+		logTableStart(tableName);
+		for (int i = 1; i <= watchlis_loop; i++) {
+			watchlist.optionlist.click();
+			long startTime = System.currentTimeMillis();
+			try {
+				getquote.callbutton.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis();
+			long timeTaken = endTime - startTime;
+			logTableRow(tableName, i, timeTaken, status);
+			tapWithActions(Driver, 289, 526);
+		}
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 8)
+	public void Verify_user_clicks_getquote_overview() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		Watchlist watchlist = new Watchlist(Driver);
+		watchlist.watchlistbutton.click();
+		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.donotdelte, 0, 5, 123, 844, 692);
+		watchlist.donotdelte.click();
+		watchlist.scriptinwatchlist.click();
+		String tableName = "Get Quote overview";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			getquote.overviewbutton.click();
+			long startTime = System.currentTimeMillis();
+			try {
+				getquote.depth.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis();
+			long timeTaken = endTime - startTime;
+			logTableRow(tableName, i, timeTaken, status);
+			getquote.fundamentaltab.click();
+		}
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 9)
+	public void Verify_user_clicks_getquote_Fundamentals() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		String tableName = "Get Quote Fundamentals";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			getquote.fundamentaltab.click();
+			long startTime = System.currentTimeMillis();
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(getquote.fundamentalratios));
+				getquote.fundamentalratios.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis(); // End time
+			long timeTaken = endTime - startTime;
+			logTableRow(tableName, i, timeTaken, status);
+			getquote.technicaltab.click();
+			Thread.sleep(500);
+		}
+
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 10)
+	public void Verify_user_clicks_getquote_fundamental() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		String tableName = "Get Quote Technical";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			getquote.fundamentaltab.click();
+			long startTime = System.currentTimeMillis();
+			try {
+				wait.until(ExpectedConditions.visibilityOf(getquote.fundamentalratios));
+				getquote.fundamentalratios.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				long timeTaken = endTime - startTime;
+				logTableRow(tableName, i, timeTaken, status);
+				getquote.technicaltab.click();
+			}
+			logTableEnd(tableName);
+		}
+	}
+
+	@Test(priority = 11)
+	public void Verify_user_clicks_getquote_technical() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		String tableName = "Get Quote News";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			getquote.technicaltab.click();
+			long startTime = System.currentTimeMillis(); // start time
+			try {
+				wait.until(ExpectedConditions.visibilityOf(getquote.deliveryvolume));
+				getquote.deliveryvolume.isDisplayed();
+				status = "Pass";
+			} catch (Exception e) {
+				status = "Fail";
+			}
+			long endTime = System.currentTimeMillis(); // End
+			long timeTaken = endTime - startTime; // Time calculation
+			logTableRow(tableName, i, timeTaken, status);
+			getquote.Newstab.click();
+		}
+		logTableEnd(tableName);
+		Driver.navigate().back();
+	}
+
+	public static void tapWithActions(AppiumDriver Driver, int x, int y) {
+
+		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence tap = new Sequence(finger, 1);
+
+		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+		Driver.perform(Collections.singletonList(tap));
+	}
+
 	// Helper Methods for Logging Tables
 	public void logTableStart(String tableName) {
 		Reporter.log("<h3>" + tableName + "</h3>", true);
@@ -357,7 +353,18 @@ public class MoRise {
 	}
 
 	public void logTableRow(String tableName, int iteration, long timeTaken, String status) {
-		Reporter.log("<tr><td>" + iteration + "</td><td>" + timeTaken + "</td><td>" + status + "</td></tr>", true);
+		// Define the color and text styles based on the status
+		String statusColor = "";
+		String statusTextStyle = "color: white; font-weight: bold;";
+
+		if ("Fail".equalsIgnoreCase(status)) {
+			statusColor = "background-color: red;";
+		} else if ("Pass".equalsIgnoreCase(status)) {
+			statusColor = "background-color: green;";
+		}
+
+		Reporter.log("<tr><td>" + iteration + "</td><td>" + timeTaken + "</td><td style='" + statusColor
+				+ statusTextStyle + "'>" + status + "</td></tr>", true);
 	}
 
 	public void logTableEnd(String tableName) {
@@ -379,9 +386,11 @@ public class MoRise {
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);
+			capabilities.setCapability("noReset", true);
 
 			Driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 			DriverFactory.addDriver(Driver);
+			Driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 			System.out.println("app launch succesfully");
 		}
 

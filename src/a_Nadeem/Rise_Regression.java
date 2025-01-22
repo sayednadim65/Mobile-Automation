@@ -544,6 +544,7 @@ public class Rise_Regression {
 
 	public void IPO_button_CTA() {
 		HomePage homepage = new HomePage(Driver);
+		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.optionsstoreCTA, 0, 5, 470, 1788, 590);
 		long startTime = System.currentTimeMillis();
 		homepage.IPO.click();
@@ -1233,7 +1234,7 @@ public class Rise_Regression {
 		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.AddButton, 0, 5, 906, 95, 688);
 		wait.until(ExpectedConditions.elementToBeClickable(watchlist.AddButton));
 		watchlist.AddButton.click();
-		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Autom");
+		ResusableMethods.cleartextandenterinput(Driver, watchlist.enterwatchlistname, "Aumation");
 		watchlist.createButton.click();
 		try {
 			WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
@@ -1323,8 +1324,20 @@ public class Rise_Regression {
 		// Add a row to the table
 		public void logTableRow(String testCase, String status, long timeTaken) {
 			rowCounter++; // Increment the serial number
-			Reporter.log("<tr><td>" + rowCounter + "</td><td>" + testCase + "</td><td>" + status + "</td><td>"
-					+ timeTaken + "</td></tr>", true);
+
+			// Define the color and text styles based on the status
+			String statusColor = "";
+			String statusTextStyle = "color: white; font-weight: bold;";
+
+			if ("Fail".equalsIgnoreCase(status)) {
+				statusColor = "background-color: red;";
+			} else if ("Pass".equalsIgnoreCase(status)) {
+				statusColor = "background-color: green;";
+			}
+
+			// Create the row with the styled status cell
+			Reporter.log("<tr><td>" + rowCounter + "</td><td>" + testCase + "</td><td style='" + statusColor
+					+ statusTextStyle + "'>" + status + "</td><td>" + timeTaken + "</td></tr>", true);
 		}
 
 		// End the table
@@ -1372,7 +1385,7 @@ public class Rise_Regression {
 			capabilities.setCapability("platformName", "android");
 			capabilities.setCapability("appium:platformVersion", "14.0");
 			capabilities.setCapability("appium:deviceName", "Google Pixel 8 Pro");
-			capabilities.setCapability("appium:app", "bs://30835cecdc1668bee867197b6dcbd3d06bbe28b4");
+			capabilities.setCapability("appium:app", "bs://3cc272641d1f0df16540c1a6ada81a2ac15a4ac5");
 			capabilities.setCapability("appium:automationName", "UIAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);
 			capabilities.setCapability("bstack:options", bstackOptions);

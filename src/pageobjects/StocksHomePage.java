@@ -18,7 +18,7 @@ public class StocksHomePage {
 	public WebElement stocksHomepageTab;
 	
 	@FindBy(xpath = "//android.view.View[@content-desc=\"Expand\"]")
-	public WebElement stocksPortfolioCollapse;
+	public WebElement stocksPortfolioexpand;
 	
 	@FindBy(xpath = "//android.view.View[@content-desc=\"Collapse\"]")
 	public WebElement stocksHomepageCollapseIcon;
