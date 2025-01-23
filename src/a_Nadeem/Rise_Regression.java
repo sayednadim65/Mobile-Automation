@@ -6,15 +6,20 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
@@ -34,6 +39,8 @@ public class Rise_Regression {
 
 	AndroidDriver Driver;
 	String status;
+	ExtentReports extent;
+	ExtentTest test;
 	TableLogger logger = new TableLogger();
 	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(20));
 
@@ -41,6 +48,7 @@ public class Rise_Regression {
 	public void Verify_user_login_and_clicks_on_RDD() throws InterruptedException, IOException {
 
 		LoginPage loginpage = new LoginPage(Driver);
+		test = extent.createTest("Login Test");
 		try {
 			if (loginpage.loginButton.isDisplayed()) {
 				// Manual Login
@@ -66,11 +74,16 @@ public class Rise_Regression {
 				Thread.sleep(5000);
 				loginpage.iUnderstandRddButton.click();
 				Thread.sleep(3000);
+				test.info("Manual Login");
+				test.pass("Login completed");
 			}
 		} catch (Exception biometricLoginException) {
 			System.out.println("Biometric login");
+			test.info("Biometric Login");
+			test.pass("Login completed");
 			Thread.sleep(5000);
 		}
+//		test.fail("Login Failed");
 	}
 
 	@Test(priority = 2)
@@ -150,7 +163,7 @@ public class Rise_Regression {
 	}
 
 	public void Global_search_Result() throws InterruptedException, IOException {
-
+		test = extent.createTest("testGoogleSearch");
 		HomePage homepage = new HomePage(Driver);
 		homepage.Globalsearchbeforetap.click();
 		Thread.sleep(1000);
@@ -164,8 +177,11 @@ public class Rise_Regression {
 			String globalsearchresult = resultsearch.substring(3, 8);
 			globalsearchresult.equalsIgnoreCase("YESBA");
 			status = "Pass";
+			test.pass("Global search Result Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Global search Result Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			homepage.Globalsearchresult.click();
@@ -175,6 +191,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_fut_tab() {
+		test = extent.createTest("Get quote fut tab");
 		GetQuote getquote = new GetQuote(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(getquote.FutTab));
 		long startTime = System.currentTimeMillis(); // Start timer
@@ -184,8 +201,11 @@ public class Rise_Regression {
 			String nsefo = NSEFO.getAttribute("content-desc");
 			nsefo.equalsIgnoreCase("NSE_FO");
 			status = "Pass";
+			test.pass("Get quote fut tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote fut tab Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote fut tab", status, endTime - startTime);
@@ -193,6 +213,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_opt_tab() {
+		test = extent.createTest("Get quote opt tab");
 		GetQuote getquote = new GetQuote(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(getquote.optionsTab));
 		long startTime = System.currentTimeMillis();
@@ -202,8 +223,11 @@ public class Rise_Regression {
 			String call = Call.getAttribute("content-desc");
 			call.equalsIgnoreCase("Call");
 			status = "Pass";
+			test.pass("Get quote opt tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote opt tab Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote opt tab", status, endTime - startTime);
@@ -211,6 +235,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_cash_tab() {
+		test = extent.createTest("Get quote cash tab");
 		GetQuote getquote = new GetQuote(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(getquote.cashtab));
 		long startTime = System.currentTimeMillis();
@@ -220,8 +245,11 @@ public class Rise_Regression {
 			String nse = Nse.getAttribute("content-desc");
 			nse.equalsIgnoreCase("NSE");
 			status = "Pass";
+			test.pass("Get quote cash tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote cash tab");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote cash tab", status, endTime - startTime);
@@ -229,6 +257,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_Nse_switch_Delivery_buy() throws InterruptedException {
+		test = extent.createTest("Get quote Nse switch delivery buy order form");
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis();
@@ -238,8 +267,11 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(orderform.NseSwitch));
 			orderform.NseSwitch.isSelected();
 			status = "Pass";
+			test.pass("Get quote Nse switch delivery buy order form Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote Nse switch delivery buy order form Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
@@ -248,6 +280,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_Nse_switch_Delivery_Sell() throws InterruptedException {
+		test = extent.createTest("Get quote Nse switch delivery Sell order form");
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis();
@@ -257,8 +290,11 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(orderform.NseSwitch));
 			orderform.NseSwitch.isSelected();
 			status = "Pass";
+			test.pass("Get quote Nse switch delivery Sell order form Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote Nse switch delivery Sell order form Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
@@ -267,6 +303,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_Bse_switch_Delivery_buy() throws InterruptedException {
+		test = extent.createTest("Get quote Bse switch delivery buy order form");
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis();
@@ -276,8 +313,11 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(orderform.BseSwitch));
 			orderform.BseSwitch.isSelected();
 			status = "Pass";
+			test.pass("Get quote Bse switch delivery buy order form Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote Bse switch delivery buy order form Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
@@ -286,6 +326,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_Bse_switch_Delivery_Sell() throws InterruptedException {
+		test = extent.createTest("Get quote Bse switch delivery sell order form");
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis();
@@ -295,16 +336,20 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(orderform.BseSwitch));
 			orderform.BseSwitch.isSelected();
 			status = "Pass";
+			test.pass("Get quote Bse switch delivery sell order form Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote Bse switch delivery sell order form Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Get quote Bse switch delivery order form", status, endTime - startTime);
+			logger.logTableRow("Get quote Bse switch delivery sell order form", status, endTime - startTime);
 		}
 	}
 
 	public void Get_quote_charts() {
+		test = extent.createTest("Get quote charts button");
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis();
 		getquote.chartsbutton.click();
@@ -313,8 +358,11 @@ public class Rise_Regression {
 			String buy = getquote.chartsbuybutton.getAttribute("content-desc");
 			buy.equalsIgnoreCase("BUY");
 			status = "Pass";
+			test.pass("Get quote charts button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote charts button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
@@ -323,6 +371,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_optionchain() {
+		test = extent.createTest("Get quote optionchain button");
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis();
 		getquote.optionchainbutton.click();
@@ -331,8 +380,11 @@ public class Rise_Regression {
 			String OI = getquote.OIoptionchain.getAttribute("content-desc");
 			OI.equalsIgnoreCase("OI");
 			status = "Pass";
+			test.pass("Get quote optionchain button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote optionchain button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
@@ -341,6 +393,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_fundamentaltab() throws InterruptedException {
+		test = extent.createTest("Get quote Fundamental Tab");
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis();
 		getquote.fundamentaltab.click();
@@ -349,8 +402,11 @@ public class Rise_Regression {
 			String fundamentalratios = getquote.fundamentalratios.getAttribute("content-desc");
 			fundamentalratios.equalsIgnoreCase("Fundamental Ratios");
 			status = "Pass";
+			test.pass("Get quote Fundamental Tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote oFundamental Tab Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote Fundamental Tab", status, endTime - startTime);
@@ -358,6 +414,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_technicaltab() throws InterruptedException {
+		test = extent.createTest("Get quote Technical Tab");
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis();
 		getquote.technicaltab.click();
@@ -366,8 +423,11 @@ public class Rise_Regression {
 			String delivery = getquote.deliveryvolume.getAttribute("content-desc");
 			delivery.equalsIgnoreCase("Delivery & Volume");
 			status = "Pass";
+			test.pass("Get quote Technical Tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote Technical Tab Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote Technical Tab", status, endTime - startTime);
@@ -375,6 +435,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_Newstab() throws InterruptedException {
+		test = extent.createTest("Get quote News Tab");
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis();
 		getquote.Newstab.click();
@@ -383,8 +444,11 @@ public class Rise_Regression {
 			String newsverification = getquote.news.getAttribute("content-desc");
 			newsverification.equalsIgnoreCase("News");
 			status = "Pass";
+			test.pass("Get quote News Tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Get quote News Tab Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote News Tab", status, endTime - startTime);
@@ -392,6 +456,7 @@ public class Rise_Regression {
 	}
 
 	public void Get_quote_Transactionstab() throws InterruptedException {
+		test = extent.createTest("Get quote Transactions Tab");
 		GetQuote getquote = new GetQuote(Driver);
 		long startTime = System.currentTimeMillis();
 		getquote.transactionstab.click();
@@ -401,15 +466,18 @@ public class Rise_Regression {
 			String realisepl = plrealised.split(" ")[0];
 			realisepl.equalsIgnoreCase("Realised");
 			status = "Pass";
+			test.pass("Get quote Transactions Tab Passed");
 		} catch (Exception e) {
 			status = "Fail";
-			System.out.println(e);
+			test.fail("Get quote Transactions Tab Failed");
+			test.info(e.getMessage());
 		}
 		long endTime = System.currentTimeMillis();
 		logger.logTableRow("Get quote Transactions Tab", status, endTime - startTime);
 	}
 
 	public void OrderForm_quantity_toggle() throws IOException, InterruptedException {
+		test = extent.createTest("Order Form quantity toggle");
 		OrderForm orderform = new OrderForm(Driver);
 		GetQuote getquote = new GetQuote(Driver);
 		getquote.BuyButton.click();
@@ -425,8 +493,11 @@ public class Rise_Regression {
 			String LTP = NseLTP.substring(5, 7);
 			investamount.equalsIgnoreCase(LTP);
 			status = "Pass";
+			test.pass("Order Form quantity toggle Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Order Form quantity toggle Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis(); // End timer
 			logger.logTableRow("Order Form quantity toggle", status, endTime - startTime); // Log search timing
@@ -435,7 +506,7 @@ public class Rise_Regression {
 
 	public void OrderForm_amount_toggle() throws InterruptedException, IOException {
 
-		Thread.sleep(500);
+		test = extent.createTest("Order Form amount toggle");
 		OrderForm orderform = new OrderForm(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		orderform.amountswitch.click();
@@ -447,8 +518,11 @@ public class Rise_Regression {
 			String autocalulatequantity = quantity.substring(5);
 			autocalulatequantity.equalsIgnoreCase(Commons.getGlobalPropertiesValue("orderform_amount_quantity"));
 			status = "Pass";
+			test.pass("Order Form amount toggle Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Order Form amount toggle Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis(); // End timer
 			Driver.navigate().back();
@@ -459,6 +533,7 @@ public class Rise_Regression {
 	}
 
 	public void homepage_explore_hide_button() {
+		test = extent.createTest("Homescreen portfolio hide mark");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
@@ -470,8 +545,11 @@ public class Rise_Regression {
 			String starmark = elements.get(8);
 			starmark.equalsIgnoreCase("Value\n*****\nInvested");
 			status = "Pass";
+			test.pass("Homescreen portfolio hide mark Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen portfolio hide mark Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			homepage.showbutton.click();
@@ -480,14 +558,18 @@ public class Rise_Regression {
 	}
 
 	public void homepage_explore_portfolio_expand() {
+		test = extent.createTest("Homescreen portfolio expand button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.homepageportfolioexpand.click();
 		try {
 			homepage.availablemargin.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen portfolio expand button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen portfolio expand button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Homescreen portfolio expand button", status, endTime - startTime);
@@ -495,14 +577,18 @@ public class Rise_Regression {
 	}
 
 	public void hompage_explore_portfolio_collapse() {
+		test = extent.createTest("Homescreen portfolio collapse button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.homepageportfoliocollapse.click();
 		try {
 			homepage.ExpandIcon.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen portfolio collapse button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen portfolio collapse button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Homescreen portfolio collapse button", status, endTime - startTime);
@@ -510,6 +596,7 @@ public class Rise_Regression {
 	}
 
 	public void Researchideaibutton() {
+		test = extent.createTest("Homescreen Research idea I button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.researchideaibutton.click();
@@ -517,8 +604,11 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.reasearchideatext));
 			homepage.reasearchideatext.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Research idea I button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Research idea I button Failed");
+			test.info(e.getMessage());
 		} finally {
 			Driver.navigate().back();
 			long endTime = System.currentTimeMillis();
@@ -527,14 +617,18 @@ public class Rise_Regression {
 	}
 
 	public void Researchidea_viewAll() {
+		test = extent.createTest("Homescreen Research idea view All button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.researchideaviewall.click();
 		try {
 			homepage.researchideaequitytab.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Research idea view All button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Research idea view All button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
@@ -543,6 +637,7 @@ public class Rise_Regression {
 	}
 
 	public void IPO_button_CTA() {
+		test = extent.createTest("Homescreen IPO button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.optionsstoreCTA, 0, 5, 470, 1788, 590);
@@ -551,48 +646,60 @@ public class Rise_Regression {
 		try {
 			homepage.ipolist.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen IPO button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen IPO button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen IPO CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen IPO button", status, endTime - startTime);
 		}
 	}
 
 	public void Research_Ideas_CTA() {
+		test = extent.createTest("Homescreen Research Idea button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.researchideasbutton.click();
 		try {
 			homepage.researchideaequitytab.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Research Idea button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Research Idea button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Research Idea CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Research Idea button", status, endTime - startTime);
 		}
 	}
 
 	public void IAP_CTA() {
+		test = extent.createTest("Homescreen IAP button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.IAPbutton.click();
 		try {
 			homepage.iappage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen IAP button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen IAP button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis(); // End timer
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen IAP CTA", status, endTime - startTime); // Log search timing
+			logger.logTableRow("Homescreen IAP button", status, endTime - startTime); // Log search timing
 		}
 	}
 
 	public void Bonds_CTA() {
+		test = extent.createTest("Homescreen Bonds button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis(); // Start timer
 		homepage.bondsCTA.click();
@@ -600,16 +707,20 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.bondspage));
 			homepage.bondspage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Bonds button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Bonds button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis(); // End timer
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Bonds CTA", status, endTime - startTime); // Log search timing
+			logger.logTableRow("Homescreen Bonds button", status, endTime - startTime); // Log search timing
 		}
 	}
 
 	public void options_store() throws InterruptedException {
+		test = extent.createTest("Homescreen Option Store button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.optionsstoreCTA.click();
@@ -617,16 +728,20 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.optionsstorepage));
 			homepage.optionsstorepage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Option Store button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Option Store button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Option Store CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Option Store button", status, endTime - startTime);
 		}
 	}
 
 	public void Stock_basket_CTA() {
+		test = extent.createTest("Homescreen Stock Basket button");
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		homepage.stockbasket.click();
@@ -634,16 +749,20 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.researchideaequitytab));
 			homepage.researchideaequitytab.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Stock Basket button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Stock Basket button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Stock Basket CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Stock Basket button", status, endTime - startTime);
 		}
 	}
 
 	public void TGS_CTA() {
+		test = extent.createTest("Homescreen TGS button button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
@@ -652,16 +771,20 @@ public class Rise_Regression {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.TGSpage));
 			status = "Pass";
+			test.pass("Homescreen TGS button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen TGS button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen TGS CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen TGS button", status, endTime - startTime);
 		}
 	}
 
 	public void Insurance_CTA() {
+		test = extent.createTest("Homescreen Insurance button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 8, 470, 1600, 600);
@@ -671,35 +794,41 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.insurancepage));
 			homepage.insurancepage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Insurance button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Insurance button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Insurance CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Insurance button", status, endTime - startTime);
 		}
 	}
 
 	public void FixedDeposit_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen Fixed Deposit button");
 		HomePage homepage = new HomePage(Driver);
-//		homepage.homeTabHeader.click();
-//		ResusableMethods.verticalswipetillElement(Driver, homepage.mfCTAs, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.fixeddepositbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.fixeddepositpage));
 			homepage.fixeddepositpage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Fixed Deposit button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Fixed Deposit button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Fixed Deposit CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Fixed Deposit button", status, endTime - startTime);
 		}
 	}
 
 	public void Intraoptions_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen Intra options button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 600);
@@ -709,17 +838,21 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.intraoptionspage));
 			homepage.intraoptionspage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Intra options button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Intra options button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(2000);
-			logger.logTableRow("Homescreen Intra options CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Intra options button", status, endTime - startTime);
 		}
 	}
 
 	public void smallcase_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen Smallcase button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
@@ -728,17 +861,20 @@ public class Rise_Regression {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.smallcasepage));
 			status = "Pass";
+			test.pass("Homescreen Smallcase button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Smallcase button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
-			Thread.sleep(1000);
 			Driver.navigate().back();
-			logger.logTableRow("Homescreen Smallcase CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Smallcase button", status, endTime - startTime);
 		}
 	}
 
 	public void Tejimandi() throws InterruptedException {
+		test = extent.createTest("Homescreen Teji Mandi button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
@@ -748,17 +884,20 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.tejimandipage));
 			homepage.tejimandipage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Teji Mandi button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Teji Mandi button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen Teji Mandi CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Teji Mandi button", status, endTime - startTime);
 		}
 	}
 
 	public void MFHighReturns_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen MF High Returns button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
 		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 9, 470, 1600, 600);
@@ -768,117 +907,134 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF High Returns button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF High Returns button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF High Returns", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF High Returns button", status, endTime - startTime);
 		}
 	}
 
 	public void SIPwith500_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen MF SIP with 500 button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
-		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.sipwith500.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF SIP with 500 button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF SIP with 500 button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF SIP with 500 CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF SIP with 500 button", status, endTime - startTime);
 		}
 	}
 
 	public void Taxsaver_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen MF Tax Saver button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
-		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.taxsaverbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF Tax Saver button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF Tax Saver button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF Tax Saver CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF Tax Saver button", status, endTime - startTime);
 		}
 	}
 
 	public void MoRecomended_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen MF MO Recommended button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
-		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.Morecommendedbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF MO Recommended button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF MO Recommended button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF MO Recommended CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF MO Recommended button", status, endTime - startTime);
 		}
 	}
 
 	public void Highestrated_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen MF Highest rated Fund button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
-		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.highestratedfund.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF Highest rated Fund button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF Highest rated Fund button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF Highest rated Fund CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF Highest rated Fund button", status, endTime - startTime);
 		}
 	}
 
 	public void internationalfund_CTA() throws InterruptedException {
+		test = extent.createTest("Homescreen MF International Fund button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
-		ResusableMethods.verticalswipetillElement(Driver, homepage.internationfund, 0, 5, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.internationfund.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF International Fund button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF International Fund button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF International Fund CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF International Fund button", status, endTime - startTime);
 		}
 	}
 
 	public void iponfoIbutton() throws InterruptedException {
+		test = extent.createTest("Homescreen IPO I button");
 		HomePage homepage = new HomePage(Driver);
 		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
@@ -887,37 +1043,42 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.ipochildscreen));
 			homepage.ipochildscreen.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen IPO I button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen IPO I button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen IPO I button CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen IPO I button", status, endTime - startTime);
 		}
 	}
 
 	public void ipoviewall() throws InterruptedException {
+		test = extent.createTest("Homescreen IPO view All button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
-		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.ipoviewallbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.ipopage));
 			homepage.ipopage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen IPO view All button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen IPO view All button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen IPO view All CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen IPO view All button", status, endTime - startTime);
 		}
 	}
 
 	public void ipobutton() throws InterruptedException {
+		test = extent.createTest("Homescreen IPO button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
@@ -927,35 +1088,41 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.ipolistq));
 			homepage.ipolistq.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen IPO button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen IPO button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen IPO CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen IPO button", status, endTime - startTime);
 		}
 	}
 
 	public void Nfobutton() throws InterruptedException {
+		test = extent.createTest("Homescreen NFO button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
-		ResusableMethods.verticalswipetillElement(Driver, homepage.oneclicksip, 0, 8, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.nfobutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.nfolist));
 			homepage.nfolist.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen NFO button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen NFO button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen NFO CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen NFO button", status, endTime - startTime);
 		}
 	}
 
 	public void Stocksipbutton() throws InterruptedException {
+		test = extent.createTest("Homescreen Stock sip button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
@@ -965,38 +1132,44 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.stocksippage));
 			homepage.stocksippage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Stock sip button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Stock sip button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen Stock sip CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Stock sip button", status, endTime - startTime);
 		}
 	}
 
 	public void MFsipbutton() throws InterruptedException {
+		test = extent.createTest("Homescreen MF sip button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
 		homepage.homeTabHeader.click();
-		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.MFsipbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(mfhomepage.MfViewAll3YReturns));
 			mfhomepage.MfViewAll3YReturns.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MF sip button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MF sip button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen MF sip CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MF sip button", status, endTime - startTime);
 		}
 	}
 
 	public void reportsbutton() throws InterruptedException {
+		test = extent.createTest("Homescreen Reports button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
@@ -1006,37 +1179,44 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.reportspage));
 			homepage.reportspage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Reports button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Reports button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen Reports CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Reports button", status, endTime - startTime);
 		}
 	}
 
 	public void PNLsummarybutton() throws InterruptedException {
+		test = extent.createTest("Homescreen PNL Summary button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
-		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
 		long startTime = System.currentTimeMillis();
 		homepage.PNLbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.pnlpage));
 			homepage.pnlpage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen PNL Summary button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen PNL Summary button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen PNL Summary CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen PNL Summary button", status, endTime - startTime);
 		}
 	}
 
 	public void alertsbutton() throws InterruptedException {
+		test = extent.createTest("Homescreen Alerts button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
@@ -1046,17 +1226,20 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.alertspage));
 			homepage.alertspage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen Alerts button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen Alerts button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Thread.sleep(500);
-			logger.logTableRow("Homescreen Alerts CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen Alerts button", status, endTime - startTime);
 		}
 	}
 
 	public void margincalbutton() throws InterruptedException {
+		test = extent.createTest("Homescreen margin cal button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
@@ -1066,17 +1249,21 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.margincalpage));
 			homepage.margincalpage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen margin cal button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen margin cal button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen margin cal CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen margin cal button", status, endTime - startTime);
 		}
 	}
 
 	public void moapi() throws InterruptedException {
+		test = extent.createTest("Homescreen MO API button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.MOapibutton, 0, 8, 470, 1788, 600);
@@ -1086,41 +1273,52 @@ public class Rise_Regression {
 			wait.until(ExpectedConditions.visibilityOf(homepage.moapipage));
 			homepage.moapipage.isDisplayed();
 			status = "Pass";
+			test.pass("Homescreen MO API button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Homescreen MO API button Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
 			Thread.sleep(500);
-			logger.logTableRow("Homescreen MO API CTA", status, endTime - startTime);
+			logger.logTableRow("Homescreen MO API button", status, endTime - startTime);
 		}
 	}
 
 	public void MF_collection_viewall_returns() throws InterruptedException {
+		test = extent.createTest("Mutual Fund View All Returns button");
 		HomePage homepage = new HomePage(Driver);
 		MfHomePage mfhomepage = new MfHomePage(Driver);
 		homepage.MfTab.click();
 		long startTime = System.currentTimeMillis();
 		mfhomepage.MfHomepageCollectionViewAll.click();
-		mfhomepage.MfViewAll1mReturns.click();
-		boolean isVerified = mfhomepage.onemReturnsMFVerification.isDisplayed();
-		status = isVerified ? "Pass" : "Fail";
-		mfhomepage.MfViewAll3mReturns.click();
-		boolean isVerified1 = mfhomepage.threeMReturnsMFVerification.isDisplayed();
-		status = isVerified1 ? "Pass" : "Fail";
-		mfhomepage.MfViewAll1YReturns.click();
-		boolean isVerified2 = mfhomepage.oneyearReturnsMFVerification.isDisplayed();
-		status = isVerified2 ? "Pass" : "Fail";
-		mfhomepage.MfViewAll3YReturns.click();
-		boolean isVerified3 = mfhomepage.threeYearsReturnsMFVerification.isDisplayed();
-		status = isVerified3 ? "Pass" : "Fail";
-		mfhomepage.MfViewAll5YReturns.click();
-		boolean isVerified4 = mfhomepage.fiveYearsReturnsMFVerification.isDisplayed();
-		status = isVerified4 ? "Pass" : "Fail";
-		Driver.navigate().back();
-		homepage.homeTabHeader.click();
-		long endTime = System.currentTimeMillis();
-		logger.logTableRow("Mutual Fund View All Returns", status, endTime - startTime);
+		try {
+			mfhomepage.MfViewAll1mReturns.click();
+			boolean isVerified = mfhomepage.onemReturnsMFVerification.isDisplayed();
+			status = isVerified ? "Pass" : "Fail";
+			mfhomepage.MfViewAll3mReturns.click();
+			boolean isVerified1 = mfhomepage.threeMReturnsMFVerification.isDisplayed();
+			status = isVerified1 ? "Pass" : "Fail";
+			mfhomepage.MfViewAll1YReturns.click();
+			boolean isVerified2 = mfhomepage.oneyearReturnsMFVerification.isDisplayed();
+			status = isVerified2 ? "Pass" : "Fail";
+			mfhomepage.MfViewAll3YReturns.click();
+			boolean isVerified3 = mfhomepage.threeYearsReturnsMFVerification.isDisplayed();
+			status = isVerified3 ? "Pass" : "Fail";
+			mfhomepage.MfViewAll5YReturns.click();
+			boolean isVerified4 = mfhomepage.fiveYearsReturnsMFVerification.isDisplayed();
+			status = isVerified4 ? "Pass" : "Fail";
+			test.pass("Mutual Fund View All Returns Passed");
+		} catch (Exception e) {
+			test.fail("Mutual Fund View All Returns Failed");
+			test.info(e.getMessage());
+		} finally {
+			Driver.navigate().back();
+			homepage.homeTabHeader.click();
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Mutual Fund View All Returns", status, endTime - startTime);
+		}
 	}
 
 	public void Intra_options_order_placement() throws InterruptedException {
@@ -1138,7 +1336,7 @@ public class Rise_Regression {
 	}
 
 	public void Portfolio_view_analysis() throws InterruptedException {
-
+		test = extent.createTest("Portfolio View Analysis button");
 		Portfolio portfolio = new Portfolio(Driver);
 		HomePage homepage = new HomePage(Driver);
 		homepage.portfolioBottombar.click();
@@ -1151,17 +1349,21 @@ public class Rise_Regression {
 			String Current = current.getAttribute("content-desc");
 			Current.equalsIgnoreCase("Current Investment Value");
 			status = "Pass";
+			test.pass("Portfolio View Analysis button Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Portfolio View Analysis button Failed");
+			test.info(e.getMessage());
 		} finally {
 			Driver.navigate().back();
 			Driver.navigate().back();
 			long endTime = System.currentTimeMillis();
-			logger.logTableRow("Portfolio View Analysis", status, endTime - startTime);
+			logger.logTableRow("Portfolio View Analysis button", status, endTime - startTime);
 		}
 	}
 
 	public void Portfolio_swipe_Stocks_Tab_verification() throws InterruptedException {
+		test = extent.createTest("Portfolio swipe Stocks Tab verification");
 		Portfolio portfolio = new Portfolio(Driver);
 		HomePage homepage = new HomePage(Driver);
 		homepage.portfolioBottombar.click();
@@ -1170,8 +1372,11 @@ public class Rise_Regression {
 		try {
 			wait.until(ExpectedConditions.elementToBeSelected(portfolio.StocksTabPortfolio));
 			status = "Pass";
+			test.pass("Portfolio swipe Stocks Tab verification Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Portfolio swipe Stocks Tab verification Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Portfolio swipe Stocks Tab verification", status, endTime - startTime);
@@ -1179,14 +1384,18 @@ public class Rise_Regression {
 	}
 
 	public void Portfolio_swipe_MF_Tab_verification() {
+		test = extent.createTest("Portfolio swipe MF Tab verification");
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedmf, 0, 5, 944, 166, 1285);
 		try {
 			wait.until(ExpectedConditions.elementToBeSelected(portfolio.MFTabPortfolio));
 			status = "Pass";
+			test.pass("Portfolio swipe MF Tab verification Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Portfolio swipe MF Tab verification Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Portfolio swipe MF Tab verification", status, endTime - startTime);
@@ -1194,6 +1403,7 @@ public class Rise_Regression {
 	}
 
 	public void Portfolio_swipe_PMS_Tab_verification() {
+		test = extent.createTest("Portfolio swipe PMS Tab verification");
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedpms, 0, 5, 805, 166, 1328);
@@ -1203,8 +1413,11 @@ public class Rise_Regression {
 			String pmsTab = pms.substring(0, 3);
 			pmsTab.equalsIgnoreCase("PMS");
 			status = "Pass";
+			test.pass("Portfolio swipe PMS Tab verification Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Portfolio swipe PMS Tab verification Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Portfolio swipe PMS Tab verification", status, endTime - startTime);
@@ -1212,14 +1425,18 @@ public class Rise_Regression {
 	}
 
 	public void Portfolio_swipe_Basket_Tab_verification() {
+		test = extent.createTest("Portfolio swipe Basket Tab verification");
 		Portfolio portfolio = new Portfolio(Driver);
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.allbasket, 0, 5, 944, 166, 1285);
 		try {
 			wait.until(ExpectedConditions.elementToBeSelected(portfolio.BasketTabPortfolio));
 			status = "Pass";
+			test.pass("Portfolio swipe Basket Tab verification Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Portfolio swipe Basket Tab verification Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Portfolio swipe Basket Tab verification", status, endTime - startTime);
@@ -1227,6 +1444,7 @@ public class Rise_Regression {
 	}
 
 	public void Watchlist_script() throws InterruptedException {
+		test = extent.createTest("Add Watchlist");
 		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
 		homepage.WatchlistBottombar.click();
@@ -1241,8 +1459,11 @@ public class Rise_Regression {
 			String verification = Createbutton.getAttribute("content-desc");
 			verification.equalsIgnoreCase("OK");
 			status = "Pass";
+			test.pass("Add Watchlist Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Add Watchlist Failed");
+			test.info(e.getMessage());
 		} finally {
 			watchlist.okwatchlistcreated.click();
 			long endTime = System.currentTimeMillis();
@@ -1251,13 +1472,14 @@ public class Rise_Regression {
 	}
 
 	public void Add_script_in_watchlist() throws IOException, InterruptedException {
+		test = extent.createTest("Add Script in watchlist");
 		Watchlist watchlist = new Watchlist(Driver);
 		HomePage homepage = new HomePage(Driver);
 		long startTime = System.currentTimeMillis();
 		watchlist.Addscript.click();
 		homepage.Globalsearchaftertap.get(1).sendKeys("YESBANK EQ");
-		Thread.sleep(3000);
-//		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
+		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
+		watchlist.stocksglobalsearchtab.click();
 		watchlist.addscripticon.click();
 		Driver.hideKeyboard();
 		Driver.navigate().back();
@@ -1267,8 +1489,11 @@ public class Rise_Regression {
 			String watchlistscript = addedscript.substring(0, 7);
 			watchlistscript.equalsIgnoreCase("YESBANK");
 			status = "Pass";
+			test.pass("Add Script in watchlist Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Add Script in watchlist Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Add Script in watchlist", status, endTime - startTime);
@@ -1276,6 +1501,7 @@ public class Rise_Regression {
 	}
 
 	public void Delete_script_in_watchlist() {
+		test = extent.createTest("Delete script from watchlist");
 		Watchlist watchlist = new Watchlist(Driver);
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.longpressElement(Driver, watchlist.scriptinwatchlist);
@@ -1284,8 +1510,11 @@ public class Rise_Regression {
 		try {
 			scriptdeleted.equalsIgnoreCase("Add Scrip");
 			status = "Pass";
+			test.pass("Delete script from watchlist Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Delete script from watchlist Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Delete script from watchlist", status, endTime - startTime);
@@ -1293,6 +1522,7 @@ public class Rise_Regression {
 	}
 
 	public void Delete_watchlist() {
+		test = extent.createTest("Delete watchlist");
 		Watchlist watchlist = new Watchlist(Driver);
 		long startTime = System.currentTimeMillis();
 		watchlist.kebabmenuwatchlist.click();
@@ -1302,8 +1532,11 @@ public class Rise_Regression {
 			watchlist.deleteicon.click();
 			watchlist.savebutton.click();
 			status = "Pass";
+			test.pass("Delete watchlist Passed");
 		} catch (Exception e) {
 			status = "Fail";
+			test.fail("Delete watchlist Failed");
+			test.info(e.getMessage());
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Delete watchlist", status, endTime - startTime);
@@ -1346,6 +1579,26 @@ public class Rise_Regression {
 		}
 	}
 
+	@BeforeClass
+	public void ExtentReportSetUp() {
+		// Set up the ExtentSparkReporter to generate a report in the 'sparkReport.html' file
+		ExtentSparkReporter sparkReporter = new ExtentSparkReporter("sparkReport.html");
+		sparkReporter.config().setTheme(Theme.DARK);  // Dark theme for the report
+		sparkReporter.config().setTimeStampFormat("yyyy-MM-dd HH:mm:ss");
+		sparkReporter.config().setDocumentTitle("Rise App Regression");
+		sparkReporter.config().setReportName("Rise App Regression");
+
+		// Initialize ExtentReports and attach the ExtentSparkReporter
+		extent = new ExtentReports();
+		extent.attachReporter(sparkReporter);
+	}
+
+	@AfterClass
+	public void ExtentReportTearDown() {
+		// End the test in ExtentReports
+		extent.flush();
+	}
+
 	@BeforeTest
 	public void Verify_user_launch_app() throws InterruptedException, IOException {
 
@@ -1357,7 +1610,7 @@ public class Rise_Regression {
 			capabilities.setCapability("platformVersion", "13");
 			capabilities.setCapability("deviceName", "CPH2467");
 			capabilities.setCapability("udid", "97957054");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_pilot"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);

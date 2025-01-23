@@ -29,8 +29,11 @@ public class Watchlist {
 	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Add Scrip\"]")
 	public WebElement Addscript;
 
-	@FindBy(xpath = "(//android.widget.ImageView)[4]")
+	@FindBy(xpath = "(//android.widget.ImageView)[3]")
 	public WebElement addscripticon;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Stocks')]")
+	public WebElement stocksglobalsearchtab;
 
 	@FindBy(xpath = "//android.view.View[contains(@content-desc,'YESBANK')]")
 	public WebElement scriptinwatchlist;
