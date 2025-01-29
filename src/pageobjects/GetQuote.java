@@ -82,5 +82,13 @@ public class GetQuote {
 	
 	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Overview')]")
 	public WebElement overviewbutton;
-
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"News\"]")
+	public WebElement newsverification;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Option Chain\"]")
+	public WebElement optionchain;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"OI\"]")
+	public WebElement optionchainverification;
 }

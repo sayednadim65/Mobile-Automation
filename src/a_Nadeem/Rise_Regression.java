@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,10 +17,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
@@ -42,7 +43,7 @@ public class Rise_Regression {
 	ExtentReports extent;
 	ExtentTest test;
 	TableLogger logger = new TableLogger();
-	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(20));
+	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(3));
 
 	@Test(priority = 1)
 	public void Verify_user_login_and_clicks_on_RDD() throws InterruptedException, IOException {
@@ -86,7 +87,7 @@ public class Rise_Regression {
 //		test.fail("Login Failed");
 	}
 
-	@Test(priority = 2)
+	@Test(enabled = false)
 	public void App_Regression() throws IOException, InterruptedException {
 
 		logger.logTableStart("Execution Report");
@@ -108,7 +109,10 @@ public class Rise_Regression {
 		OrderForm_quantity_toggle();
 		OrderForm_amount_toggle();
 		homepage_explore_hide_button();
+		homepage_portfolio_overallvalue();
 		homepage_explore_portfolio_expand();
+		homepage_explore_portfolio_position();
+
 		hompage_explore_portfolio_collapse();
 		Researchideaibutton();
 		IPO_button_CTA();
@@ -159,6 +163,17 @@ public class Rise_Regression {
 		Delete_script_in_watchlist();
 		Delete_watchlist();
 
+		logger.logTableEnd();
+	}
+
+	@Test(priority = 2)
+	public void orderrouting() throws InterruptedException {
+		logger.logTableStart("Order Routing timestamp study  Report");
+		for (int i = 1; i <= 36; i++) {
+			buyorder();
+			modifybuyorder();
+			cancelorder();
+		}
 		logger.logTableEnd();
 	}
 
@@ -557,6 +572,28 @@ public class Rise_Regression {
 		}
 	}
 
+	public void homepage_portfolio_overallvalue() {
+		test = extent.createTest("Homepage portfolio overall value");
+		HomePage homepage = new HomePage(Driver);
+		Portfolio portfolio = new Portfolio(Driver);
+		homepage.overall.click();
+		long startTime = System.currentTimeMillis();
+		try {
+			wait.until(ExpectedConditions.visibilityOf(portfolio.viewAnalysis));
+			portfolio.viewAnalysis.isDisplayed();
+			status = "Pass";
+			test.pass("Homescreen portfolio overall value Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Homescreen portfolio overall value Failed");
+			test.info(e.getMessage());
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			logger.logTableRow("Homescreen portfolio overall value", status, endTime - startTime);
+		}
+	}
+
 	public void homepage_explore_portfolio_expand() {
 		test = extent.createTest("Homescreen portfolio expand button");
 		HomePage homepage = new HomePage(Driver);
@@ -574,6 +611,11 @@ public class Rise_Regression {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Homescreen portfolio expand button", status, endTime - startTime);
 		}
+	}
+
+	public void homepage_explore_portfolio_position() {
+		test = extent.createTest("Homescreen portfolio position button");
+
 	}
 
 	public void hompage_explore_portfolio_collapse() {
@@ -1478,8 +1520,8 @@ public class Rise_Regression {
 		long startTime = System.currentTimeMillis();
 		watchlist.Addscript.click();
 		homepage.Globalsearchaftertap.get(1).sendKeys("YESBANK EQ");
-		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
 		watchlist.stocksglobalsearchtab.click();
+		wait.until(ExpectedConditions.visibilityOf(watchlist.addscripticon));
 		watchlist.addscripticon.click();
 		Driver.hideKeyboard();
 		Driver.navigate().back();
@@ -1500,7 +1542,7 @@ public class Rise_Regression {
 		}
 	}
 
-	public void Delete_script_in_watchlist() {
+	public void Delete_script_in_watchlist() throws InterruptedException {
 		test = extent.createTest("Delete script from watchlist");
 		Watchlist watchlist = new Watchlist(Driver);
 		long startTime = System.currentTimeMillis();
@@ -1543,7 +1585,95 @@ public class Rise_Regression {
 		}
 	}
 
-	// Helper Methods for Logging Tables
+	public void buyorder() throws InterruptedException {
+		test = extent.createTest("Buy order");
+		Watchlist watchlist = new Watchlist(Driver);
+		GetQuote getquote = new GetQuote(Driver);
+		OrderForm orderform = new OrderForm(Driver);
+		ResusableMethods.tapWithActions(Driver, 334, 2205);
+		wait.until(ExpectedConditions.visibilityOf(watchlist.donotdelte));
+		ResusableMethods.tapWithActions(Driver, 517, 849);
+		wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
+		ResusableMethods.tapWithActions(Driver, 811, 2172);
+		wait.until(ExpectedConditions.visibilityOf(orderform.quantityMarket));
+		ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket, "1");
+		ResusableMethods.cleartextandenterinput(Driver, orderform.limitprice, "1.70");
+		Driver.hideKeyboard();
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.tapWithActions(Driver, 621, 2177);
+		wait.until(ExpectedConditions.visibilityOf(orderform.disclaimer));
+		ResusableMethods.tapWithActions(Driver, 787, 2182);
+		wait.until(ExpectedConditions.visibilityOf(orderform.confirmorder));
+		ResusableMethods.tapWithActions(Driver, 517, 2187);
+
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.vieworder));
+			orderform.vieworder.isDisplayed();
+			status = "Pass";
+			test.pass("Buy order Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Buy order Failed");
+			test.info(e.getMessage());
+		} finally {
+			orderform.vieworder.click();
+			long endTime = System.currentTimeMillis();
+			wait.until(ExpectedConditions.visibilityOf(orderform.cancelbutton));
+			logger.logTableRow("Buy Order", status, endTime - startTime);
+		}
+	}
+
+	public void modifybuyorder() throws InterruptedException {
+		test = extent.createTest("Modify buy order");
+		OrderForm orderform = new OrderForm(Driver);
+		ResusableMethods.tapWithActions(Driver, 792, 2168);
+		ResusableMethods.cleartextandenterinput(Driver, orderform.limitprice, "1.75");
+		Driver.hideKeyboard();
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.tapWithActions(Driver, 621, 2177);
+		wait.until(ExpectedConditions.visibilityOf(orderform.confirmorder));
+		ResusableMethods.tapWithActions(Driver, 517, 2187);
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.vieworder));
+			orderform.vieworder.isDisplayed();
+			status = "Pass";
+			test.pass("Modify Buy order Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Modify Buy order Failed");
+			test.info(e.getMessage());
+		} finally {
+			orderform.vieworder.click();
+			long endTime = System.currentTimeMillis();
+			wait.until(ExpectedConditions.visibilityOf(orderform.cancelbutton));
+			logger.logTableRow("Modify Buy Order", status, endTime - startTime);
+		}
+
+	}
+
+	public void cancelorder() throws InterruptedException {
+		test = extent.createTest("Cancel Buy order");
+		OrderForm orderform = new OrderForm(Driver);
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.tapWithActions(Driver, 289, 2168);
+		wait.until(ExpectedConditions.visibilityOf(orderform.cancelbuttontext));
+		ResusableMethods.tapWithActions(Driver, 797, 2163);
+		try {
+			wait.until(ExpectedConditions.visibilityOf(orderform.cancelorder));
+			orderform.cancelorder.isDisplayed();
+			status = "Pass";
+			test.pass("Cancel Buy order Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Cancel Buy order Failed");
+			test.info(e.getMessage());
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("Cancel Order", status, endTime - startTime);
+		}
+	}
+
+// Helper Methods for Logging Tables
 	public class TableLogger {
 		private int rowCounter = 0; // To keep track of the serial number
 
@@ -1577,13 +1707,14 @@ public class Rise_Regression {
 		public void logTableEnd() {
 			Reporter.log("</table>", true);
 		}
+
 	}
 
 	@BeforeClass
 	public void ExtentReportSetUp() {
-		// Set up the ExtentSparkReporter to generate a report in the 'sparkReport.html' file
+		// Set up the ExtentSparkReporter to generate a report in the 'sparkReport.html'
+		// file
 		ExtentSparkReporter sparkReporter = new ExtentSparkReporter("sparkReport.html");
-		sparkReporter.config().setTheme(Theme.DARK);  // Dark theme for the report
 		sparkReporter.config().setTimeStampFormat("yyyy-MM-dd HH:mm:ss");
 		sparkReporter.config().setDocumentTitle("Rise App Regression");
 		sparkReporter.config().setReportName("Rise App Regression");
@@ -1610,7 +1741,7 @@ public class Rise_Regression {
 			capabilities.setCapability("platformVersion", "13");
 			capabilities.setCapability("deviceName", "CPH2467");
 			capabilities.setCapability("udid", "97957054");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_pilot"));
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);

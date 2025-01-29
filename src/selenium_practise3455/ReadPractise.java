@@ -27,7 +27,7 @@ public class ReadPractise {
 		try (// workbook
 				Workbook wp = new XSSFWorkbook(ip)) {
 			// sheet
-			int a = wp.getNumberOfSheets();
+//			int a = wp.getNumberOfSheets();
 			// System.out.println(a);
 			XSSFSheet sh13 = (XSSFSheet) wp.getSheetAt(0);
 

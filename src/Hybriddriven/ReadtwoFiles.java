@@ -29,7 +29,7 @@ public class ReadtwoFiles {
 					if (keywords.equalsIgnoreCase("username")) {
 						Methods.username(Driver, UN);
 					}
-					if (keywords.equalsIgnoreCase("hold")){
+					if (keywords.equalsIgnoreCase("hold")) {
 						Methods.hold();
 					}
 					if (keywords.equalsIgnoreCase("password")) {
@@ -45,7 +45,7 @@ public class ReadtwoFiles {
 						Methods.hold();
 					}
 					if (keywords.equalsIgnoreCase("logout")) {
-					Methods.logout(Driver);
+						Methods.logout(Driver);
 					}
 				}
 			}

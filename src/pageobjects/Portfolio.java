@@ -51,4 +51,13 @@ public class Portfolio {
 	
 	@FindBy (xpath = "//android.widget.Button[contains(@content-desc,'All')]")
 	public WebElement allbasket;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Current Value of MF')]")
+	public WebElement currentvalueofmf;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Current Value')]")
+	public WebElement currentvaluestocks;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Current Value of Basket')]")
+	public WebElement currentvaluebasket;
 }

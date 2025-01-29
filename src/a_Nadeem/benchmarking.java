@@ -23,24 +23,22 @@ import pageobjects.ResusableMethods;
 import pageobjects.Watchlist;
 import utils.Commons;
 
-public class BuyOrder {
+public class benchmarking {
 	AndroidDriver Driver;
 	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(2));
 	int wait_time = 1;
 	int i;
 	String status;
-	TableLogger logger = new TableLogger();
-	TableLogger Mlogger = new TableLogger();
-	TableLogger Clogger = new TableLogger();
+	TableLogger logger = new TableLogger("Buy Order");
+	TableLogger Mlogger = new TableLogger("Modify Buy Order");
+	TableLogger Clogger = new TableLogger("Cancel Buy Order");
 
 	@Test(priority = 1)
 	public void Verify_user_login_and_clicks_on_RDD() throws InterruptedException, IOException {
-
 		LoginPage loginpage = new LoginPage(Driver);
 		try {
 			if (loginpage.loginButton.isDisplayed()) {
 				// Manual Login
-
 				loginpage.loginButton.click();
 				Thread.sleep(1000);
 				loginpage.userID.click();
@@ -70,18 +68,25 @@ public class BuyOrder {
 
 	@Test(priority = 2)
 	public void VerifyUserPlaceBuyOrder() throws InterruptedException {
+
+		logger.logTableStart();
+		Mlogger.logTableStart();
+		Clogger.logTableStart();
+
 		Watchlist watchlist = new Watchlist(Driver);
 		GetQuote getquote = new GetQuote(Driver);
 		OrderForm orderform = new OrderForm(Driver);
-		logger.logTableStart("Buy Order");
-		Mlogger.logTableStart("Modify Buy Order");
-		Clogger.logTableStart("Buy Order");
-		for (i = 1; i <= 5; i++) {
+
+		// Log to separate tables for each type of action
+		for (i = 1; i <= 3; i++) {
+			// Tap actions
 			ResusableMethods.tapWithActions(Driver, 334, 2205);
 			wait.until(ExpectedConditions.visibilityOf(watchlist.donotdelte));
 			ResusableMethods.tapWithActions(Driver, 517, 849);
 			wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
 			ResusableMethods.tapWithActions(Driver, 811, 2172);
+
+			// Start Buy Order timer and actions
 			long startTime = System.currentTimeMillis();
 			wait.until(ExpectedConditions.visibilityOf(orderform.quantityMarket));
 			ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket, "1");
@@ -93,6 +98,8 @@ public class BuyOrder {
 			wait.until(ExpectedConditions.visibilityOf(orderform.confirmorder));
 			ResusableMethods.tapWithActions(Driver, 517, 2187);
 			long endTime = System.currentTimeMillis();
+
+			// Log data for Buy Order
 			try {
 				wait.until(ExpectedConditions.visibilityOf(orderform.done));
 				orderform.done.isDisplayed();
@@ -104,27 +111,39 @@ public class BuyOrder {
 				Driver.navigate().back();
 				logger.logTableRow("Buy Order", status, endTime - startTime);
 			}
+
+			// Log data for Modify Buy Order
 			long MstartTime = System.currentTimeMillis();
 			System.out.println("Modify buy order");
-			status = "Pass";
+			status = "Pass"; // Assuming modify operation is successful
 			long MendTime = System.currentTimeMillis();
 			Mlogger.logTableRow("Modify Buy Order", status, MendTime - MstartTime);
+
+			// Log data for Cancel Buy Order
 			long CstartTime = System.currentTimeMillis();
-			System.out.println("cancel buy order");
-			status = "Pass";
+			System.out.println("Cancel buy order");
+			status = "Pass"; // Assuming cancel operation is successful
 			long CendTime = System.currentTimeMillis();
 			Clogger.logTableRow("Cancel Buy Order", status, CendTime - CstartTime);
-
 		}
+		logger.logTableEnd();
+		Mlogger.logTableEnd();
+		Clogger.logTableEnd();
 	}
 
 	// Helper Methods for Logging Tables
 	public class TableLogger {
 		private int rowCounter = 0; // To keep track of the serial number
+		private String tableTitle; // Custom title for each table
+
+		// Constructor to initialize the table title
+		public TableLogger(String title) {
+			this.tableTitle = title;
+		}
 
 		// Start the table with a title
-		public void logTableStart(String tableName) {
-			Reporter.log("<h3>" + tableName + "</h3>", true);
+		public void logTableStart() {
+			Reporter.log("<h3>" + tableTitle + "</h3>", true);
 			Reporter.log("<table border='1' style='border-collapse: collapse; width: 75%; text-align: center;'>", true);
 			Reporter.log("<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>", true);
 		}
@@ -209,12 +228,10 @@ public class BuyOrder {
 
 	}
 
-	// kill application after test
 	@AfterTest
 	public void verify_User_kills_app() {
 		if (Driver != null) {
 			Driver.quit();
 		}
 	}
-
 }

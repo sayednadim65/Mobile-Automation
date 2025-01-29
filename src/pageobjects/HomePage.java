@@ -231,4 +231,19 @@ public class HomePage {
 	
 	@FindBy (xpath = "//android.webkit.WebView[@text='Motilal Oswal']")
 	public WebElement moapipage;
+	
+	@FindBy (xpath = "(//android.widget.ImageView)[5]")
+	public WebElement overall;
+
+	@FindBy (xpath = "(//android.widget.ImageView)[5]")
+	public WebElement walleticon;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Add Funds')]")
+	public WebElement addfundstab;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Withdraw Funds')]")
+	public WebElement withdrawtab;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Enter Amount\"]")
+	public WebElement enteramount;
 }

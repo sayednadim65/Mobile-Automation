@@ -20,14 +20,15 @@ public class ResusableMethods {
 		this.Driver = Driver;
 		PageFactory.initElements(Driver, this);
 	}
-	
-	public static void tapWithActions(AndroidDriver Driver, int x, int y) {
+
+	public static void tapWithActions(AndroidDriver Driver, int x, int y) throws InterruptedException {
 
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 		Sequence tap = new Sequence(finger, 1);
 
 		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
 		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		Thread.sleep(500);
 		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
 		Driver.perform(Collections.singletonList(tap));
@@ -133,4 +134,29 @@ public class ResusableMethods {
 		textbox.clear();
 		textbox.sendKeys(text);
 	}
+
+	public static void longPressWithActions(AndroidDriver Driver, int x, int y, long pressDurationMillis) {
+		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence longPress = new Sequence(finger, 1);
+		// Move the pointer to the desired coordinates
+		longPress.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+		// Press down at the location
+		longPress.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		// Perform the press down action
+		Driver.perform(Collections.singletonList(longPress));
+		// Sleep for the desired long press duration
+		try {
+			Thread.sleep(pressDurationMillis); // Long press duration
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		// Now release the press
+		longPress = new Sequence(finger, 1);
+		longPress.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+		longPress.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+		// Perform the release action
+		Driver.perform(Collections.singletonList(longPress));
+	}
+
 }

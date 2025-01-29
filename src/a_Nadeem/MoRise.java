@@ -3,11 +3,8 @@ package a_Nadeem;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.Collections;
 import java.util.HashMap;
 
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,13 +14,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import drivers.DriverFactory;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import pageobjects.GetQuote;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
 import pageobjects.MfHomePage;
+import pageobjects.Portfolio;
 import pageobjects.ResusableMethods;
 import pageobjects.StocksHomePage;
 import pageobjects.Watchlist;
@@ -32,15 +29,15 @@ import utils.Commons;
 public class MoRise {
 	AndroidDriver Driver;
 	String status;
-	int Global_Search_Results_loop = 20;
-	int Homepage_portfolio_snap_loop = 20;
-	int Stocks_homepage_portfolio_snap_loop = 0;
-	int mf_homepage_portfolio_snap_loop = 20;
-	int watchlis_loop = 20; // same for option watch list
-	int Get_quote_loop = 20; // same for Get quote, Fundamentals, Technicals, News
-	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(10));
+	int Global_Search_Results_loop = 100;
+	int Homepage_portfolio_snap_loop = 80;
+	int Stocks_homepage_portfolio_snap_loop = 100;
+	int mf_homepage_portfolio_snap_loop = 100;
+	int watchlis_loop = 100; // same for option watch list
+	int Get_quote_loop = 100; // same for Get quote, Fundamentals, Technicals, News
+	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(2));
 
-	@Test(priority = 1)
+	@Test(priority = 1, enabled = true)
 	public void Verify_user_login_and_clicks_on_RDD() throws InterruptedException, IOException {
 		LoginPage loginpage = new LoginPage(Driver);
 		try {
@@ -74,7 +71,7 @@ public class MoRise {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, enabled = false)
 	public void Verify_Global_search_result() throws InterruptedException, IOException {
 
 		HomePage homepage = new HomePage(Driver);
@@ -83,265 +80,471 @@ public class MoRise {
 		for (int i = 1; i <= Global_Search_Results_loop; i++) {
 			homepage.Globalsearchbeforetap.click();
 			homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
-			long startTime = System.currentTimeMillis();
 			try {
+				long startTime = System.currentTimeMillis();
 				wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
+				long endTime = System.currentTimeMillis();
 				homepage.Globalsearchresult.isDisplayed();
 				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime;
 			Driver.hideKeyboard();
-			Thread.sleep(1000);
 			Driver.navigate().back();
-			logTableRow(tableName, i, timeTaken, status);
-			Thread.sleep(1000);
 		}
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, enabled = false)
 	public void Verify_homepage_portfolio_snapshot() throws InterruptedException, IOException {
 		HomePage homepage = new HomePage(Driver);
 		String tableName = "Homepage_portfolio_snap";
 		logTableStart(tableName);
 		for (int i = 1; i <= Homepage_portfolio_snap_loop; i++) {
-			Thread.sleep(200);
 			homepage.ExpandIcon.click();
-			long startTime = System.currentTimeMillis();
 			try {
 				wait.until(ExpectedConditions.elementToBeClickable(homepage.availablemargin));
+				long startTime = System.currentTimeMillis();
 				homepage.availablemargin.isDisplayed();
+				long endTime = System.currentTimeMillis();
 				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime; // Time calculation
-			logTableRow(tableName, i, timeTaken, status);
 			homepage.CollapseIcon.click();
-			Thread.sleep(300);
 		}
 		logTableEnd(tableName);
 
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, enabled = false)
 	public void Verify_Stock_homepage_Portfolio_Snapshot() throws InterruptedException, IOException {
-
 		StocksHomePage stockshomepage = new StocksHomePage(Driver);
-		Thread.sleep(500);
 		stockshomepage.stocksHomepageTab.click();
 		String tableName = "Stocks_homepage_portfolio_snap";
 		logTableStart(tableName);
 		for (int i = 1; i <= Stocks_homepage_portfolio_snap_loop; i++) {
 			stockshomepage.stocksPortfolioexpand.click();
-			long startTime = System.currentTimeMillis(); // Start time
 			try {
 				wait.until(ExpectedConditions.visibilityOf(stockshomepage.stocksHomepageCollapseIcon));
+				long startTime = System.currentTimeMillis();
 				stockshomepage.stocksHomepageCollapseIcon.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 				status = "Pass";
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime;
-			logTableRow(tableName, i, timeTaken, status);
 			stockshomepage.stocksHomepageCollapseIcon.click();
-			Thread.sleep(200);
 		}
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5, enabled = false)
 	public void Verify_MF_homepage_Portfolio_Snapshot() throws InterruptedException, IOException {
-
 		MfHomePage mfHomePage = new MfHomePage(Driver);
 		mfHomePage.MfTab.click();
-		Thread.sleep(500);
 		String tableName = "mf_homepage_portfolio_snap";
 		logTableStart(tableName);
-
 		for (int i = 1; i <= mf_homepage_portfolio_snap_loop; i++) {
 			mfHomePage.MfExpandIcon.click();
-			long startTime = System.currentTimeMillis();
 			try {
 				wait.until(ExpectedConditions.elementToBeClickable(mfHomePage.mfCollapseIcon));
+				long startTime = System.currentTimeMillis();
 				mfHomePage.mfCollapseIcon.isDisplayed();
+				long endTime = System.currentTimeMillis();
 				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime;
-			logTableRow(tableName, i, timeTaken, status);
 			mfHomePage.mfCollapseIcon.click();
-			Thread.sleep(200);
 		}
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6, enabled = false)
 	public void Verify_User_clicks_on_watchlist() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
 		homepage.homeTabHeader.click();
 		homepage.WatchlistBottombar.click();
-		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.donotdelte, 0, 5, 123, 844, 692);
 		watchlist.donotdelte.click();
 		String tableName = "Watchlist";
 		logTableStart(tableName);
 		for (int i = 1; i <= watchlis_loop; i++) {
-			tapWithActions(Driver, 289, 526);
-			long startTime = System.currentTimeMillis();
+
+			ResusableMethods.tapWithActions(Driver, 289, 526);
 			try {
-				watchlist.donotdelte.isDisplayed();
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
+				watchlist.scriptinwatchlist.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 				status = "Pass";
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime;
-			logTableRow(tableName, i, timeTaken, status);
 			watchlist.optionlist.click();
 		}
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7, enabled = false)
 	public void Verify_User_clicks_on_Option_watchlist() throws InterruptedException {
 		Watchlist watchlist = new Watchlist(Driver);
 		GetQuote getquote = new GetQuote(Driver);
+		HomePage homepage = new HomePage(Driver);
 		String tableName = "Option_Watchlist";
 		logTableStart(tableName);
+		homepage.WatchlistBottombar.click();
 		for (int i = 1; i <= watchlis_loop; i++) {
 			watchlist.optionlist.click();
-			long startTime = System.currentTimeMillis();
 			try {
+				wait.until(ExpectedConditions.visibilityOf(getquote.callbutton));
+				long startTime = System.currentTimeMillis();
 				getquote.callbutton.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 				status = "Pass";
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime;
-			logTableRow(tableName, i, timeTaken, status);
-			tapWithActions(Driver, 289, 526);
+			ResusableMethods.tapWithActions(Driver, 289, 526);
 		}
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8, enabled = false)
 	public void Verify_user_clicks_getquote_overview() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
-		watchlist.watchlistbutton.click();
-		ResusableMethods.horizontalSwipetillElement(Driver, watchlist.donotdelte, 0, 5, 123, 844, 692);
+		ResusableMethods.tapWithActions(Driver, 289, 526);
 		watchlist.donotdelte.click();
 		watchlist.scriptinwatchlist.click();
 		String tableName = "Get Quote overview";
 		logTableStart(tableName);
 		for (int i = 1; i <= Get_quote_loop; i++) {
 			getquote.overviewbutton.click();
-			long startTime = System.currentTimeMillis();
 			try {
+				wait.until(ExpectedConditions.visibilityOf(getquote.depth));
+				long startTime = System.currentTimeMillis();
 				getquote.depth.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 				status = "Pass";
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis();
-			long timeTaken = endTime - startTime;
-			logTableRow(tableName, i, timeTaken, status);
 			getquote.fundamentaltab.click();
 		}
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9, enabled = false)
 	public void Verify_user_clicks_getquote_Fundamentals() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "Get Quote Fundamentals";
 		logTableStart(tableName);
 		for (int i = 1; i <= Get_quote_loop; i++) {
 			getquote.fundamentaltab.click();
-			long startTime = System.currentTimeMillis();
 			try {
 				wait.until(ExpectedConditions.elementToBeClickable(getquote.fundamentalratios));
+				long startTime = System.currentTimeMillis();
 				getquote.fundamentalratios.isDisplayed();
+				long endTime = System.currentTimeMillis();
 				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			long endTime = System.currentTimeMillis(); // End time
-			long timeTaken = endTime - startTime;
-			logTableRow(tableName, i, timeTaken, status);
 			getquote.technicaltab.click();
-			Thread.sleep(500);
 		}
-
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 10)
-	public void Verify_user_clicks_getquote_fundamental() throws InterruptedException {
+	@Test(priority = 10, enabled = false)
+	public void Verify_user_clicks_getquote_technical() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "Get Quote Technical";
 		logTableStart(tableName);
 		for (int i = 1; i <= Get_quote_loop; i++) {
-			getquote.fundamentaltab.click();
-			long startTime = System.currentTimeMillis();
+			getquote.technicaltab.click();
 			try {
-				wait.until(ExpectedConditions.visibilityOf(getquote.fundamentalratios));
-				getquote.fundamentalratios.isDisplayed();
+				wait.until(ExpectedConditions.visibilityOf(getquote.deliveryvolume));
+				long startTime = System.currentTimeMillis();
+				getquote.deliveryvolume.isDisplayed();
+				long endTime = System.currentTimeMillis();
 				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
 			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
 				status = "Fail";
 				long endTime = System.currentTimeMillis();
-				long timeTaken = endTime - startTime;
-				logTableRow(tableName, i, timeTaken, status);
-				getquote.technicaltab.click();
+				logTableRow(tableName, i, endTime - startTime, status);
 			}
-			logTableEnd(tableName);
+			getquote.Newstab.click();
 		}
+		logTableEnd(tableName);
 	}
 
-	@Test(priority = 11)
-	public void Verify_user_clicks_getquote_technical() throws InterruptedException {
+	@Test(priority = 11, enabled = false)
+	public void Verify_user_clicks_getquote_news() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "Get Quote News";
 		logTableStart(tableName);
 		for (int i = 1; i <= Get_quote_loop; i++) {
-			getquote.technicaltab.click();
-			long startTime = System.currentTimeMillis(); // start time
-			try {
-				wait.until(ExpectedConditions.visibilityOf(getquote.deliveryvolume));
-				getquote.deliveryvolume.isDisplayed();
-				status = "Pass";
-			} catch (Exception e) {
-				status = "Fail";
-			}
-			long endTime = System.currentTimeMillis(); // End
-			long timeTaken = endTime - startTime; // Time calculation
-			logTableRow(tableName, i, timeTaken, status);
 			getquote.Newstab.click();
+			try {
+				wait.until(ExpectedConditions.visibilityOf(getquote.newsverification));
+				long startTime = System.currentTimeMillis();
+				getquote.newsverification.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			getquote.technicaltab.click();
 		}
 		logTableEnd(tableName);
-		Driver.navigate().back();
 	}
 
-	public static void tapWithActions(AppiumDriver Driver, int x, int y) {
+	@Test(priority = 12, enabled = false)
+	public void Verify_user_clicks_getquote_optionchain() throws InterruptedException {
+		GetQuote getquote = new GetQuote(Driver);
+		String tableName = "option chain";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			getquote.optionchain.click();
+			try {
+				wait.until(ExpectedConditions.visibilityOf(getquote.optionchainverification));
+				long startTime = System.currentTimeMillis();
+				getquote.optionchainverification.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			Driver.navigate().back();
+		}
+		logTableEnd(tableName);
+	}
 
-		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence tap = new Sequence(finger, 1);
+	@Test(priority = 13, enabled = true)
+	public void Verify_user_clicks_portfolio_all() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		Portfolio portfolio = new Portfolio(Driver);
+		String tableName = "portfolio All";
+		logTableStart(tableName);
+		homepage.portfolioBottombar.click();
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			portfolio.AllTabPortfolio.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(portfolio.viewAnalysis));
+				portfolio.viewAnalysis.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			portfolio.StocksTabPortfolio.click();
+		}
+		logTableEnd(tableName);
+	}
 
-		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
-		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+	@Test(priority = 14, enabled = true)
+	public void Verify_user_clicks_portfolio_stocks() throws InterruptedException {
+		Portfolio portfolio = new Portfolio(Driver);
+		String tableName = "portfolio stocks";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			portfolio.StocksTabPortfolio.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(portfolio.currentvaluestocks));
+				long endTime = System.currentTimeMillis();
+				portfolio.currentvaluestocks.isDisplayed();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			portfolio.MFTabPortfolio.click();
+		}
+		logTableEnd(tableName);
+	}
 
-		Driver.perform(Collections.singletonList(tap));
+	@Test(priority = 15, enabled = true)
+	public void Verify_user_clicks_portfolio_mf() throws InterruptedException {
+		Portfolio portfolio = new Portfolio(Driver);
+		String tableName = "portfolio MF";
+		logTableStart(tableName);
+
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			portfolio.MFTabPortfolio.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(portfolio.currentvalueofmf));
+				long endTime = System.currentTimeMillis();
+				portfolio.currentvalueofmf.isDisplayed();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			portfolio.PMSTabPortfolio.click();
+		}
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 16, enabled = true)
+	public void Verify_user_clicks_portfolio_PMS() throws InterruptedException {
+		Portfolio portfolio = new Portfolio(Driver);
+		String tableName = "portfolio PMS";
+		logTableStart(tableName);
+
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			portfolio.PMSTabPortfolio.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(portfolio.currentvaluestocks));
+				portfolio.currentvaluestocks.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			portfolio.BasketTabPortfolio.click();
+		}
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 17, enabled = true)
+	public void Verify_user_clicks_portfolio_basket() throws InterruptedException {
+		Portfolio portfolio = new Portfolio(Driver);
+		String tableName = "portfolio Basket";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			portfolio.BasketTabPortfolio.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(portfolio.currentvaluebasket));
+				portfolio.currentvaluebasket.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			portfolio.PMSTabPortfolio.click();
+
+		}
+
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 18, enabled = true)
+	public void Verify_user_clicks_portfolio_Add_funds() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		String tableName = "Add Funds";
+		logTableStart(tableName);
+		homepage.walleticon.click();
+
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			homepage.addfundstab.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(homepage.enteramount));
+				homepage.enteramount.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			homepage.withdrawtab.click();
+		}
+		logTableEnd(tableName);
+	}
+
+	@Test(priority = 19, enabled = true)
+	public void Verify_user_clicks_portfolio_withdraw_funds() throws InterruptedException {
+		HomePage homepage = new HomePage(Driver);
+		String tableName = "withdraw Funds";
+		logTableStart(tableName);
+		for (int i = 1; i <= Get_quote_loop; i++) {
+			homepage.withdrawtab.click();
+			try {
+				long startTime = System.currentTimeMillis();
+				wait.until(ExpectedConditions.visibilityOf(homepage.enteramount));
+				homepage.enteramount.isDisplayed();
+				long endTime = System.currentTimeMillis();
+				status = "Pass";
+				logTableRow(tableName, i, endTime - startTime, status);
+			} catch (Exception e) {
+				long startTime = System.currentTimeMillis();
+				status = "Fail";
+				long endTime = System.currentTimeMillis();
+				logTableRow(tableName, i, endTime - startTime, status);
+			}
+			homepage.addfundstab.click();
+		}
+		logTableEnd(tableName);
 	}
 
 	// Helper Methods for Logging Tables

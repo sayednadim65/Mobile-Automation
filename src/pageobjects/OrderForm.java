@@ -35,4 +35,27 @@ public class OrderForm {
 	@FindBy (xpath = "(//android.view.View)[16]")
 	public WebElement amountswitch;
 	
+	@FindBy (xpath = "(//android.widget.EditText)[2]")
+	public WebElement limitprice;
+	
+	@FindBy (xpath = "//android.widget.Button[@content-desc=\"View Order\"]")
+	public WebElement vieworder;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Disclaimer\"]")
+	public WebElement disclaimer;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Confirm your order\"]")
+	public WebElement confirmorder;
+	
+	@FindBy (xpath = "//android.widget.Button[@content-desc=\"Done\"]")
+	public WebElement done;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc='Cancel']")
+	public WebElement cancelbutton;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Cancel Orders\"]")
+	public WebElement cancelbuttontext;
+	
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,'CANCELLED')]")
+	public WebElement cancelorder;
 }
