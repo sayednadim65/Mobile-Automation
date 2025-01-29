@@ -28,7 +28,7 @@ public class ResusableMethods {
 
 		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
 		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-		Thread.sleep(500);
+		Thread.sleep(100);
 		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
 		Driver.perform(Collections.singletonList(tap));
@@ -135,28 +135,16 @@ public class ResusableMethods {
 		textbox.sendKeys(text);
 	}
 
-	public static void longPressWithActions(AndroidDriver Driver, int x, int y, long pressDurationMillis) {
+	public static void longPressWithActions(AndroidDriver Driver, int x, int y, int time) throws InterruptedException {
 		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-		Sequence longPress = new Sequence(finger, 1);
-		// Move the pointer to the desired coordinates
-		longPress.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
-		// Press down at the location
-		longPress.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-		// Perform the press down action
-		Driver.perform(Collections.singletonList(longPress));
-		// Sleep for the desired long press duration
-		try {
-			Thread.sleep(pressDurationMillis); // Long press duration
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		// Now release the press
-		longPress = new Sequence(finger, 1);
-		longPress.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
-		longPress.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+		Sequence tap = new Sequence(finger, 1);
 
-		// Perform the release action
-		Driver.perform(Collections.singletonList(longPress));
+		tap.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, y));
+		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		Thread.sleep(time);
+		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+		Driver.perform(Collections.singletonList(tap));
+
 	}
-
 }
