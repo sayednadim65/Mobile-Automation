@@ -11,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import io.appium.java_client.android.AndroidDriver;
 
 public class ResusableMethods {
@@ -143,8 +145,20 @@ public class ResusableMethods {
 		tap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
 		Thread.sleep(time);
 		tap.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
 		Driver.perform(Collections.singletonList(tap));
+	}
 
+	public static void test(AndroidDriver Driver, WebDriverWait wait, ExtentTest test, String status,
+			WebElement element, String text) {
+		try {
+			wait.until(ExpectedConditions.visibilityOf(element));
+			element.isDisplayed();
+			status = "Pass";
+			test.pass(text + " is Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail(text + " is Failed");
+			test.info(e.getMessage());
+		}
 	}
 }

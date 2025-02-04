@@ -32,6 +32,7 @@ import pageobjects.LoginPage;
 import pageobjects.MfHomePage;
 import pageobjects.OrderForm;
 import pageobjects.Portfolio;
+import pageobjects.ProfilePage;
 import pageobjects.ResusableMethods;
 import pageobjects.Watchlist;
 import utils.Commons;
@@ -87,13 +88,14 @@ public class Rise_Regression {
 //		test.fail("Login Failed");
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void App_Regression() throws IOException, InterruptedException {
 
 		logger.logTableStart("Execution Report");
 
 		Global_search_Result();
 		Get_quote_fut_tab();
+
 		Get_quote_opt_tab();
 		Get_quote_cash_tab();
 		Get_quote_Nse_switch_Delivery_buy();
@@ -160,13 +162,15 @@ public class Rise_Regression {
 		Portfolio_swipe_Basket_Tab_verification();
 		Watchlist_script();
 		Add_script_in_watchlist();
+		MTFinwatchlistscript();
 		Delete_script_in_watchlist();
 		Delete_watchlist();
+		asbaswitch();
 
 		logger.logTableEnd();
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 3, enabled = false)
 	public void orderrouting() throws InterruptedException {
 		logger.logTableStart("Order Routing timestamp study  Report");
 		for (int i = 1; i <= 36; i++) {
@@ -182,12 +186,12 @@ public class Rise_Regression {
 		HomePage homepage = new HomePage(Driver);
 		homepage.Globalsearchbeforetap.click();
 		Thread.sleep(1000);
-		long startTime = System.currentTimeMillis(); // Start timer
+		// Start timer
+		long startTime = System.currentTimeMillis();
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
-		Thread.sleep(2000);
 		try {
-			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 
+			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 			String resultsearch = searchresult.getAttribute("content-desc");
 			String globalsearchresult = resultsearch.substring(3, 8);
 			globalsearchresult.equalsIgnoreCase("YESBA");
@@ -201,8 +205,8 @@ public class Rise_Regression {
 			long endTime = System.currentTimeMillis();
 			homepage.Globalsearchresult.click();
 			logger.logTableRow("Global Search Result", status, endTime - startTime);
-			Thread.sleep(1000);
 		}
+
 	}
 
 	public void Get_quote_fut_tab() {
@@ -225,6 +229,7 @@ public class Rise_Regression {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Get quote fut tab", status, endTime - startTime);
 		}
+
 	}
 
 	public void Get_quote_opt_tab() {
@@ -812,6 +817,7 @@ public class Rise_Regression {
 		homepage.TGSbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(homepage.TGSpage));
+			homepage.TGSpage.isDisplayed();
 			status = "Pass";
 			test.pass("Homescreen TGS button Passed");
 		} catch (Exception e) {
@@ -919,23 +925,14 @@ public class Rise_Regression {
 		test = extent.createTest("Homescreen Teji Mandi button");
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
-		long startTime = System.currentTimeMillis();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
 		homepage.tejimandibutton.click();
-		try {
-			wait.until(ExpectedConditions.visibilityOf(homepage.tejimandipage));
-			homepage.tejimandipage.isDisplayed();
-			status = "Pass";
-			test.pass("Homescreen Teji Mandi button Passed");
-		} catch (Exception e) {
-			status = "Fail";
-			test.fail("Homescreen Teji Mandi button Failed");
-			test.info(e.getMessage());
-		} finally {
-			long endTime = System.currentTimeMillis();
-			Driver.navigate().back();
-			logger.logTableRow("Homescreen Teji Mandi button", status, endTime - startTime);
-		}
+		long startTime = System.currentTimeMillis();
+		ResusableMethods.test(Driver, wait, test, status, homepage.tejimandipage, "Homescreen Teji Mandi button");
+		long endTime = System.currentTimeMillis();
+		Driver.navigate().back();
+		logger.logTableRow("Homescreen Teji Mandi button", status, endTime - startTime);
+
 	}
 
 	public void MFHighReturns_CTA() throws InterruptedException {
@@ -1528,7 +1525,8 @@ public class Rise_Regression {
 		try {
 			WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
 			String addedscript = scriptinwatchlist.getAttribute("content-desc");
-			String watchlistscript = addedscript.substring(0, 7);
+			List<String> splitList = Arrays.asList(addedscript.split("\\s+"));
+			String watchlistscript = splitList.get(0);
 			watchlistscript.equalsIgnoreCase("YESBANK");
 			status = "Pass";
 			test.pass("Add Script in watchlist Passed");
@@ -1540,6 +1538,34 @@ public class Rise_Regression {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Add Script in watchlist", status, endTime - startTime);
 		}
+	}
+
+	public void MTFinwatchlistscript() {
+		test = extent.createTest("MTF in script in watchlist");
+		Watchlist watchlist = new Watchlist(Driver);
+		long startTime = System.currentTimeMillis();
+		try {
+			try {
+				watchlist.mtftext.isDisplayed();
+				status = "Pass";
+				test.pass("MTF in script in watchlist Passed");
+			} catch (Exception e) {
+				watchlist.kebabmenuwatchlist.click();
+				watchlist.showmtfinfo.click();
+				Driver.navigate().back();
+				watchlist.mtftext.isDisplayed();
+				status = "Pass";
+				test.pass("MTF in script in watchlist Passed");
+			}
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("MTF in script in watchlist Failed");
+			test.info(e.getMessage());
+		} finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("MTF in script in watchlist", status, endTime - startTime);
+		}
+
 	}
 
 	public void Delete_script_in_watchlist() throws InterruptedException {
@@ -1582,6 +1608,29 @@ public class Rise_Regression {
 		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("Delete watchlist", status, endTime - startTime);
+		}
+	}
+
+	public void asbaswitch() throws InterruptedException {
+		test = extent.createTest("Profile asba switch");
+		ProfilePage profilepage = new ProfilePage(Driver);
+		ResusableMethods.longPressWithActions(Driver, 1010, 180, 500);
+		profilepage.profiledetails.click();
+		profilepage.tradingaccountdetails.click();
+		long startTime = System.currentTimeMillis();
+		try {
+			profilepage.asbaswitch.isDisplayed();
+			status = "Pass";
+			test.pass("Profile asba switch Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Profile asba switch Failed");
+			test.info(e.getMessage());
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Driver.navigate().back();
+			logger.logTableRow("Profile asba switch", status, endTime - startTime);
 		}
 	}
 

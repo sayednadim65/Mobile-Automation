@@ -34,7 +34,7 @@ public class MoRise {
 	int Stocks_homepage_portfolio_snap_loop = 100;
 	int mf_homepage_portfolio_snap_loop = 100;
 	int watchlis_loop = 100; // same for option watch list
-	int Get_quote_loop = 100; // same for Get quote, Fundamentals, Technicals, News
+	int Get_quote_loop = 33; // same for Get quote, Fundamentals, Technicals, News
 	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(2));
 
 	@Test(priority = 1, enabled = true)

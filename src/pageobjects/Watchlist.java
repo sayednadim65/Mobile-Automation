@@ -31,8 +31,8 @@ public class Watchlist {
 
 	@FindBy(xpath = "(//android.widget.ImageView)[3]")
 	public WebElement addscripticon;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Stocks')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Stocks')]")
 	public WebElement stocksglobalsearchtab;
 
 	@FindBy(xpath = "//android.view.View[contains(@content-desc,'YESBANK')]")
@@ -70,4 +70,13 @@ public class Watchlist {
 
 	@FindBy(xpath = "//android.view.View[@content-desc=\"Option List\"]")
 	public WebElement optionlist;
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'MTF')]")
+	public WebElement mtftext;
+
+	@FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Show MTF Info\"]/android.view.View")
+	public WebElement showmtfinfo;
+
+	@FindBy(xpath = "//android.widget.ImageView[@class='android.widget.ImageView' and @package='com.mosl.mobile' and @enabled='true' and @clickable='true' and @index='3']")
+	public WebElement walleticon;
 }
