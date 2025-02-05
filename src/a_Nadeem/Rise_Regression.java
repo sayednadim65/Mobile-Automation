@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,11 +16,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -95,7 +92,6 @@ public class Rise_Regression {
 
 		Global_search_Result();
 		Get_quote_fut_tab();
-
 		Get_quote_opt_tab();
 		Get_quote_cash_tab();
 		Get_quote_Nse_switch_Delivery_buy();
@@ -114,7 +110,6 @@ public class Rise_Regression {
 		homepage_portfolio_overallvalue();
 		homepage_explore_portfolio_expand();
 		homepage_explore_portfolio_position();
-
 		hompage_explore_portfolio_collapse();
 		Researchideaibutton();
 		IPO_button_CTA();
@@ -166,7 +161,6 @@ public class Rise_Regression {
 		Delete_script_in_watchlist();
 		Delete_watchlist();
 		asbaswitch();
-
 		logger.logTableEnd();
 	}
 
@@ -182,19 +176,18 @@ public class Rise_Regression {
 	}
 
 	public void Global_search_Result() throws InterruptedException, IOException {
-		test = extent.createTest("testGoogleSearch");
+		test = extent.createTest("Global Search Result");
 		HomePage homepage = new HomePage(Driver);
 		homepage.Globalsearchbeforetap.click();
 		Thread.sleep(1000);
-		// Start timer
 		long startTime = System.currentTimeMillis();
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
 		try {
-
 			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 			String resultsearch = searchresult.getAttribute("content-desc");
-			String globalsearchresult = resultsearch.substring(3, 8);
-			globalsearchresult.equalsIgnoreCase("YESBA");
+			List<String> splitresult = Arrays.asList(resultsearch.split("\\s+"));
+			String globalsearchresult = splitresult.get(1);
+			globalsearchresult.equalsIgnoreCase(" YESBANK");
 			status = "Pass";
 			test.pass("Global search Result Passed");
 		} catch (Exception e) {
@@ -206,7 +199,6 @@ public class Rise_Regression {
 			homepage.Globalsearchresult.click();
 			logger.logTableRow("Global Search Result", status, endTime - startTime);
 		}
-
 	}
 
 	public void Get_quote_fut_tab() {
@@ -1614,7 +1606,7 @@ public class Rise_Regression {
 	public void asbaswitch() throws InterruptedException {
 		test = extent.createTest("Profile asba switch");
 		ProfilePage profilepage = new ProfilePage(Driver);
-		ResusableMethods.longPressWithActions(Driver, 1010, 180, 500);
+		ResusableMethods.longPressWithActions(Driver, 1010, 180, 1000);
 		profilepage.profiledetails.click();
 		profilepage.tradingaccountdetails.click();
 		long startTime = System.currentTimeMillis();
