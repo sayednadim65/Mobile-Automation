@@ -182,6 +182,7 @@ public class Rise_Regression {
 		Thread.sleep(1000);
 		long startTime = System.currentTimeMillis();
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
+		Thread.sleep(2500);
 		try {
 			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 			String resultsearch = searchresult.getAttribute("content-desc");

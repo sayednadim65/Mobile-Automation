@@ -11,213 +11,213 @@
       <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>1</td><td>Global Search Result</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>3400</td></tr>]]>
+      <![CDATA[<tr><td>1</td><td>Global Search Result</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>1327</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4020</td></tr>]]>
+      <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3886</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6197</td></tr>]]>
+      <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5729</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1388</td></tr>]]>
+      <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1664</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4375</td></tr>]]>
+      <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3140</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3709</td></tr>]]>
+      <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5329</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3699</td></tr>]]>
+      <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>9293</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8757</td></tr>]]>
+      <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6018</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6838</td></tr>]]>
+      <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2743</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4698</td></tr>]]>
+      <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>7218</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>9845</td></tr>]]>
+      <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>2510</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>21926</td></tr>]]>
+      <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4013</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2662</td></tr>]]>
+      <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2055</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>15794</td></tr>]]>
+      <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>12533</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6576</td></tr>]]>
+      <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8625</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8857</td></tr>]]>
+      <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13514</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>49471</td></tr>]]>
+      <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6379</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>18</td><td>Homescreen portfolio overall value</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>14572</td></tr>]]>
+      <![CDATA[<tr><td>18</td><td>Homescreen portfolio overall value</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2254</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>19</td><td>Homescreen portfolio expand button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>63818</td></tr>]]>
+      <![CDATA[<tr><td>19</td><td>Homescreen portfolio expand button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13461</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>20</td><td>Homescreen portfolio collapse button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>71027</td></tr>]]>
+      <![CDATA[<tr><td>20</td><td>Homescreen portfolio collapse button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2015</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>21</td><td>Homescreen Research idea I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>31769</td></tr>]]>
+      <![CDATA[<tr><td>21</td><td>Homescreen Research idea I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1307</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>22</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>25549</td></tr>]]>
+      <![CDATA[<tr><td>22</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3088</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>23</td><td>Homescreen Research Idea button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>32142</td></tr>]]>
+      <![CDATA[<tr><td>23</td><td>Homescreen Research Idea button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5357</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>24</td><td>Homescreen IAP button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>24197</td></tr>]]>
+      <![CDATA[<tr><td>24</td><td>Homescreen IAP button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2620</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>25</td><td>Homescreen Bonds button</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>47560</td></tr>]]>
+      <![CDATA[<tr><td>25</td><td>Homescreen Bonds button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13827</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>26</td><td>Homescreen Option Store button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>36126</td></tr>]]>
+      <![CDATA[<tr><td>26</td><td>Homescreen Option Store button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3002</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>27</td><td>Homescreen Stock Basket button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>22471</td></tr>]]>
+      <![CDATA[<tr><td>27</td><td>Homescreen Stock Basket button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3584</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>28</td><td>Homescreen Insurance button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>32339</td></tr>]]>
+      <![CDATA[<tr><td>28</td><td>Homescreen Insurance button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2121</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>29</td><td>Homescreen Fixed Deposit button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>35303</td></tr>]]>
+      <![CDATA[<tr><td>29</td><td>Homescreen Fixed Deposit button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3927</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>30</td><td>Homescreen Smallcase button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>77849</td></tr>]]>
+      <![CDATA[<tr><td>30</td><td>Homescreen Smallcase button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2435</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>31</td><td>Homescreen Teji Mandi button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>11444</td></tr>]]>
+      <![CDATA[<tr><td>31</td><td>Homescreen Teji Mandi button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4178</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>32</td><td>Homescreen TGS button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>41320</td></tr>]]>
+      <![CDATA[<tr><td>32</td><td>Homescreen TGS button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6550</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>33</td><td>Homescreen Intra options button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6985</td></tr>]]>
+      <![CDATA[<tr><td>33</td><td>Homescreen Intra options button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5500</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>34</td><td>Homescreen MF High Returns button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3358</td></tr>]]>
+      <![CDATA[<tr><td>34</td><td>Homescreen MF High Returns button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2767</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>35</td><td>Homescreen MF SIP with 500 button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6184</td></tr>]]>
+      <![CDATA[<tr><td>35</td><td>Homescreen MF SIP with 500 button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2851</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>36</td><td>Homescreen MF Tax Saver button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5047</td></tr>]]>
+      <![CDATA[<tr><td>36</td><td>Homescreen MF Tax Saver button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3432</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>37</td><td>Homescreen MF MO Recommended button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6885</td></tr>]]>
+      <![CDATA[<tr><td>37</td><td>Homescreen MF MO Recommended button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3276</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>38</td><td>Homescreen MF Highest rated Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5924</td></tr>]]>
+      <![CDATA[<tr><td>38</td><td>Homescreen MF Highest rated Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5374</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>39</td><td>Homescreen MF International Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13697</td></tr>]]>
+      <![CDATA[<tr><td>39</td><td>Homescreen MF International Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10398</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>40</td><td>Homescreen IPO I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>35371</td></tr>]]>
+      <![CDATA[<tr><td>40</td><td>Homescreen IPO I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>9062</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>41</td><td>Homescreen IPO view All button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8460</td></tr>]]>
+      <![CDATA[<tr><td>41</td><td>Homescreen IPO view All button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2837</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>42</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>28946</td></tr>]]>
+      <![CDATA[<tr><td>42</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2741</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>43</td><td>Homescreen NFO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>20004</td></tr>]]>
+      <![CDATA[<tr><td>43</td><td>Homescreen NFO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1073</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>44</td><td>Homescreen Stock sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2486</td></tr>]]>
+      <![CDATA[<tr><td>44</td><td>Homescreen Stock sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5119</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>45</td><td>Homescreen MF sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>7550</td></tr>]]>
+      <![CDATA[<tr><td>45</td><td>Homescreen MF sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4355</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>46</td><td>Homescreen Reports button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8457</td></tr>]]>
+      <![CDATA[<tr><td>46</td><td>Homescreen Reports button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2187</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>47</td><td>Homescreen PNL Summary button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>11511</td></tr>]]>
+      <![CDATA[<tr><td>47</td><td>Homescreen PNL Summary button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>12832</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>48</td><td>Homescreen Alerts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5804</td></tr>]]>
+      <![CDATA[<tr><td>48</td><td>Homescreen Alerts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8842</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>49</td><td>Homescreen margin cal button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>15873</td></tr>]]>
+      <![CDATA[<tr><td>49</td><td>Homescreen margin cal button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10755</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>50</td><td>Homescreen MO API button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13990</td></tr>]]>
+      <![CDATA[<tr><td>50</td><td>Homescreen MO API button</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>34100</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>51</td><td>Mutual Fund View All Returns</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>30406</td></tr>]]>
+      <![CDATA[<tr><td>51</td><td>Mutual Fund View All Returns</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>25959</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>52</td><td>Portfolio View Analysis button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>24025</td></tr>]]>
+      <![CDATA[<tr><td>52</td><td>Portfolio View Analysis button</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>31502</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>53</td><td>Portfolio swipe Stocks Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>134322</td></tr>]]>
+      <![CDATA[<tr><td>53</td><td>Portfolio swipe Stocks Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>46945</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>54</td><td>Portfolio swipe MF Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>55913</td></tr>]]>
+      <![CDATA[<tr><td>54</td><td>Portfolio swipe MF Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>52062</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>55</td><td>Portfolio swipe PMS Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>48051</td></tr>]]>
+      <![CDATA[<tr><td>55</td><td>Portfolio swipe PMS Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>47014</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>56</td><td>Portfolio swipe Basket Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>47501</td></tr>]]>
+      <![CDATA[<tr><td>56</td><td>Portfolio swipe Basket Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>44113</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>57</td><td>Add Watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>26248</td></tr>]]>
+      <![CDATA[<tr><td>57</td><td>Add Watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>18078</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>58</td><td>Add Script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>11198</td></tr>]]>
+      <![CDATA[<tr><td>58</td><td>Add Script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10067</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>59</td><td>MTF in script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2897</td></tr>]]>
+      <![CDATA[<tr><td>59</td><td>MTF in script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>698</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>60</td><td>Delete script from watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>22546</td></tr>]]>
+      <![CDATA[<tr><td>60</td><td>Delete script from watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10335</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>61</td><td>Delete watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>18557</td></tr>]]>
+      <![CDATA[<tr><td>61</td><td>Delete watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10974</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>62</td><td>Profile asba switch</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>729</td></tr>]]>
+      <![CDATA[<tr><td>62</td><td>Profile asba switch</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>790</td></tr>]]>
     </line>
     <line>
       <![CDATA[</table>]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-02-06T14:36:46 IST" name="Default suite" finished-at="2025-02-06T15:20:53 IST" duration-ms="2646683">
+  <suite started-at="2025-02-06T16:27:08 IST" name="Default suite" finished-at="2025-02-06T16:46:05 IST" duration-ms="1136963">
     <groups>
     </groups>
-    <test started-at="2025-02-06T14:36:46 IST" name="Default test" finished-at="2025-02-06T15:20:53 IST" duration-ms="2646683">
+    <test started-at="2025-02-06T16:27:08 IST" name="Default test" finished-at="2025-02-06T16:46:05 IST" duration-ms="1136963">
       <class name="a_Nadeem.Rise_Regression">
-        <test-method is-config="true" signature="Verify_user_launch_app()[pri:0, instance:a_Nadeem.Rise_Regression@7f284218]" started-at="2025-02-06T14:36:46 IST" name="Verify_user_launch_app" finished-at="2025-02-06T14:36:56 IST" duration-ms="9328" status="PASS">
+        <test-method is-config="true" signature="Verify_user_launch_app()[pri:0, instance:a_Nadeem.Rise_Regression@247d8ae]" started-at="2025-02-06T16:27:08 IST" name="Verify_user_launch_app" finished-at="2025-02-06T16:27:16 IST" duration-ms="8064" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_launch_app -->
-        <test-method is-config="true" signature="ExtentReportSetUp()[pri:0, instance:a_Nadeem.Rise_Regression@7f284218]" started-at="2025-02-06T14:36:56 IST" name="ExtentReportSetUp" finished-at="2025-02-06T14:36:56 IST" duration-ms="240" status="PASS">
+        <test-method is-config="true" signature="ExtentReportSetUp()[pri:0, instance:a_Nadeem.Rise_Regression@247d8ae]" started-at="2025-02-06T16:27:16 IST" name="ExtentReportSetUp" finished-at="2025-02-06T16:27:16 IST" duration-ms="198" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ExtentReportSetUp -->
-        <test-method signature="Verify_user_login_and_clicks_on_RDD()[pri:1, instance:a_Nadeem.Rise_Regression@7f284218]" started-at="2025-02-06T14:36:56 IST" name="Verify_user_login_and_clicks_on_RDD" finished-at="2025-02-06T14:37:28 IST" duration-ms="32674" status="PASS">
+        <test-method signature="Verify_user_login_and_clicks_on_RDD()[pri:1, instance:a_Nadeem.Rise_Regression@247d8ae]" started-at="2025-02-06T16:27:16 IST" name="Verify_user_login_and_clicks_on_RDD" finished-at="2025-02-06T16:27:42 IST" duration-ms="26272" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_login_and_clicks_on_RDD -->
-        <test-method signature="App_Regression()[pri:2, instance:a_Nadeem.Rise_Regression@7f284218]" started-at="2025-02-06T14:37:28 IST" name="App_Regression" finished-at="2025-02-06T15:20:52 IST" duration-ms="2603046" status="PASS">
+        <test-method signature="App_Regression()[pri:2, instance:a_Nadeem.Rise_Regression@247d8ae]" started-at="2025-02-06T16:27:42 IST" name="App_Regression" finished-at="2025-02-06T16:46:04 IST" duration-ms="1101172" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[<h3>Execution Report</h3>]]>
@@ -229,201 +229,201 @@
               <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>1</td><td>Global Search Result</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>3400</td></tr>]]>
+              <![CDATA[<tr><td>1</td><td>Global Search Result</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>1327</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4020</td></tr>]]>
+              <![CDATA[<tr><td>2</td><td>Get quote fut tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3886</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6197</td></tr>]]>
+              <![CDATA[<tr><td>3</td><td>Get quote opt tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5729</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1388</td></tr>]]>
+              <![CDATA[<tr><td>4</td><td>Get quote cash tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1664</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4375</td></tr>]]>
+              <![CDATA[<tr><td>5</td><td>Get quote Nse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3140</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3709</td></tr>]]>
+              <![CDATA[<tr><td>6</td><td>Get quote Nse switch delivery Sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5329</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3699</td></tr>]]>
+              <![CDATA[<tr><td>7</td><td>Get quote Bse switch delivery buy order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>9293</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8757</td></tr>]]>
+              <![CDATA[<tr><td>8</td><td>Get quote Bse switch delivery sell order form</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6018</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6838</td></tr>]]>
+              <![CDATA[<tr><td>9</td><td>Get quote charts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2743</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4698</td></tr>]]>
+              <![CDATA[<tr><td>10</td><td>Get quote optionchain button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>7218</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>9845</td></tr>]]>
+              <![CDATA[<tr><td>11</td><td>Get quote Fundamental Tab</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>2510</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>21926</td></tr>]]>
+              <![CDATA[<tr><td>12</td><td>Get quote Technical Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4013</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2662</td></tr>]]>
+              <![CDATA[<tr><td>13</td><td>Get quote News Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2055</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>15794</td></tr>]]>
+              <![CDATA[<tr><td>14</td><td>Get quote Transactions Tab</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>12533</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6576</td></tr>]]>
+              <![CDATA[<tr><td>15</td><td>Order Form quantity toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8625</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8857</td></tr>]]>
+              <![CDATA[<tr><td>16</td><td>Order Form amount toggle</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13514</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>49471</td></tr>]]>
+              <![CDATA[<tr><td>17</td><td>Homescreen portfolio hide mark</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6379</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>18</td><td>Homescreen portfolio overall value</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>14572</td></tr>]]>
+              <![CDATA[<tr><td>18</td><td>Homescreen portfolio overall value</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2254</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>19</td><td>Homescreen portfolio expand button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>63818</td></tr>]]>
+              <![CDATA[<tr><td>19</td><td>Homescreen portfolio expand button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13461</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>20</td><td>Homescreen portfolio collapse button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>71027</td></tr>]]>
+              <![CDATA[<tr><td>20</td><td>Homescreen portfolio collapse button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2015</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>21</td><td>Homescreen Research idea I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>31769</td></tr>]]>
+              <![CDATA[<tr><td>21</td><td>Homescreen Research idea I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1307</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>22</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>25549</td></tr>]]>
+              <![CDATA[<tr><td>22</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3088</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>23</td><td>Homescreen Research Idea button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>32142</td></tr>]]>
+              <![CDATA[<tr><td>23</td><td>Homescreen Research Idea button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5357</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>24</td><td>Homescreen IAP button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>24197</td></tr>]]>
+              <![CDATA[<tr><td>24</td><td>Homescreen IAP button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2620</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>25</td><td>Homescreen Bonds button</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>47560</td></tr>]]>
+              <![CDATA[<tr><td>25</td><td>Homescreen Bonds button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13827</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>26</td><td>Homescreen Option Store button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>36126</td></tr>]]>
+              <![CDATA[<tr><td>26</td><td>Homescreen Option Store button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3002</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>27</td><td>Homescreen Stock Basket button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>22471</td></tr>]]>
+              <![CDATA[<tr><td>27</td><td>Homescreen Stock Basket button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3584</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>28</td><td>Homescreen Insurance button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>32339</td></tr>]]>
+              <![CDATA[<tr><td>28</td><td>Homescreen Insurance button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2121</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>29</td><td>Homescreen Fixed Deposit button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>35303</td></tr>]]>
+              <![CDATA[<tr><td>29</td><td>Homescreen Fixed Deposit button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3927</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>30</td><td>Homescreen Smallcase button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>77849</td></tr>]]>
+              <![CDATA[<tr><td>30</td><td>Homescreen Smallcase button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2435</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>31</td><td>Homescreen Teji Mandi button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>11444</td></tr>]]>
+              <![CDATA[<tr><td>31</td><td>Homescreen Teji Mandi button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4178</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>32</td><td>Homescreen TGS button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>41320</td></tr>]]>
+              <![CDATA[<tr><td>32</td><td>Homescreen TGS button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6550</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>33</td><td>Homescreen Intra options button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6985</td></tr>]]>
+              <![CDATA[<tr><td>33</td><td>Homescreen Intra options button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5500</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>34</td><td>Homescreen MF High Returns button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3358</td></tr>]]>
+              <![CDATA[<tr><td>34</td><td>Homescreen MF High Returns button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2767</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>35</td><td>Homescreen MF SIP with 500 button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6184</td></tr>]]>
+              <![CDATA[<tr><td>35</td><td>Homescreen MF SIP with 500 button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2851</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>36</td><td>Homescreen MF Tax Saver button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5047</td></tr>]]>
+              <![CDATA[<tr><td>36</td><td>Homescreen MF Tax Saver button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3432</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>37</td><td>Homescreen MF MO Recommended button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>6885</td></tr>]]>
+              <![CDATA[<tr><td>37</td><td>Homescreen MF MO Recommended button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>3276</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>38</td><td>Homescreen MF Highest rated Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5924</td></tr>]]>
+              <![CDATA[<tr><td>38</td><td>Homescreen MF Highest rated Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5374</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>39</td><td>Homescreen MF International Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13697</td></tr>]]>
+              <![CDATA[<tr><td>39</td><td>Homescreen MF International Fund button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10398</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>40</td><td>Homescreen IPO I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>35371</td></tr>]]>
+              <![CDATA[<tr><td>40</td><td>Homescreen IPO I button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>9062</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>41</td><td>Homescreen IPO view All button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8460</td></tr>]]>
+              <![CDATA[<tr><td>41</td><td>Homescreen IPO view All button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2837</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>42</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>28946</td></tr>]]>
+              <![CDATA[<tr><td>42</td><td>Homescreen IPO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2741</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>43</td><td>Homescreen NFO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>20004</td></tr>]]>
+              <![CDATA[<tr><td>43</td><td>Homescreen NFO button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>1073</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>44</td><td>Homescreen Stock sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2486</td></tr>]]>
+              <![CDATA[<tr><td>44</td><td>Homescreen Stock sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5119</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>45</td><td>Homescreen MF sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>7550</td></tr>]]>
+              <![CDATA[<tr><td>45</td><td>Homescreen MF sip button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>4355</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>46</td><td>Homescreen Reports button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8457</td></tr>]]>
+              <![CDATA[<tr><td>46</td><td>Homescreen Reports button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2187</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>47</td><td>Homescreen PNL Summary button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>11511</td></tr>]]>
+              <![CDATA[<tr><td>47</td><td>Homescreen PNL Summary button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>12832</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>48</td><td>Homescreen Alerts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>5804</td></tr>]]>
+              <![CDATA[<tr><td>48</td><td>Homescreen Alerts button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>8842</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>49</td><td>Homescreen margin cal button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>15873</td></tr>]]>
+              <![CDATA[<tr><td>49</td><td>Homescreen margin cal button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10755</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>50</td><td>Homescreen MO API button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>13990</td></tr>]]>
+              <![CDATA[<tr><td>50</td><td>Homescreen MO API button</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>34100</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>51</td><td>Mutual Fund View All Returns</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>30406</td></tr>]]>
+              <![CDATA[<tr><td>51</td><td>Mutual Fund View All Returns</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>25959</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>52</td><td>Portfolio View Analysis button</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>24025</td></tr>]]>
+              <![CDATA[<tr><td>52</td><td>Portfolio View Analysis button</td><td style='background-color: red;color: white; font-weight: bold;'>Fail</td><td>31502</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>53</td><td>Portfolio swipe Stocks Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>134322</td></tr>]]>
+              <![CDATA[<tr><td>53</td><td>Portfolio swipe Stocks Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>46945</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>54</td><td>Portfolio swipe MF Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>55913</td></tr>]]>
+              <![CDATA[<tr><td>54</td><td>Portfolio swipe MF Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>52062</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>55</td><td>Portfolio swipe PMS Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>48051</td></tr>]]>
+              <![CDATA[<tr><td>55</td><td>Portfolio swipe PMS Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>47014</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>56</td><td>Portfolio swipe Basket Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>47501</td></tr>]]>
+              <![CDATA[<tr><td>56</td><td>Portfolio swipe Basket Tab verification</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>44113</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>57</td><td>Add Watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>26248</td></tr>]]>
+              <![CDATA[<tr><td>57</td><td>Add Watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>18078</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>58</td><td>Add Script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>11198</td></tr>]]>
+              <![CDATA[<tr><td>58</td><td>Add Script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10067</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>59</td><td>MTF in script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>2897</td></tr>]]>
+              <![CDATA[<tr><td>59</td><td>MTF in script in watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>698</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>60</td><td>Delete script from watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>22546</td></tr>]]>
+              <![CDATA[<tr><td>60</td><td>Delete script from watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10335</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>61</td><td>Delete watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>18557</td></tr>]]>
+              <![CDATA[<tr><td>61</td><td>Delete watchlist</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>10974</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>62</td><td>Profile asba switch</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>729</td></tr>]]>
+              <![CDATA[<tr><td>62</td><td>Profile asba switch</td><td style='background-color: green;color: white; font-weight: bold;'>Pass</td><td>790</td></tr>]]>
             </line>
             <line>
               <![CDATA[</table>]]>
             </line>
           </reporter-output>
         </test-method> <!-- App_Regression -->
-        <test-method is-config="true" signature="ExtentReportTearDown()[pri:0, instance:a_Nadeem.Rise_Regression@7f284218]" started-at="2025-02-06T15:20:52 IST" name="ExtentReportTearDown" finished-at="2025-02-06T15:20:52 IST" duration-ms="551" status="PASS">
+        <test-method is-config="true" signature="ExtentReportTearDown()[pri:0, instance:a_Nadeem.Rise_Regression@247d8ae]" started-at="2025-02-06T16:46:04 IST" name="ExtentReportTearDown" finished-at="2025-02-06T16:46:04 IST" duration-ms="487" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ExtentReportTearDown -->
-        <test-method is-config="true" signature="Verify_user_kills_app()[pri:0, instance:a_Nadeem.Rise_Regression@7f284218]" started-at="2025-02-06T15:20:52 IST" name="Verify_user_kills_app" finished-at="2025-02-06T15:20:53 IST" duration-ms="772" status="PASS">
+        <test-method is-config="true" signature="Verify_user_kills_app()[pri:0, instance:a_Nadeem.Rise_Regression@247d8ae]" started-at="2025-02-06T16:46:04 IST" name="Verify_user_kills_app" finished-at="2025-02-06T16:46:05 IST" duration-ms="742" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Verify_user_kills_app -->
