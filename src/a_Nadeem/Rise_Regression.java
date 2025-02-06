@@ -916,7 +916,6 @@ public class Rise_Regression {
 	public void Tejimandi() throws InterruptedException {
 		test = extent.createTest("Homescreen Teji Mandi button");
 		HomePage homepage = new HomePage(Driver);
-		homepage.homeTabHeader.click();
 		ResusableMethods.verticalswipetillElement(Driver, homepage.smallcasebutton, 0, 5, 470, 1788, 590);
 		homepage.tejimandibutton.click();
 		long startTime = System.currentTimeMillis();
@@ -1606,7 +1605,8 @@ public class Rise_Regression {
 	public void asbaswitch() throws InterruptedException {
 		test = extent.createTest("Profile asba switch");
 		ProfilePage profilepage = new ProfilePage(Driver);
-		ResusableMethods.longPressWithActions(Driver, 1010, 180, 1000);
+		HomePage homepage = new HomePage(Driver);
+		homepage.profileicon.click();
 		profilepage.profiledetails.click();
 		profilepage.tradingaccountdetails.click();
 		long startTime = System.currentTimeMillis();

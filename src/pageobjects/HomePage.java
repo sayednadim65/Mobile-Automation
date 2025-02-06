@@ -222,28 +222,31 @@ public class HomePage {
 
 	@FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View/android.view.View/android.widget.Button[2]")
 	public WebElement alertspage;
-	
-	@FindBy (xpath = "//android.widget.ImageView[contains(@content-desc,'Margin')]")
+
+	@FindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Margin')]")
 	public WebElement margincalbutton;
-	
-	@FindBy (xpath = "//android.view.View[@text='Equity']")
+
+	@FindBy(xpath = "//android.view.View[@text='Equity']")
 	public WebElement margincalpage;
-	
-	@FindBy (xpath = "//android.webkit.WebView[@text='Motilal Oswal']")
+
+	@FindBy(xpath = "//android.webkit.WebView[@text='Motilal Oswal']")
 	public WebElement moapipage;
-	
-	@FindBy (xpath = "(//android.widget.ImageView)[5]")
+
+	@FindBy(xpath = "(//android.widget.ImageView)[5]")
 	public WebElement overall;
 
-	@FindBy (xpath = "(//android.widget.ImageView)[5]")
+	@FindBy(xpath = "(//android.widget.ImageView)[5]")
 	public WebElement walleticon;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Add Funds')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Add Funds')]")
 	public WebElement addfundstab;
-	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'Withdraw Funds')]")
+
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Withdraw Funds')]")
 	public WebElement withdrawtab;
-	
-	@FindBy (xpath = "//android.view.View[@content-desc=\"Enter Amount\"]")
+
+	@FindBy(xpath = "//android.view.View[@content-desc=\"Enter Amount\"]")
 	public WebElement enteramount;
+
+	@FindBy(xpath = "(//android.view.View)[14]")
+	public WebElement profileicon;
 }
