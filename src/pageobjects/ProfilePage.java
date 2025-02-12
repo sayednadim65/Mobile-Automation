@@ -22,5 +22,14 @@ public class ProfilePage {
 	
 	@FindBy (xpath = "//android.view.View[@content-desc=\"ACTIVATE\"]")
 	public WebElement asbaswitch;
+	
+	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Reports\"]")
+	public WebElement reportsbutton;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"Ledger Report\"]")
+	public WebElement ledgerreports;
+	
+	@FindBy (xpath = "//android.widget.Button[@content-desc=\"Back\"]")
+	public WebElement openwith;
 
 }

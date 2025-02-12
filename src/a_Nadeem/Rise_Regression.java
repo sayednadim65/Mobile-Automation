@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,9 +17,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
 import drivers.DriverFactory;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -50,8 +53,6 @@ public class Rise_Regression {
 		test = extent.createTest("Login Test");
 		try {
 			if (loginpage.loginButton.isDisplayed()) {
-				// Manual Login
-
 				loginpage.loginButton.click();
 				Thread.sleep(1000);
 				loginpage.userID.click();
@@ -161,6 +162,7 @@ public class Rise_Regression {
 		Delete_script_in_watchlist();
 		Delete_watchlist();
 		asbaswitch();
+		Reports();
 		logger.logTableEnd();
 	}
 
@@ -1091,8 +1093,8 @@ public class Rise_Regression {
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
-		homepage.ipoviewallbutton.click();
 		try {
+			homepage.ipoviewallbutton.click();
 			wait.until(ExpectedConditions.visibilityOf(homepage.ipopage));
 			homepage.ipopage.isDisplayed();
 			status = "Pass";
@@ -1607,6 +1609,7 @@ public class Rise_Regression {
 		test = extent.createTest("Profile asba switch");
 		ProfilePage profilepage = new ProfilePage(Driver);
 		HomePage homepage = new HomePage(Driver);
+		homepage.explorebottombar.click();
 		homepage.profileicon.click();
 		profilepage.profiledetails.click();
 		profilepage.tradingaccountdetails.click();
@@ -1622,8 +1625,32 @@ public class Rise_Regression {
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
-			Driver.navigate().back();
+//			Driver.navigate().back();
 			logger.logTableRow("Profile asba switch", status, endTime - startTime);
+		}
+	}
+
+	public void Reports() throws InterruptedException {
+		test = extent.createTest("Ledger Report download");
+		ProfilePage profilepage = new ProfilePage(Driver);
+		profilepage.reportsbutton.click();
+		profilepage.ledgerreports.click();
+		ResusableMethods.longPressWithActions(Driver, 1012, 325, 1000);
+		long startTime = System.currentTimeMillis();
+		try {
+			Thread.sleep(2000);
+			profilepage.openwith.isDisplayed();
+			status = "Pass";
+			test.pass("Ledger Report download Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Ledger Report download Failed");
+			test.info(e.getMessage());
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Driver.navigate().back();
+			logger.logTableRow("Ledger Report download", status, endTime - startTime);
 		}
 	}
 
@@ -1829,8 +1856,6 @@ public class Rise_Regression {
 
 	@AfterTest
 	public void Verify_user_kills_app() {
-//		HomePage homepage = new HomePage(Driver);
-//		homepage.explorebottombar.click();
 		if (Driver != null) {
 			Driver.quit();
 		}

@@ -5,8 +5,8 @@
     <classes>
       <class name="a_Nadeem.Rise_Regression">
         <methods>
-          <include name="Verify_user_kills_app"/>
           <include name="Verify_user_launch_app"/>
+          <include name="Verify_user_kills_app"/>
           <include name="ExtentReportSetUp"/>
           <include name="ExtentReportTearDown"/>
           <include name="App_Regression"/>
