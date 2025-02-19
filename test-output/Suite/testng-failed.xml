@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="a_Nadeem.Rise_Regression">
+        <methods>
+          <include name="Verify_user_kills_app"/>
+          <include name="Verify_user_launch_app"/>
+          <include name="App_Regression"/>
+        </methods>
+      </class> <!-- a_Nadeem.Rise_Regression -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
