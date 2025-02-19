@@ -56,7 +56,7 @@ public class Webhomepage {
 	@FindBy(xpath = "//a[normalize-space()='Save']")
 	public WebElement savebtn;
 	
-	@FindBy(xpath = "//li[9]//div[2]//a[2]//img[1]")
+	@FindBy(xpath = "//*[@id=\"smallWatchTable\"]/div[1]/div/div[2]/ul[1]/li[3]/div[2]/a[2]/img")
 	public WebElement deletewatchlist;
 	
 	@FindBy(xpath = "//a[@class='btn Primary_btn Primary_outline w100 mtop15']")

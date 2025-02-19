@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
@@ -168,7 +167,7 @@ public class MoWebsite {
 		Thread.sleep(5000);
 
 	}
-	
+
 	public void deletescrip() throws InterruptedException {
 		Webhomepage webhome = new Webhomepage(driver);
 		webhome.selectkebabmenu.click();
@@ -176,17 +175,19 @@ public class MoWebsite {
 		webhome.deletescrip.click();
 		webhome.savebtn.click();
 		Thread.sleep(5000);
-		
+
 	}
-	
+
 	public void deletewatchlist() throws InterruptedException {
 		Webhomepage webhome = new Webhomepage(driver);
 		WebElement dropdownIcon = wait.until(ExpectedConditions.elementToBeClickable(webhome.Watchlistdropdown));
 		dropdownIcon.click();
-		 Select select = new Select(webhome.selectwatchlist);
-		 select.selectByVisibleText("Automate");
+		//Select select = new Select(webhome.selectwatchlist);
+		//select.selectByVisibleText("Automate");
+		webhome.deletewatchlist.click();
+		Thread.sleep(1000);
 		webhome.deletebtn.click();
-		Thread.sleep(5000);
+
 	}
 
 	// Helper Methods for Logging Tables
