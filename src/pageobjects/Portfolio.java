@@ -34,7 +34,7 @@ public class Portfolio {
 	@FindBy(xpath = "//android.view.View[contains(@content-desc,'PMS')]")
 	public WebElement PMSTabPortfolio;
 
-	@FindBy(xpath = "//android.view.View[contains(@content-desc,'Basket')]")
+	@FindBy(xpath = "//android.view.View[contains(@content-desc,'BTX')]")
 	public WebElement BasketTabPortfolio;
 
 	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Hide\"]")

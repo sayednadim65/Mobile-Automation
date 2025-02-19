@@ -79,4 +79,7 @@ public class Watchlist {
 
 	@FindBy(xpath = "//android.widget.ImageView[@class='android.widget.ImageView' and @package='com.mosl.mobile' and @enabled='true' and @clickable='true' and @index='3']")
 	public WebElement walleticon;
+	
+	@FindBy (xpath = "//android.view.View[@content-desc=\"WatchList 6\"]")
+	public WebElement watchlist;
 }

@@ -56,6 +56,6 @@ public class OrderForm {
 	@FindBy (xpath = "//android.widget.ImageView[@content-desc=\"Cancel Orders\"]")
 	public WebElement cancelbuttontext;
 	
-	@FindBy (xpath = "//android.view.View[contains(@content-desc,'CANCELLED')]")
+	@FindBy (xpath = "//android.view.View[contains(@content-desc,\"Cancelled\")]")
 	public WebElement cancelorder;
 }

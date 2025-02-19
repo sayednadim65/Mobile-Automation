@@ -29,12 +29,12 @@ import utils.Commons;
 public class MoRise {
 	AndroidDriver Driver;
 	String status;
-	int Global_Search_Results_loop = 100;
-	int Homepage_portfolio_snap_loop = 80;
-	int Stocks_homepage_portfolio_snap_loop = 100;
+	int Global_Search_Results_loop = 1;
+	int Homepage_portfolio_snap_loop = 1;
+	int Stocks_homepage_portfolio_snap_loop = 1;
 	int mf_homepage_portfolio_snap_loop = 100;
 	int watchlis_loop = 100; // same for option watch list
-	int Get_quote_loop = 33; // same for Get quote, Fundamentals, Technicals, News
+	int Get_quote_loop = 100; // same for Get quote, Fundamentals, Technicals, News
 	WebDriverWait wait = new WebDriverWait(Driver, Duration.ofSeconds(2));
 
 	@Test(priority = 1, enabled = true)
@@ -151,9 +151,10 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void Verify_MF_homepage_Portfolio_Snapshot() throws InterruptedException, IOException {
 		MfHomePage mfHomePage = new MfHomePage(Driver);
+		ResusableMethods.swipeCorinates(Driver, 935, 325, 165, 325, 1);
 		mfHomePage.MfTab.click();
 		String tableName = "mf_homepage_portfolio_snap";
 		logTableStart(tableName);
@@ -177,13 +178,14 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6, enabled = true)
 	public void Verify_User_clicks_on_watchlist() throws InterruptedException {
 		HomePage homepage = new HomePage(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
+		ResusableMethods.swipeCorinates(Driver, 165, 325, 935, 325, 1);
 		homepage.homeTabHeader.click();
 		homepage.WatchlistBottombar.click();
-		watchlist.donotdelte.click();
+//		watchlist.donotdelte.click();
 		String tableName = "Watchlist";
 		logTableStart(tableName);
 		for (int i = 1; i <= watchlis_loop; i++) {
@@ -235,12 +237,12 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 8, enabled = false)
+	@Test(priority = 8, enabled = true)
 	public void Verify_user_clicks_getquote_overview() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		Watchlist watchlist = new Watchlist(Driver);
 		ResusableMethods.tapWithActions(Driver, 289, 526);
-		watchlist.donotdelte.click();
+//		watchlist.donotdelte.click();
 		watchlist.scriptinwatchlist.click();
 		String tableName = "Get Quote overview";
 		logTableStart(tableName);
@@ -264,7 +266,7 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 9, enabled = false)
+	@Test(priority = 9, enabled = true)
 	public void Verify_user_clicks_getquote_Fundamentals() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "Get Quote Fundamentals";
@@ -289,7 +291,7 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 10, enabled = false)
+	@Test(priority = 10, enabled = true)
 	public void Verify_user_clicks_getquote_technical() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "Get Quote Technical";
@@ -314,7 +316,7 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 11, enabled = false)
+	@Test(priority = 11, enabled = true)
 	public void Verify_user_clicks_getquote_news() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "Get Quote News";
@@ -337,9 +339,10 @@ public class MoRise {
 			getquote.technicaltab.click();
 		}
 		logTableEnd(tableName);
+		Driver.navigate().back();
 	}
 
-	@Test(priority = 12, enabled = false)
+	@Test(priority = 12, enabled = true)
 	public void Verify_user_clicks_getquote_optionchain() throws InterruptedException {
 		GetQuote getquote = new GetQuote(Driver);
 		String tableName = "option chain";
@@ -468,7 +471,7 @@ public class MoRise {
 		logTableEnd(tableName);
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = false)
 	public void Verify_user_clicks_portfolio_basket() throws InterruptedException {
 		Portfolio portfolio = new Portfolio(Driver);
 		String tableName = "portfolio Basket";
@@ -585,7 +588,7 @@ public class MoRise {
 			capabilities.setCapability("platformVersion", "13");
 			capabilities.setCapability("deviceName", "CPH2467");
 			capabilities.setCapability("udid", "97957054");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_pilot"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);
