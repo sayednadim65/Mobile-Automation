@@ -13,6 +13,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import pageobjects.ExplorePage;
 import pageobjects.WebLogin;
 import pageobjects.Webhomepage;
 import utils.Commons;
@@ -38,6 +39,11 @@ public class MoWebsite {
 		Addscrip();
 		deletescrip();
 		deletewatchlist();
+		indices();
+		indiceschart();
+		indiceoptionchain();
+		editindice();
+
 		logger.logTableEnd();
 	}
 
@@ -153,8 +159,23 @@ public class MoWebsite {
 		option.click();
 		webhome.watchlistname.sendKeys("Automate");
 		webhome.create.click();
-		webhome.closesearch.click();
-		Thread.sleep(10000);
+		long startTime = System.currentTimeMillis();
+		String wlcreatemsg = webhome.createwlmsg.getText();
+		System.out.println(wlcreatemsg);
+		try {
+			webhome.createwlmsg.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+			System.out.println(e.getMessage());
+		}finally {
+			long endTime = System.currentTimeMillis();
+			webhome.closesearch.click();
+			Thread.sleep(7000);
+			logger.logTableRow("Create Watchlist", status, endTime - startTime);
+		}
+		
+		
 	}
 
 	public void Addscrip() throws InterruptedException {
@@ -164,7 +185,7 @@ public class MoWebsite {
 		webhome.Searchfield.sendKeys("TCS");
 		webhome.addwlicon.click();
 		webhome.closesearch.click();
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 
 	}
 
@@ -174,7 +195,24 @@ public class MoWebsite {
 		webhome.removescrips.click();
 		webhome.deletescrip.click();
 		webhome.savebtn.click();
-		Thread.sleep(5000);
+		long startTime = System.currentTimeMillis();
+		String scripdeletemsg = webhome.deletescripmsg.getText();
+		wait.until(ExpectedConditions.elementToBeClickable(webhome.deletescripmsg));
+		System.out.println(scripdeletemsg);
+		try {
+			webhome.deletescripmsg.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+			System.out.println(e.getMessage());
+		}finally {
+			long endTime = System.currentTimeMillis();
+			webhome.closesearch.click();
+			Thread.sleep(7000);
+			logger.logTableRow("delete scrip", status, endTime - startTime);
+		}
+		
+		Thread.sleep(1000);
 
 	}
 
@@ -182,12 +220,64 @@ public class MoWebsite {
 		Webhomepage webhome = new Webhomepage(driver);
 		WebElement dropdownIcon = wait.until(ExpectedConditions.elementToBeClickable(webhome.Watchlistdropdown));
 		dropdownIcon.click();
-		//Select select = new Select(webhome.selectwatchlist);
-		//select.selectByVisibleText("Automate");
 		webhome.deletewatchlist.click();
 		Thread.sleep(1000);
 		webhome.deletebtn.click();
+		long startTime = System.currentTimeMillis();
+		String wldeletemsg = webhome.deletewlmsg.getText();
+		System.out.println(wldeletemsg);
+		try {
+			webhome.deletewlmsg.isDisplayed();
+			status = "Pass";
+		} catch (Exception e) {
+			status = "Fail";
+			System.out.println(e.getMessage());
+		}finally {
+			long endTime = System.currentTimeMillis();
+			logger.logTableRow("delete Watchlist", status, endTime - startTime);
+		}
+	}
 
+	public void indices() throws InterruptedException {
+		Webhomepage webhome = new Webhomepage(driver);
+		webhome.indice.click();
+
+	}
+
+	public void indiceschart() throws InterruptedException {
+		Webhomepage webhome = new Webhomepage(driver);
+		webhome.indicechart.click();
+	}
+
+	public void indiceoptionchain() throws InterruptedException {
+		Webhomepage webhome = new Webhomepage(driver);
+		webhome.indiceoptionchain.click();
+	}
+
+	public void editindice() {
+		Webhomepage webhome = new Webhomepage(driver);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement editButton = wait.until(ExpectedConditions.elementToBeClickable(webhome.editindices));
+		editButton.click();
+		WebElement checkbox1 = wait.until(ExpectedConditions.elementToBeClickable(webhome.indicecheckbox1));
+		if (!checkbox1.isSelected()) {
+			checkbox1.click();
+		} else {
+			checkbox1.click();
+		}
+		WebElement checkbox2 = wait.until(ExpectedConditions.elementToBeClickable(webhome.indicecheckbox2));
+		if (!checkbox2.isSelected()) {
+			checkbox2.click();
+		} else {
+			checkbox2.click();
+		}
+		WebElement applyButton = wait.until(ExpectedConditions.elementToBeClickable(webhome.indiceapplycta));
+		applyButton.click();
+	}
+	
+	public void explorepage() {
+		ExplorePage explore = new ExplorePage(driver);
+		explore.explorepage.click();
 	}
 
 	// Helper Methods for Logging Tables

@@ -1,5 +1,11 @@
 package investmotilaloswal;
 
+<<<<<<< HEAD
+=======
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
+
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -7,8 +13,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
+<<<<<<< HEAD
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+=======
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 
 public class Portfolio_All {
 	WebDriver wd;

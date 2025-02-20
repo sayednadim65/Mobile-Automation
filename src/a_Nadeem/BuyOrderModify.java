@@ -19,8 +19,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import drivers.DriverFactory;
+<<<<<<< HEAD
 import io.appium.java_client.AppiumBy.ByAccessibilityId;
 import io.appium.java_client.AppiumDriver;
+=======
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.AppiumBy.ByAccessibilityId;
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 

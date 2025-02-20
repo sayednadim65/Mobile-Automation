@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[<h3>Execution Report</h3>]]>
@@ -11,25 +11,98 @@
       <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>1</td><td>Validpassword</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>3302</td></tr>]]>
+      <![CDATA[<tr><td>1</td><td>Validpassword</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>3080</td></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td>2</td><td>Search Field test</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>911</td></tr>]]>
+      <![CDATA[<tr><td>2</td><td>Search Field test</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>864</td></tr>]]>
     </line>
     <line>
-      <![CDATA[</table>]]>
+      <![CDATA[<tr><td>3</td><td>Create Watchlist</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>1972</td></tr>]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-02-19T16:32:27 IST" name="Default suite" finished-at="2025-02-19T16:33:19 IST" duration-ms="51481">
+  <suite started-at="2025-02-20T15:51:46 IST" name="Default suite" finished-at="2025-02-20T15:52:34 IST" duration-ms="48236">
     <groups>
     </groups>
-    <test started-at="2025-02-19T16:32:27 IST" name="Default test" finished-at="2025-02-19T16:33:19 IST" duration-ms="51481">
+    <test started-at="2025-02-20T15:51:46 IST" name="Default test" finished-at="2025-02-20T15:52:34 IST" duration-ms="48236">
       <class name="Bharat.MoWebsite">
-        <test-method is-config="true" signature="openbrowser()[pri:0, instance:Bharat.MoWebsite@534a5a98]" started-at="2025-02-19T16:32:27 IST" name="openbrowser" finished-at="2025-02-19T16:32:40 IST" duration-ms="12500" status="PASS">
+        <test-method is-config="true" signature="openbrowser()[pri:0, instance:Bharat.MoWebsite@5e600dd5]" started-at="2025-02-20T15:51:46 IST" name="openbrowser" finished-at="2025-02-20T15:51:54 IST" duration-ms="8281" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openbrowser -->
-        <test-method signature="Websitetest()[pri:1, instance:Bharat.MoWebsite@534a5a98]" started-at="2025-02-19T16:32:40 IST" name="Websitetest" finished-at="2025-02-19T16:33:17 IST" duration-ms="37738" status="PASS">
+        <test-method signature="Websitetest()[pri:1, instance:Bharat.MoWebsite@5e600dd5]" started-at="2025-02-20T15:51:54 IST" name="Websitetest" finished-at="2025-02-20T15:52:33 IST" duration-ms="39099" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(text(),'The scrip is successfully removed from watchlist.')]"}
+  (Session info: chrome=133.0.6943.100)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.24'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0aec78ccb032604d6e33d7fe591c2033, findElement {using=xpath, value=//div[contains(text(),'The scrip is successfully removed from watchlist.')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 133.0.6943.100, chrome: {chromedriverVersion: 133.0.6943.126 (cffa127ce7b..., userDataDir: C:\Users\BHARAT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64946}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64946/devtoo..., se:cdpVersion: 133.0.6943.100, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0aec78ccb032604d6e33d7fe591c2033]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(text(),'The scrip is successfully removed from watchlist.')]"}
+  (Session info: chrome=133.0.6943.100)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.28.1', revision: '73f5ad48a2'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.24'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0aec78ccb032604d6e33d7fe591c2033, findElement {using=xpath, value=//div[contains(text(),'The scrip is successfully removed from watchlist.')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 133.0.6943.100, chrome: {chromedriverVersion: 133.0.6943.126 (cffa127ce7b..., userDataDir: C:\Users\BHARAT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64946}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64946/devtoo..., se:cdpVersion: 133.0.6943.100, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0aec78ccb032604d6e33d7fe591c2033
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at com.sun.proxy.$Proxy13.getText(Unknown Source)
+at Bharat.MoWebsite.deletescrip(MoWebsite.java:199)
+at Bharat.MoWebsite.Websitetest(MoWebsite.java:40)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
             <line>
               <![CDATA[<h3>Execution Report</h3>]]>
@@ -41,17 +114,17 @@
               <![CDATA[<tr><th>Sr. No</th><th>Test Case</th><th>Status</th><th>Time Taken (ms)</th></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>1</td><td>Validpassword</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>3302</td></tr>]]>
+              <![CDATA[<tr><td>1</td><td>Validpassword</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>3080</td></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td>2</td><td>Search Field test</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>911</td></tr>]]>
+              <![CDATA[<tr><td>2</td><td>Search Field test</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>864</td></tr>]]>
             </line>
             <line>
-              <![CDATA[</table>]]>
+              <![CDATA[<tr><td>3</td><td>Create Watchlist</td><td style='background-color:green;color: white; font-weight: bold;'>Pass</td><td>1972</td></tr>]]>
             </line>
           </reporter-output>
         </test-method> <!-- Websitetest -->
-        <test-method is-config="true" signature="closebrowser()[pri:0, instance:Bharat.MoWebsite@534a5a98]" started-at="2025-02-19T16:33:17 IST" name="closebrowser" finished-at="2025-02-19T16:33:19 IST" duration-ms="1169" status="PASS">
+        <test-method is-config="true" signature="closebrowser()[pri:0, instance:Bharat.MoWebsite@5e600dd5]" started-at="2025-02-20T15:52:33 IST" name="closebrowser" finished-at="2025-02-20T15:52:34 IST" duration-ms="782" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closebrowser -->

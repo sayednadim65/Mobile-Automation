@@ -5,7 +5,10 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;

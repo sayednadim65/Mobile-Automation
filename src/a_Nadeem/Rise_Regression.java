@@ -8,6 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+<<<<<<< HEAD
+=======
+import org.openqa.selenium.remote.DesiredCapabilities;
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
@@ -52,8 +56,11 @@ public class Rise_Regression {
 		test = extent.createTest("Login Test");
 		try {
 			if (loginpage.loginButton.isDisplayed()) {
+<<<<<<< HEAD
 				// Manual Login
 
+=======
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 				loginpage.loginButton.click();
 				Thread.sleep(1000);
 				loginpage.userID.click();
@@ -163,6 +170,10 @@ public class Rise_Regression {
 		Delete_script_in_watchlist();
 		Delete_watchlist();
 		asbaswitch();
+<<<<<<< HEAD
+=======
+		Reports();
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 		logger.logTableEnd();
 	}
 
@@ -184,9 +195,16 @@ public class Rise_Regression {
 		Thread.sleep(1000);
 		long startTime = System.currentTimeMillis();
 		homepage.Globalsearchaftertap.get(1).sendKeys(Commons.getGlobalPropertiesValue("global_search_scrip"));
+<<<<<<< HEAD
 		try {
 			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
 			String resultsearch = searchresult.getDomAttribute("content-desc");
+=======
+		Thread.sleep(2500);
+		try {
+			WebElement searchresult = wait.until(ExpectedConditions.visibilityOf(homepage.Globalsearchresult));
+			String resultsearch = searchresult.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			List<String> splitresult = Arrays.asList(resultsearch.split("\\s+"));
 			String globalsearchresult = splitresult.get(1);
 			globalsearchresult.equalsIgnoreCase(" YESBANK");
@@ -211,7 +229,11 @@ public class Rise_Regression {
 		getquote.FutTab.click();
 		try {
 			WebElement NSEFO = wait.until(ExpectedConditions.visibilityOf(getquote.NSEFO));
+<<<<<<< HEAD
 			String nsefo = NSEFO.getDomAttribute("content-desc");
+=======
+			String nsefo = NSEFO.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			nsefo.equalsIgnoreCase("NSE_FO");
 			status = "Pass";
 			test.pass("Get quote fut tab Passed");
@@ -234,7 +256,11 @@ public class Rise_Regression {
 		getquote.optionsTab.click();
 		try {
 			WebElement Call = wait.until(ExpectedConditions.visibilityOf(getquote.callbutton));
+<<<<<<< HEAD
 			String call = Call.getDomAttribute("content-desc");
+=======
+			String call = Call.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			call.equalsIgnoreCase("Call");
 			status = "Pass";
 			test.pass("Get quote opt tab Passed");
@@ -256,7 +282,11 @@ public class Rise_Regression {
 		getquote.cashtab.click();
 		try {
 			WebElement Nse = wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
+<<<<<<< HEAD
 			String nse = Nse.getDomAttribute("content-desc");
+=======
+			String nse = Nse.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			nse.equalsIgnoreCase("NSE");
 			status = "Pass";
 			test.pass("Get quote cash tab Passed");
@@ -369,7 +399,11 @@ public class Rise_Regression {
 		getquote.chartsbutton.click();
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(getquote.chartsbuybutton));
+<<<<<<< HEAD
 			String buy = getquote.chartsbuybutton.getDomAttribute("content-desc");
+=======
+			String buy = getquote.chartsbuybutton.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			buy.equalsIgnoreCase("BUY");
 			status = "Pass";
 			test.pass("Get quote charts button Passed");
@@ -391,7 +425,11 @@ public class Rise_Regression {
 		getquote.optionchainbutton.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(getquote.OIoptionchain));
+<<<<<<< HEAD
 			String OI = getquote.OIoptionchain.getDomAttribute("content-desc");
+=======
+			String OI = getquote.OIoptionchain.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			OI.equalsIgnoreCase("OI");
 			status = "Pass";
 			test.pass("Get quote optionchain button Passed");
@@ -413,7 +451,11 @@ public class Rise_Regression {
 		getquote.fundamentaltab.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(getquote.fundamentalratios));
+<<<<<<< HEAD
 			String fundamentalratios = getquote.fundamentalratios.getDomAttribute("content-desc");
+=======
+			String fundamentalratios = getquote.fundamentalratios.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			fundamentalratios.equalsIgnoreCase("Fundamental Ratios");
 			status = "Pass";
 			test.pass("Get quote Fundamental Tab Passed");
@@ -434,7 +476,11 @@ public class Rise_Regression {
 		getquote.technicaltab.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(getquote.deliveryvolume));
+<<<<<<< HEAD
 			String delivery = getquote.deliveryvolume.getDomAttribute("content-desc");
+=======
+			String delivery = getquote.deliveryvolume.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			delivery.equalsIgnoreCase("Delivery & Volume");
 			status = "Pass";
 			test.pass("Get quote Technical Tab Passed");
@@ -455,7 +501,11 @@ public class Rise_Regression {
 		getquote.Newstab.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(getquote.news));
+<<<<<<< HEAD
 			String newsverification = getquote.news.getDomAttribute("content-desc");
+=======
+			String newsverification = getquote.news.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			newsverification.equalsIgnoreCase("News");
 			status = "Pass";
 			test.pass("Get quote News Tab Passed");
@@ -476,7 +526,11 @@ public class Rise_Regression {
 		getquote.transactionstab.click();
 		try {
 			wait.until(ExpectedConditions.visibilityOf(getquote.realisedPL));
+<<<<<<< HEAD
 			String plrealised = getquote.realisedPL.getDomAttribute("content-desc");
+=======
+			String plrealised = getquote.realisedPL.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			String realisepl = plrealised.split(" ")[0];
 			realisepl.equalsIgnoreCase("Realised");
 			status = "Pass";
@@ -501,9 +555,15 @@ public class Rise_Regression {
 			ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
 					Commons.getGlobalPropertiesValue("Orderform_quantity_amount_toggle"));
 			Driver.hideKeyboard();
+<<<<<<< HEAD
 			String amount = orderform.investamount.getDomAttribute("content-desc");
 			String investamount = amount.substring(12, 14);
 			String NseLTP = orderform.NseSwitch.getDomAttribute("content-desc");
+=======
+			String amount = orderform.investamount.getAttribute("content-desc");
+			String investamount = amount.substring(12, 14);
+			String NseLTP = orderform.NseSwitch.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			String LTP = NseLTP.substring(5, 7);
 			investamount.equalsIgnoreCase(LTP);
 			status = "Pass";
@@ -528,7 +588,11 @@ public class Rise_Regression {
 			ResusableMethods.cleartextandenterinput(Driver, orderform.quantityMarket,
 					(Commons.getGlobalPropertiesValue("orderform_amount_toggle")));
 			Driver.hideKeyboard();
+<<<<<<< HEAD
 			String quantity = orderform.quantityautocalculate.getDomAttribute("content-desc");
+=======
+			String quantity = orderform.quantityautocalculate.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			String autocalulatequantity = quantity.substring(5);
 			autocalulatequantity.equalsIgnoreCase(Commons.getGlobalPropertiesValue("orderform_amount_quantity"));
 			status = "Pass";
@@ -554,7 +618,11 @@ public class Rise_Regression {
 		homepage.hidebutton.click();
 		try {
 			WebElement hidemark = wait.until(ExpectedConditions.visibilityOf(homepage.hideportfolio));
+<<<<<<< HEAD
 			String markhide = hidemark.getDomAttribute("content-desc");
+=======
+			String markhide = hidemark.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			List<String> elements = Arrays.asList(markhide.split(" "));
 			String starmark = elements.get(8);
 			starmark.equalsIgnoreCase("Value\n*****\nInvested");
@@ -1092,8 +1160,13 @@ public class Rise_Regression {
 		HomePage homepage = new HomePage(Driver);
 		homepage.homeTabHeader.click();
 		long startTime = System.currentTimeMillis();
+<<<<<<< HEAD
 		homepage.ipoviewallbutton.click();
 		try {
+=======
+		try {
+			homepage.ipoviewallbutton.click();
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			wait.until(ExpectedConditions.visibilityOf(homepage.ipopage));
 			homepage.ipopage.isDisplayed();
 			status = "Pass";
@@ -1378,7 +1451,11 @@ public class Rise_Regression {
 			portfolio.viewAnalysis.click();
 			portfolio.returnsAbs.click();
 			WebElement current = wait.until(ExpectedConditions.visibilityOf(portfolio.currentVerification));
+<<<<<<< HEAD
 			String Current = current.getDomAttribute("content-desc");
+=======
+			String Current = current.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			Current.equalsIgnoreCase("Current Investment Value");
 			status = "Pass";
 			test.pass("Portfolio View Analysis button Passed");
@@ -1441,7 +1518,11 @@ public class Rise_Regression {
 		ResusableMethods.horizontalSwipetillElement(Driver, portfolio.investedpms, 0, 5, 805, 166, 1328);
 		try {
 			WebElement PMS = wait.until(ExpectedConditions.elementToBeClickable(portfolio.PMSTabPortfolio));
+<<<<<<< HEAD
 			String pms = PMS.getDomAttribute("content-desc");
+=======
+			String pms = PMS.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			String pmsTab = pms.substring(0, 3);
 			pmsTab.equalsIgnoreCase("PMS");
 			status = "Pass";
@@ -1488,7 +1569,11 @@ public class Rise_Regression {
 		watchlist.createButton.click();
 		try {
 			WebElement Createbutton = wait.until(ExpectedConditions.visibilityOf(watchlist.okwatchlistcreated));
+<<<<<<< HEAD
 			String verification = Createbutton.getDomAttribute("content-desc");
+=======
+			String verification = Createbutton.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			verification.equalsIgnoreCase("OK");
 			status = "Pass";
 			test.pass("Add Watchlist Passed");
@@ -1517,7 +1602,11 @@ public class Rise_Regression {
 		Driver.navigate().back();
 		try {
 			WebElement scriptinwatchlist = wait.until(ExpectedConditions.visibilityOf(watchlist.scriptinwatchlist));
+<<<<<<< HEAD
 			String addedscript = scriptinwatchlist.getDomAttribute("content-desc");
+=======
+			String addedscript = scriptinwatchlist.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			List<String> splitList = Arrays.asList(addedscript.split("\\s+"));
 			String watchlistscript = splitList.get(0);
 			watchlistscript.equalsIgnoreCase("YESBANK");
@@ -1567,7 +1656,11 @@ public class Rise_Regression {
 		long startTime = System.currentTimeMillis();
 		ResusableMethods.longpressElement(Driver, watchlist.scriptinwatchlist);
 		ResusableMethods.tapWithActions(Driver, 977, 972);
+<<<<<<< HEAD
 		String scriptdeleted = watchlist.Addscript.getDomAttribute("content-desc");
+=======
+		String scriptdeleted = watchlist.Addscript.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 		try {
 			scriptdeleted.equalsIgnoreCase("Add Scrip");
 			status = "Pass";
@@ -1608,6 +1701,10 @@ public class Rise_Regression {
 		test = extent.createTest("Profile asba switch");
 		ProfilePage profilepage = new ProfilePage(Driver);
 		HomePage homepage = new HomePage(Driver);
+<<<<<<< HEAD
+=======
+		homepage.explorebottombar.click();
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 		homepage.profileicon.click();
 		profilepage.profiledetails.click();
 		profilepage.tradingaccountdetails.click();
@@ -1623,11 +1720,42 @@ public class Rise_Regression {
 		} finally {
 			long endTime = System.currentTimeMillis();
 			Driver.navigate().back();
+<<<<<<< HEAD
 			Driver.navigate().back();
+=======
+//			Driver.navigate().back();
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			logger.logTableRow("Profile asba switch", status, endTime - startTime);
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public void Reports() throws InterruptedException {
+		test = extent.createTest("Ledger Report download");
+		ProfilePage profilepage = new ProfilePage(Driver);
+		profilepage.reportsbutton.click();
+		profilepage.ledgerreports.click();
+		ResusableMethods.longPressWithActions(Driver, 1012, 325, 1000);
+		long startTime = System.currentTimeMillis();
+		try {
+			Thread.sleep(2000);
+			profilepage.openwith.isDisplayed();
+			status = "Pass";
+			test.pass("Ledger Report download Passed");
+		} catch (Exception e) {
+			status = "Fail";
+			test.fail("Ledger Report download Failed");
+			test.info(e.getMessage());
+		} finally {
+			long endTime = System.currentTimeMillis();
+			Driver.navigate().back();
+			Driver.navigate().back();
+			logger.logTableRow("Ledger Report download", status, endTime - startTime);
+		}
+	}
+
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 	public void buyorder() throws InterruptedException {
 		test = extent.createTest("Buy order");
 		Watchlist watchlist = new Watchlist(Driver);
@@ -1775,6 +1903,7 @@ public class Rise_Regression {
 
 	@BeforeTest
 	public void Verify_user_launch_app() throws InterruptedException, IOException {
+<<<<<<< HEAD
 		/*
 		 * if
 		 * ("RealDevice".equalsIgnoreCase(Commons.getGlobalPropertiesValue("Execution"))
@@ -1828,13 +1957,68 @@ public class Rise_Regression {
 		DriverFactory.addDriver(Driver);
 
 		Thread.sleep(500);
+=======
+
+		if ("RealDevice".equalsIgnoreCase(Commons.getGlobalPropertiesValue("Execution"))) {
+
+			System.out.println("Initializing Appium...");
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setCapability("platformName", "Android");
+			capabilities.setCapability("platformVersion", "13");
+			capabilities.setCapability("deviceName", "CPH2467");
+			capabilities.setCapability("udid", "97957054");
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
+			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
+			capabilities.setCapability("automationName", "UiAutomator2");
+			capabilities.setCapability("autoGrantPermissions", true);
+			capabilities.setCapability("noReset", true);
+
+			Driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			DriverFactory.addDriver(Driver);
+			System.out.println("app launch succesfully");
+			Driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		}
+
+		else if ("BrowserStack".equalsIgnoreCase(Commons.getGlobalPropertiesValue("Execution"))) {
+
+			System.out.println("Starting browserstack");
+			UiAutomator2Options capabilities = new UiAutomator2Options();
+
+			HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
+			bstackOptions.put("userName", "dheeraj142");
+			bstackOptions.put("accessKey", "MhpLs2spj2FFtYv9TFiV");
+			bstackOptions.put("appiumVersion", "2.0.1");
+			bstackOptions.put("debug", "true");
+			bstackOptions.put("interactiveDebugging", "true");
+			// bstackOptions.put("build", buildName);
+
+			capabilities.setCapability("platformName", "android");
+			capabilities.setCapability("appium:platformVersion", "14.0");
+			capabilities.setCapability("appium:deviceName", "Google Pixel 8 Pro");
+			capabilities.setCapability("appium:app", "bs://3cc272641d1f0df16540c1a6ada81a2ac15a4ac5");
+			capabilities.setCapability("appium:automationName", "UIAutomator2");
+			capabilities.setCapability("autoGrantPermissions", true);
+			capabilities.setCapability("bstack:options", bstackOptions);
+
+			Driver = new AndroidDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), capabilities);
+			System.out.println("app launch succesfully");
+
+			DriverFactory.addDriver(Driver);
+
+			Thread.sleep(500);
+
+		}
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 
 	}
 
 	@AfterTest
 	public void Verify_user_kills_app() {
+<<<<<<< HEAD
 //		HomePage homepage = new HomePage(Driver);
 //		homepage.explorebottombar.click();
+=======
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 		if (Driver != null) {
 			Driver.quit();
 		}

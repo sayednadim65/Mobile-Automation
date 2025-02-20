@@ -22,7 +22,11 @@ public class WebsiteTest {
 	int All_Portfolio_loop = 0;
 	String url = "https://invest.motilaloswal.com/";
 	String userId = "Y05120";
+<<<<<<< HEAD
 	String password = "Dell@123";
+=======
+	String password = "Dell@4321";
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 	String dob = "18052005 ";
 
 	@Test(priority = 5)
@@ -194,7 +198,11 @@ public class WebsiteTest {
 	@BeforeTest
 	public void beforeTest() throws InterruptedException {
 		System.setProperty("chromedriver",
+<<<<<<< HEAD
 				"C:\\Users\\bharatpal\\Desktop\\selenium\\chromedriver.exe");
+=======
+				"C:\\Users\\nadeemuddinsayed\\Desktop\\Selenium sever\\driver\\chromedriver-win64\\chromedriver.exe");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 
 		wd = new ChromeDriver();
 		wd.get(url);

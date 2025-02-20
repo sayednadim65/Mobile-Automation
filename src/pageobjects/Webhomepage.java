@@ -35,8 +35,17 @@ public class Webhomepage {
 	@FindBy(xpath = "//*[@id=\"NewWatchlist\"]/div/div/div[1]/a")
 	public WebElement create;
 	
+	@FindBy(xpath = "//div[contains(text(),'Watchlist added succesfully')]")
+	public WebElement createwlmsg;
+	
 	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/div[2]/a[1]")
 	public WebElement addscrip;
+	
+	@FindBy(xpath ="//div[contains(text(),'The scrip is successfully removed from watchlist.')]")
+	public WebElement deletescripmsg;
+	
+	@FindBy(xpath = "//div[contains(text(),'Watchlist deleted Successfully!')]")
+	public WebElement deletewlmsg;
 	
 	@FindBy(xpath = "//div[@class='global']//div[1]//li[1]//a[1]//img[1]")
 	public WebElement addwlicon;
@@ -61,5 +70,27 @@ public class Webhomepage {
 	
 	@FindBy(xpath = "//a[@class='btn Primary_btn Primary_outline w100 mtop15']")
 	public WebElement deletebtn;
+	
+	@FindBy(xpath = "//span[contains(@class,'f12 black fw600 Head_026000')]")
+	public WebElement indice;
+	
+	@FindBy(xpath = "//div[@class='dflex gap30']//div[1]//div[2]//a[1]//img[1]")
+	public WebElement indicechart;
+	
+	@FindBy (xpath = "//div[contains(@class,'dflex gap30')]//div[1]//div[3]//a[1]//img[1]")
+	public WebElement indiceoptionchain;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div[1]/header/div[1]/div[2]/div[3]/a/img")
+	public WebElement editindices;
+	
+	@FindBy(xpath = "//td[contains(@class,'tdind dflex alignitemCsenter justifyRight')]//span[contains(@for,'checkbox-999901')]")
+	public WebElement indicecheckbox1;
+	
+	@FindBy(xpath = "//span[contains(@for,'checkbox-999901')]")
+	public WebElement indicecheckbox2;
+	
+	@FindBy(xpath = "//button[normalize-space()='Apply']")
+	public WebElement indiceapplycta;
+	
 }
 
