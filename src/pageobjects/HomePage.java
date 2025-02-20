@@ -247,6 +247,10 @@ public class HomePage {
 	@FindBy(xpath = "//android.view.View[@content-desc=\"Enter Amount\"]")
 	public WebElement enteramount;
 
+<<<<<<< HEAD
+	@FindBy(xpath = "(//android.view.View)[14]")
+=======
 	@FindBy(xpath = "(//android.view.View)[13]")
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 	public WebElement profileicon;
 }

@@ -47,7 +47,11 @@ public class RiseApp {
 					.elementToBeClickable(By.xpath("//android.view.View[contains(@content-desc,\"IDEA\")]")));
 			long endTime = System.currentTimeMillis(); // End time
 			long timeTaken = endTime - startTime; // Time calculation
+<<<<<<< HEAD
+			String search_result = searchresult.getDomAttribute("content-desc");
+=======
 			String search_result = searchresult.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			// System.out.println(search_result);
 			String idea = search_result.substring(3, 7); // slicing text
 			System.out.println(idea);
@@ -75,7 +79,11 @@ public class RiseApp {
 					.until(ExpectedConditions.elementToBeClickable(ByAccessibilityId.accessibilityId("Collapse")));
 			long endTime = System.currentTimeMillis(); // End time
 			long timeTaken = endTime - startTime; // Time calculation
+<<<<<<< HEAD
+			String a = homepagePortfolioSnapExpand.getDomAttribute("content-desc");
+=======
 			String a = homepagePortfolioSnapExpand.getAttribute("content-desc");
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 			System.out.println(a);
 			// String overall = a.substring(28, 36);
 			// System.out.println(overall);

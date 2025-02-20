@@ -3,6 +3,10 @@ package pageobjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 19e10434cbb4abc1684fb163f3c00c8b16657062
 import io.appium.java_client.android.AndroidDriver;
 
 public class Portfolio {
