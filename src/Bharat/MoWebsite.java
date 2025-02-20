@@ -168,14 +168,13 @@ public class MoWebsite {
 		} catch (Exception e) {
 			status = "Fail";
 			System.out.println(e.getMessage());
-		}finally {
+		} finally {
 			long endTime = System.currentTimeMillis();
 			webhome.closesearch.click();
 			Thread.sleep(7000);
 			logger.logTableRow("Create Watchlist", status, endTime - startTime);
 		}
-		
-		
+
 	}
 
 	public void Addscrip() throws InterruptedException {
@@ -205,13 +204,13 @@ public class MoWebsite {
 		} catch (Exception e) {
 			status = "Fail";
 			System.out.println(e.getMessage());
-		}finally {
+		} finally {
 			long endTime = System.currentTimeMillis();
 			webhome.closesearch.click();
 			Thread.sleep(7000);
 			logger.logTableRow("delete scrip", status, endTime - startTime);
 		}
-		
+
 		Thread.sleep(1000);
 
 	}
@@ -232,7 +231,7 @@ public class MoWebsite {
 		} catch (Exception e) {
 			status = "Fail";
 			System.out.println(e.getMessage());
-		}finally {
+		} finally {
 			long endTime = System.currentTimeMillis();
 			logger.logTableRow("delete Watchlist", status, endTime - startTime);
 		}
@@ -274,7 +273,7 @@ public class MoWebsite {
 		WebElement applyButton = wait.until(ExpectedConditions.elementToBeClickable(webhome.indiceapplycta));
 		applyButton.click();
 	}
-	
+
 	public void explorepage() {
 		ExplorePage explore = new ExplorePage(driver);
 		explore.explorepage.click();
@@ -318,8 +317,8 @@ public class MoWebsite {
 	}
 
 	@BeforeTest
-	public void openbrowser() {
-		System.setProperty("chromedriver", "C:\\Users\\bharatpal\\Desktop\\selenium\\chromedriver.exe");
+	public void openbrowser() throws IOException {
+		System.setProperty("chromedriver", Commons.getGlobalPropertiesValue("Nadeempath"));
 
 		driver = new ChromeDriver();
 		driver.get("https://invest.motilaloswal.com/");
