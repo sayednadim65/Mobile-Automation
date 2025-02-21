@@ -1592,8 +1592,8 @@ public class Rise_Regression {
 		ResusableMethods.longpressElement(Driver, watchlist.scriptinwatchlist);
 		ResusableMethods.tapWithActions(Driver, 977, 972);
 
-		String scriptdeleted = watchlist.Addscript.getDomAttribute("content-desc");
 		try {
+			String scriptdeleted = watchlist.Addscript.getDomAttribute("content-desc");
 			scriptdeleted.equalsIgnoreCase("Add Scrip");
 			status = "Pass";
 			test.pass("Delete script from watchlist Passed");
@@ -1692,10 +1692,6 @@ public class Rise_Regression {
 
 		ResusableMethods.tapWithActions(Driver, 334, 2205);
 		Thread.sleep(1000);
-		/*
-		 * wait.until(ExpectedConditions.visibilityOf(watchlist.donotdelte));
-		 * watchlist.donotdelte.click();
-		 */
 		ResusableMethods.tapWithActions(Driver, 517, 849);
 		wait.until(ExpectedConditions.visibilityOf(getquote.nsebutton));
 		ResusableMethods.tapWithActions(Driver, 811, 2172);
@@ -1817,14 +1813,11 @@ public class Rise_Regression {
 
 	@BeforeClass
 	public void ExtentReportSetUp() {
-		// Set up the ExtentSparkReporter to generate a report in the 'sparkReport.html'
-		// file
 		ExtentSparkReporter sparkReporter = new ExtentSparkReporter("sparkReport.html");
 		sparkReporter.config().setTimeStampFormat("yyyy-MM-dd HH:mm:ss");
 		sparkReporter.config().setDocumentTitle("Rise App Regression");
 		sparkReporter.config().setReportName("Rise App Regression");
 
-		// Initialize ExtentReports and attach the ExtentSparkReporter
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
 	}
@@ -1843,10 +1836,10 @@ public class Rise_Regression {
 			System.out.println("Initializing Appium...");
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("platformName", "Android");
-			capabilities.setCapability("platformVersion", "12");
-			capabilities.setCapability("deviceName", "Galaxy M31");
-			capabilities.setCapability("udid", "RZ8N50B0WNB");
-			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package"));
+			capabilities.setCapability("platformVersion", "13");
+			capabilities.setCapability("deviceName", "CPH2467");
+			capabilities.setCapability("udid", "97957054");
+			capabilities.setCapability("appPackage", Commons.getGlobalPropertiesValue("Rise_app_package_pilot"));
 			capabilities.setCapability("appActivity", Commons.getGlobalPropertiesValue("Rise_app_activity"));
 			capabilities.setCapability("automationName", "UiAutomator2");
 			capabilities.setCapability("autoGrantPermissions", true);
@@ -1869,7 +1862,6 @@ public class Rise_Regression {
 			bstackOptions.put("appiumVersion", "2.0.1");
 			bstackOptions.put("debug", "true");
 			bstackOptions.put("interactiveDebugging", "true");
-			// bstackOptions.put("build", buildName);
 
 			capabilities.setCapability("platformName", "android");
 			capabilities.setCapability("appium:platformVersion", "14.0");
@@ -1892,9 +1884,6 @@ public class Rise_Regression {
 
 	@AfterTest
 	public void Verify_user_kills_app() {
-
-//		HomePage homepage = new HomePage(Driver);
-//		homepage.explorebottombar.click();
 
 		if (Driver != null) {
 			Driver.quit();
